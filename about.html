@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>About</title>
+        <meta name="description" content>
+        <meta name="theme-color" content="#000000">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="transitions.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav__container">
+                <div><a href="/index.html" class="wordmark">Sean Reibling</a></div>
+                <div class="nav__links">
+                    <a href="/portfolio.html" class="heading is--nav is--dim">Portfolio</a>
+                    <a href="/about.html" class="heading is--nav is--dim">About</a>
+                    <a href="/latest.html" class="heading is--nav is--dim">Latest</a>
+                    <a href="/contact.html" class="heading is--nav is--dim">Contact</a>
+                </div>
+                <div class="nav__btn">
+                    <div class="btn__bar"></div>
+                    <div class="btn__bar"></div>
+                </div>
+            </div>
+            <div class="nav__mobile">
+                <div class="mobile__links">
+                    <a href="/portfolio.html" class="heading is--menu">Portfolio</a>
+                    <a href="/about.html" class="heading is--menu">About</a>
+                    <a href="/latest.html" class="heading is--menu">Latest</a>
+                    <a href="/contact.html" class="heading is--menu">Contact</a>
+                </div>
+                <div>
+                    <div class="mobile__social mbot--16">
+                        <a href="/portfolio.html" class="heading is--small">LinkedIn</a>
+                        <a href="/about.html" class="heading is--small">Instagram</a>
+                        <a href="/latest.html" class="heading is--small">Dribbble</a>
+                    </div>
+                    <h1 class="heading is--small is--dim">© 2023 Sean Reibling</h1>
+                </div>
+            </div>
+        </nav>
+        <div class="contact">
+            <div class="contact__bg"></div>
+            <div class="contact__card">
+                <img class="contact__close"
+                    src="https://seanreibling.github.io/assets/icons/close.svg">
+                <h1 class="heading is--large mbot--24">Contact</h1>
+                <p class="mtop--24">Have a project, opportunity, or just want to
+                    chat? I'd love
+                    to get in touch! I try to respond to messages within 2
+                    business days.</p>
+                <form action method="get">
+                    <div class="form ptop--50">
+                        <input type="text" class="heading is--nav"
+                            name="first name"
+                            placeholder="First name" id="form__fname" required />
+                        <input type="text" class="heading is--nav"
+                            name="last name"
+                            placeholder="Last name" id="form__lname" required />
+                        <input type="email" class="heading is--nav" name="email"
+                            placeholder="Email address" id="form__email"
+                            required />
+                        <input type="text" class="heading is--nav"
+                            name="organization"
+                            placeholder="Organization" id="form__organization" />
+                        <div class="select__container">
+                            <select class="heading is--nav" name="topic"
+                                placeholder="Topic" id="form__topic">
+                                <option value="proposal">Project proposal</option>
+                                <option value="opportunity">Job opportunity</option>
+                                <option value="opportunity">Coffee chat</option>
+                                <option value="opportunity">Other</option>
+                            </select>
+                            <img
+                                src="https://seanreibling.github.io/assets/icons/chevron-down.svg"
+                                class="select__icon">
+                        </div>
+                        <textarea data-expandable
+                            class="heading is--nav mbot--24"
+                            placeholder="Message"
+                            maxlength="5000" id="form__message" name="message"
+                            required data-name="message"
+                            spellcheck="false" rows="4"></textarea>
+                        <button id="form__button">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <main id="swup" class="transition-fade">
+            <section class="about">
+                <div class="about__hero">
+                    <h1 class="heading is--xlarge is--center">I design digital
+                        products<br>and interfaces that</h1>
+                    <div class="about__animation">
+                        <h1 class="heading is--xlarge is--center col--yellow">emphasize
+                            simplicity</h1>
+                        <h1 class="heading is--xlarge is--center col--red">scale
+                            fluidly</h1>
+                        <h1 class="heading is--xlarge is--center col--blue">prioritize
+                            accessibility</h1>
+                        <h1 class="heading is--xlarge is--center col--green">operate
+                            with integrity</h1>
+                    </div>
+                </div>
+                <div>
+                    <p class="pbot--50">Hey! I'm Sean, a digital designer based
+                        in Toronto. My goal is to design products and interfaces
+                        that are beautiful to look at and add value to people's
+                        lives.<br><br>
+
+                        Currently, I'm in my final year of the Bachelor of
+                        Design program at York University, and work part-time as
+                        a designer for Student Recruitment and Admissions. This
+                        past summer, I had the pleasure of interning as an
+                        Associate Designer at EY Canada within their design
+                        studio practice. My primary area of focus is in the
+                        sphere of UI/UX design, though I enjoy incorporating
+                        visual identity and motion into my work whenever
+                        possible. I am familiar with industry-standard software
+                        including the Adobe suite of apps, Figma, Webflow, and
+                        basic front-end development.<br><br>
+
+                        I believe the future of digital design must be one that
+                        takes a holistic approach to people. This means
+                        designing with ethical standards and crafting
+                        experiences that treat users as people, not products. It
+                        means design that enhances well-being, solves critical
+                        problems, and respects autonomy and privacy. It also
+                        means interfaces that are inclusive, where accessibility
+                        is foundational. These principles guide the work I do as
+                        an interaction designer.<br><br>
+
+                        In my free time, you'll find me listening to the
+                        Vergecast or reading about technology, browsing my
+                        favourite design studios, working on side-projects, and
+                        watching my favourite shows on Netflix. If you have an
+                        opportunity or just want to chat, feel free to reach
+                        out!
+                    </p>
+                    <button class="has--padding">Download CV</button>
+                </div>
+                <img src="assets/seanreibling_headshot.png"
+                    class="about__headshot">
+                <div class="about__slides">
+                    <div class="slide" id="about__slide1">
+                    </div>
+                </div>
+                <div class="about__process">
+                    <div>
+                        <h1 class="heading is--med mbot--24">Simplicity</h1>
+                        <p>My style is minimalist. I strive to
+                            create intuitive interfaces by
+                            decluttering pages and presenting
+                            content methodically. Where appropriate,
+                            I take stylistic direction from Apple
+                            and Google developer guidelines.</p>
+                    </div>
+                    <div>
+                        <h1 class="heading is--med mbot--24">Scalability</h1>
+                        <p>Flexible design systems are central to my work.
+                            This means systems that are designed to scale
+                            over time, and interfaces that look beautiful
+                            and function equally on every device size.
+                        </p>
+                    </div>
+                    <div>
+                        <h1 class="heading is--med mbot--24">Accessibility</h1>
+                        <p>Creating inclusive experiences means designing
+                            for a wide range of end users. I am AODA
+                            certified, and aim to incorporate web
+                            accessibility best practices into the foundation
+                            of every project.</p>
+                    </div>
+                    <div>
+                        <h1 class="heading is--med mbot--24">Integrity</h1>
+                        <p>Most critically, I design products that are
+                            ethical; interfaces that treat users with
+                            autonomy and respect. My goal is to design truly
+                            useful experiences that add value to people's
+                            lives and their communities.</p>
+                    </div>
+                </div>
+            </section>
+            <div class="banner bgcol--blue">
+                <h1 class="heading is--white"><span
+                        class="heading is--white is--dim">There's more</span><br />Check
+                    out my portfolio</h1>
+                <a href="/portfolio.html"
+                    class="heading is--small is--white is--link">View
+                    Portfolio</a>
+            </div>
+        </main>
+
+        <script src="https://unpkg.com/swup@3"></script>
+        <script src="js/global.js" async defer></script>
+    </body>
+    <footer>
+        <div class="footer__container ptop--100 pbot--50">
+            <div class="footer__content is--left">
+                <div class="footer__content">
+                    <a href="/about.html"
+                        class="heading is--nav is--dim">Privacy
+                        Policy</a>
+                    <a href="/about.html"
+                        class="heading is--nav is--dim">Terms
+                        of
+                        Use</a>
+                </div>
+                <div><h1 class="heading is--nav is--dim nohover">©
+                        2023 Sean
+                        Reibling</h1></div>
+            </div>
+            <div class="footer__content is--right">
+                <a href="/about.html"
+                    class="heading is--nav is--dim">LinkedIn</a>
+                <a href="/about.html"
+                    class="heading is--nav is--dim">Instagram</a>
+                <a href="/about.html"
+                    class="heading is--nav is--dim">Dribbble</a>
+            </div>
+        </div>
+    </footer>
+</html>
