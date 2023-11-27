@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Portfolio – Waypoint</title>
+        <meta name="description" content>
+        <meta name="theme-color" content="#000000">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="transitions.css">
+        <link rel="stylesheet" href="../colours.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav__container">
+                <div><a href="/index.html" class="wordmark">Sean Reibling</a></div>
+                <div class="nav__links">
+                    <a href="/portfolio.html" class="heading is--nav is--dim">Portfolio</a>
+                    <a href="/about.html" class="heading is--nav is--dim">About</a>
+                    <!-- <a href="/latest.html" class="heading is--nav is--dim">Latest</a> -->
+                    <a href="/contact.html" class="heading is--nav is--dim">Contact</a>
+                </div>
+                <div class="nav__btn">
+                    <div class="btn__bar"></div>
+                    <div class="btn__bar"></div>
+                </div>
+            </div>
+            <div class="nav__mobile">
+                <div class="mobile__links">
+                    <a href="/portfolio.html" class="heading is--menu">Portfolio</a>
+                    <a href="/about.html" class="heading is--menu">About</a>
+                    <a href="/latest.html" class="heading is--menu">Latest</a>
+                    <a href="/contact.html" class="heading is--menu">Contact</a>
+                </div>
+                <div>
+                    <div class="mobile__social mbot--16">
+                        <a href="/portfolio.html" class="heading is--small">LinkedIn</a>
+                        <a href="/about.html" class="heading is--small">Instagram</a>
+                        <a href="/latest.html" class="heading is--small">Dribbble</a>
+                    </div>
+                    <h1 class="heading is--small is--dim">© 2023 Sean Reibling</h1>
+                </div>
+            </div>
+        </nav>
+        <div class="contact">
+            <div class="contact__bg"></div>
+            <div class="contact__card">
+                <img class="contact__close"
+                    src="https://seanreibling.github.io/assets/icons/close.svg">
+                <h1 class="heading is--large mbot--24">Contact</h1>
+                <p class="mtop--24">Have a project, opportunity, or just want to
+                    chat? I'd love
+                    to get in touch! I try to respond to messages within 2
+                    business days.</p>
+                <form action method="get">
+                    <div class="form ptop--50">
+                        <input type="text" class="heading is--nav"
+                            name="first name"
+                            placeholder="First name" id="form__fname" required />
+                        <input type="text" class="heading is--nav"
+                            name="last name"
+                            placeholder="Last name" id="form__lname" required />
+                        <input type="email" class="heading is--nav" name="email"
+                            placeholder="Email address" id="form__email"
+                            required />
+                        <input type="text" class="heading is--nav"
+                            name="organization"
+                            placeholder="Organization" id="form__organization" />
+                        <div class="select__container">
+                            <select class="heading is--nav" name="topic"
+                                placeholder="Topic" id="form__topic">
+                                <option value="proposal">Project proposal</option>
+                                <option value="opportunity">Job opportunity</option>
+                                <option value="opportunity">Coffee chat</option>
+                                <option value="opportunity">Other</option>
+                            </select>
+                            <img
+                                src="https://seanreibling.github.io/assets/icons/chevron-down.svg"
+                                class="select__icon">
+                        </div>
+                        <textarea data-expandable
+                            class="heading is--nav mbot--24"
+                            placeholder="Message"
+                            maxlength="5000" id="form__message" name="message"
+                            required data-name="message"
+                            spellcheck="false" rows="4"></textarea>
+                        <button id="form__button">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <main id="swup" class="transition-fade">
+            <section class="ps__hero">
+                <div class="fw ptop--150">
+                    <h1 class="heading">Waypoint</h1>
+                    <h1 class="heading is--dim">Connect with your campus
+                        community</h1>
+                </div>
+                <div class="block is--hero mtop--50 cs--bgcol--2">
+                    <img class="image"
+                        src="../assets/projects/waypoint/seanreibling_project_waypoint_0.png">
+                </div>
+                <div class="block is--text">
+                    <div class="metadata">
+                        <h2 class="heading">2022</h2>
+                        <div>
+                            <h3 class="heading is--small is--dim mbot--4">Client</h3>
+                            <h3 class="heading is--small">Course Project</h3>
+                        </div>
+                        <div>
+                            <h3 class="heading is--small is--dim mbot--4">Scope</h3>
+                            <div class="metadata__list">
+                                <h3 class="heading is--small">Product</h3>
+                                <div class="metadata__comma"><h3
+                                        class="heading is--small">,</h3></div>
+                                <h3 class="heading is--small">Identity</h3>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="heading is--small is--dim mbot--4">Contributors</h3>
+                            <div class="metadata__list">
+                                <a href="https://www.behance.net/gajanankethees"
+                                    class="heading is--small is--link">Gajanan
+                                    Ketheeswaran</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p>College and university can be an exciting time, and yet
+                        there are many challenges students face. Not only can
+                        basic campus navigation feel convoluted, especially for
+                        newcomers, but students can feel disconnected from
+                        campus life simply because they can't find the
+                        experiences that matter to them. For decades, colleges
+                        and universities have lagged behind when it comes to
+                        their digital architecture; their web platforms feel
+                        antiquated and are frustrating to use. Meet Waypoint,
+                        the plug-and-play enterprise platform designed
+                        specifically for educational institutions. Using
+                        integration with university SSO and data networks, it
+                        offers a tailored mobile experience unique to each
+                        campus community, and most importantly, unique to each
+                        user. Waypoint is designed to streamline campus
+                        navigation, connect students to extracurriculars, and
+                        promote a more vibrant campus culture.
+                        ‍<br><br>
+                        Simply sign-in with your existing university credentials
+                        and indicate the types of activities and experiences you're
+                        interested in. Waypoint will automatically pull relevant
+                        data to create your personalized profile. Discover live
+                        events, sports, and restaurant deals that match your
+                        preferences. Browse recommended clubs, learn more about
+                        them, and get in touch with organizers all within the
+                        app. Easily view your upcoming timetable and get
+                        notified when it's time to leave for class. Get
+                        directions to anywhere on your campus, including
+                        detailed indoor routing. Take advantage of SafeWalk, a
+                        high-traffic routing option available at off-peak hours
+                        for increased safety. In short, Waypoint is your go-to
+                        resource for everything you need to know or want to do
+                        on campus.
+                    </p>
+                </div>
+            </section>
+            <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
+            <section class="content">
+                <div class="block">
+                    <div class="elem is--video cs--bgcol--2"><iframe
+                            style="position: absolute; top: 0; left: 0;"
+                            src="https://player.vimeo.com/video/785617377?background=1&autopause=0"
+                            width="100%" height="100%" frameborder="0"
+                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+                </div>
+                <div class="block is--grid">
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_2.png"></div>
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_3.png"></div>
+                </div>
+                <div class="block">
+                    <div class="elem is--video cs--bgcol--2"><iframe
+                            style="position: absolute; top: 0; left: 0;"
+                            src="https://player.vimeo.com/video/786072320?background=1&autopause=0"
+                            width="100%" height="100%" frameborder="0"
+                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+                </div>
+                <div class="block is--quote">
+                    <h2 class="heading">The core branding is neutral to allow
+                        for custom themes, including colour and imagery, that
+                        highlight each institution's unique identity
+                    </h2>
+                </div>
+                <div class="block">
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_5.png"></div>
+                </div>
+                <div class="block is--grid">
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_6.png"></div>
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_7.gif"></div>
+                </div>
+                <div class="block is--text ">
+                    <h2 class="heading is--small is--bold">Personalized
+                        Discoverability
+                    </h2>
+                    <p>The concept of this app relies heavily upon
+                        discoverability using automation. During the onboarding
+                        process, Waypoint will ask the user to sign in with
+                        their respective university or college. This will sync
+                        all relevant data, such as student timetable and
+                        calendar info. The user can then enter their activity
+                        preferences, which will be used to personalize event and
+                        club suggestions. Once this process is complete,
+                        Waypoint will generate a custom dashboard highlighting
+                        relevant events and clubs. The user can easily select
+                        any event or club to learn more information as well as
+                        RSVP for upcoming events.</p>
+                </div>
+                <div class="block is--grid">
+                    <div class="elem is--mobile cs--bgcol--2"><img
+                            class="image is--mobile"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_8.png"></div>
+                    <div class="elem is--mobile cs--bgcol--2"><img
+                            class="image is--mobile"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_9.gif"></div>
+                </div>
+                <div class="elem is--video cs--bgcol--2"><iframe
+                        style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/786750067?background=1&autopause=0"
+                        width="100%" height="100%" frameborder="0"
+                        allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+                <div class="block is--text ">
+                    <h2 class="heading is--small is--bold">Auto Routing &
+                        Reminders
+                    </h2>
+                    <p>Aside from recommendations, Waypoint is useful for
+                        navigating anywhere on campus. This includes the
+                        interiors of buildings which may not be available on
+                        standard maps. When the user opens the directional
+                        interface by selecting the 'plus' icon, automated
+                        suggestions are presented based on the user's previous
+                        searches, travelling habits, and current location.
+                        Another useful feature is notifications, which prompt
+                        the user to leave for an upcoming event. The app will
+                        automatically provide directions should the user need
+                        them.</p>
+                </div>
+                <div class="block">
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_11.png"></div>
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_12.png"></div>
+                </div>
+                <div class="block is--quote">
+                    <h2 class="heading">Waypoint helps students easily navigate
+                        their campus, save on food and purchases, stay on top of
+                        their schedule, and discover memorable new experiences
+                    </h2>
+                </div>
+                <div class="block">
+                    <div class="elem is--video cs--bgcol--2"><iframe
+                            style="position: absolute; top: 0; left: 0;"
+                            src="https://player.vimeo.com/video/786656914?background=1&autopause=0"
+                            width="100%" height="100%" frameborder="0"
+                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+                    <div class="elem cs--bgcol--2"><img class="image"
+                            src="../assets/projects/waypoint/seanreibling_project_waypoint_14.png"></div>
+                </div>
+            </section>
+            <!-- CONTENT BLOCK TEMPLATE END -->
+            <section class="prevnext">
+                <h3 class="heading is--small pbot--24">More Projects</h3>
+                <div class="grid">
+                    <a href="/portfolio/project.html" class="project">
+                        <div class="project__thumbnail mbot--24"></div>
+                        <h1 class="heading is--small mbot--2">Project Title
+                            Placeholder</h1>
+                        <h2 class="heading is--small is--dim"> Project subtitle
+                            placeholder</h2>
+                    </a>
+                    <a href="/about.html" class="project">
+                        <div class="project__thumbnail mbot--24"></div>
+                        <h1 class="heading is--small mbot--2">Project Title
+                            Placeholder</h1>
+                        <h2 class="heading is--small is--dim"> Project subtitle
+                            placeholder</h2>
+                    </a>
+                </div>
+            </section>
+        </main>
+        <script src="https://unpkg.com/swup@3"></script>
+        <script src="js/global.js" async defer></script>
+    </body>
+    <footer>
+        <div class="footer__container ptop--100 pbot--50">
+            <div class="footer__content is--left">
+                <div class="footer__content">
+                    <a href="/about.html" class="heading is--nav is--dim">Privacy
+                        Policy</a>
+                    <a href="/about.html" class="heading is--nav is--dim">Terms
+                        of
+                        Use</a>
+                </div>
+                <div><h1 class="heading is--nav is--dim nohover">© 2023 Sean
+                        Reibling</h1></div>
+            </div>
+            <div class="footer__content is--right">
+                <a href="/about.html" class="heading is--nav is--dim">LinkedIn</a>
+                <a href="/about.html" class="heading is--nav is--dim">Instagram</a>
+                <a href="/about.html" class="heading is--nav is--dim">Dribbble</a>
+            </div>
+        </div>
+        <div>
+        </footer>
+    </html>

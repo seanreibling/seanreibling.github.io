@@ -1034,6 +1034,7 @@ button:hover {
 
 .image {
     width: 100%;
+    height: auto;
 }
 
 .image.is--mobile {
@@ -1115,6 +1116,7 @@ button:hover {
     padding: none !important;
     margin: none;
     display: flex;
+    height: max-content;
 }
 
 .elem.is--desktop {
@@ -1153,8 +1155,9 @@ button:hover {
     
     .block.is--grid {
         display: grid !important;
-        grid-template: auto / 1fr;
+        grid-template: auto/ 1fr;
         gap: 24px;
+        grid-auto-rows: min-content !important;
     }
     
     .block.is--grid.is--3 {
