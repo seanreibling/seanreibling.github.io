@@ -1,0 +1,68 @@
+/* SITEWIDE COLOURS */
+
+
+.col--yellow {
+    color: #d3a226;
+}
+
+.col--green {
+    color: #05995c;
+}
+
+.col--red {
+    color: #a82c3e;
+}
+
+.col--blue {
+    color: #3f46bf;
+}
+
+.bgcol--yellow {
+    background-color: #d3a226;
+}
+
+.bgcol--green {
+    background-color: #05995c;
+}
+
+.bgcol--red {
+    background-color: #a82c3e;
+}
+
+.bgcol--blue {
+    background-color: #3f46bf;
+}
+
+
+
+/* CASE STUDY BG COLOURS */
+
+.cs--bgcol--1 {
+    /* Shopquest */
+    background-color: #ebebeb !important;
+}
+
+.cs--bgcol--2 {
+    /* Insert Name */
+    background-color: #cacaca !important;
+}
+
+.cs--bgcol--3 {
+    /* Insert Name */
+    background-color: #cacaca !important;
+}
+
+.cs--bgcol--4 {
+    /* Insert Name */
+    background-color: #cacaca !important;
+}
+
+.cs--bgcol--5 {
+    /* Insert Name */
+    background-color: #cacaca !important;
+}
+
+.cs--bgcol--6 {
+    /* Insert Name */
+    background-color: #cacaca !important;
+}

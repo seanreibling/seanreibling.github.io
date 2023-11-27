@@ -300,46 +300,13 @@ button {
     }
 }
 
-/* ---Colour and BG Colour--- */
-
-.col--yellow {
-    color: #d3a226;
-}
-
-.col--green {
-    color: #05995c;
-}
-
-.col--red {
-    color: #a82c3e;
-}
-
-.col--blue {
-    color: #3f46bf;
-}
-
-.bgcol--yellow {
-    background-color: #d3a226;
-}
-
-.bgcol--green {
-    background-color: #05995c;
-}
-
-.bgcol--red {
-    background-color: #a82c3e;
-}
-
-.bgcol--blue {
-    background-color: #3f46bf;
-}
 
 /* Padding and Alignment */
 
 main {
     max-width: 1600px;
     margin: auto;
-    padding: 0% 5% 0% 5%;
+    padding: 0vw 5vw 0vw 5vw;
 }
 
 
@@ -1069,6 +1036,10 @@ button:hover {
     width: 100%;
 }
 
+.image.is--mobile {
+    border-radius: 2vw;
+}
+
 .prevnext {
     width: 100%;
     margin-left: -5%;
@@ -1115,7 +1086,9 @@ button:hover {
 
 .block.is--quote {
     text-align: center;
-    padding: 72px 0;
+    width: 100%;
+    padding: 72px 5%;
+    box-sizing: border-box;
 }
 
 .metadata {
@@ -1126,8 +1099,12 @@ button:hover {
 
 .metadata__list {
     display: flex;
-    column-gap: 12px;
 }
+
+.metadata__comma {
+    margin-right: 12px;
+}
+
 
 /*Image element options*/
 
@@ -1135,6 +1112,9 @@ button:hover {
     background-color: rgb(214, 214, 214);
     box-sizing: border-box;
     border: none;
+    padding: none !important;
+    margin: none;
+    display: flex;
 }
 
 .elem.is--desktop {
@@ -1143,7 +1123,7 @@ button:hover {
 
 .elem.is--desktopcut {
     padding: 10%;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 .elem.is--tablet {
@@ -1155,11 +1135,11 @@ button:hover {
 }
 
 .elem.is--mobile {
-    padding: 5%;
+    padding: 25%;
 }
 
 .elem.is--mobileframe {
-    padding: 5%;
+    padding: 25%;
 }
 
 .elem.is--video {
@@ -1198,9 +1178,6 @@ button:hover {
         padding-bottom: 24px;
     }
 
-    .block.is--quote {
-        padding: 48px 0;
-    }
 
     .prevnext {
         padding-top: 48px;
