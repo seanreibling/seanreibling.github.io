@@ -53,16 +53,30 @@
 }
 
 .cs--bgcol--4 {
-    /* Insert Name */
+    /* Design Grad Show */
     background-color: #cacaca !important;
 }
 
-.cs--bgcol--5 {
-    /* Insert Name */
-    background-color: #cacaca !important;
+
+/* CASE STUDY THUMBNAIL BG IMAGES */
+
+.cs--bgimg--1 {
+    /* Shopquest */
+    background-image: url("../assets/projects/shopquest/seanreibling_project_shopquest_thumbnail.png") !important;
 }
 
-.cs--bgcol--6 {
-    /* Insert Name */
-    background-color: #cacaca !important;
+.cs--bgimg--2 {
+    /* Wapoint */
+    background-image: url("../assets/projects/waypoint/seanreibling_project_waypoint_thumbnail.png") !important;
 }
+
+.cs--bgimg--3 {
+    /* Campus Workplace Study */
+    background-image: url("../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_thumbnail.png") !important;
+}
+
+.cs--bgimg--4 {
+    /* Design Grad Show */
+    background-image: url("../assets/projects/design-grad-show/seanreibling_project_design-grad-show_thumbnail.png") !important;
+}
+

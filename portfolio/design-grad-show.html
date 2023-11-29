@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Portfolio – Design Grad Show</title>
+        <meta name="description" content>
+        <meta name="theme-color" content="#000000">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="transitions.css">
+        <link rel="stylesheet" href="../colours.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav__container">
+                <div><a href="/index.html" class="wordmark">Sean Reibling</a></div>
+                <div class="nav__links">
+                    <a href="/portfolio.html" class="heading is--nav is--dim">Portfolio</a>
+                    <a href="/about.html" class="heading is--nav is--dim">About</a>
+                    <!-- <a href="/latest.html" class="heading is--nav is--dim">Latest</a> -->
+                    <a href="/contact.html" class="heading is--nav is--dim">Contact</a>
+                </div>
+                <div class="nav__btn">
+                    <div class="btn__bar"></div>
+                    <div class="btn__bar"></div>
+                </div>
+            </div>
+            <div class="nav__mobile">
+                <div class="mobile__links">
+                    <a href="/portfolio.html" class="heading is--menu">Portfolio</a>
+                    <a href="/about.html" class="heading is--menu">About</a>
+                    <a href="/latest.html" class="heading is--menu">Latest</a>
+                    <a href="/contact.html" class="heading is--menu">Contact</a>
+                </div>
+                <div>
+                    <div class="mobile__social mbot--16">
+                        <a href="/portfolio.html" class="heading is--small">LinkedIn</a>
+                        <a href="/about.html" class="heading is--small">Instagram</a>
+                        <a href="/latest.html" class="heading is--small">Dribbble</a>
+                    </div>
+                    <h1 class="heading is--small is--dim">© 2023 Sean Reibling</h1>
+                </div>
+            </div>
+        </nav>
+        <div class="contact">
+            <div class="contact__bg"></div>
+            <div class="contact__card">
+                <img class="contact__close"
+                    src="https://seanreibling.github.io/assets/icons/close.svg">
+                <h1 class="heading is--large mbot--24">Contact</h1>
+                <p class="mtop--24">Have a project, opportunity, or just want to
+                    chat? I'd love
+                    to get in touch! I try to respond to messages within 2
+                    business days.</p>
+                <form action method="get">
+                    <div class="form ptop--50">
+                        <input type="text" class="heading is--nav"
+                            name="first name"
+                            placeholder="First name" id="form__fname" required />
+                        <input type="text" class="heading is--nav"
+                            name="last name"
+                            placeholder="Last name" id="form__lname" required />
+                        <input type="email" class="heading is--nav" name="email"
+                            placeholder="Email address" id="form__email"
+                            required />
+                        <input type="text" class="heading is--nav"
+                            name="organization"
+                            placeholder="Organization" id="form__organization" />
+                        <div class="select__container">
+                            <select class="heading is--nav" name="topic"
+                                placeholder="Topic" id="form__topic">
+                                <option value="proposal">Project proposal</option>
+                                <option value="opportunity">Job opportunity</option>
+                                <option value="opportunity">Coffee chat</option>
+                                <option value="opportunity">Other</option>
+                            </select>
+                            <img
+                                src="https://seanreibling.github.io/assets/icons/chevron-down.svg"
+                                class="select__icon">
+                        </div>
+                        <textarea data-expandable
+                            class="heading is--nav mbot--24"
+                            placeholder="Message"
+                            maxlength="5000" id="form__message" name="message"
+                            required data-name="message"
+                            spellcheck="false" rows="4"></textarea>
+                        <button id="form__button">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <main id="swup" class="transition-fade">
+            <section class="ps__hero">
+                <div class="fw ptop--150">
+                    <h1 class="heading">York Design Grad Show</h1>
+                    <h1 class="heading is--dim">Showcasing four years of
+                        culminating design</h1>
+                </div>
+                <div class="block is--hero mtop--50 cs--bgcol--3">
+                    <img class="image"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_0.png">
+                </div>
+                <div class="block is--text">
+                    <div class="metadata">
+                        <h2 class="heading">2022</h2>
+                        <div>
+                            <h3 class="heading is--small is--dim mbot--4">Client</h3>
+                            <h3 class="heading is--small">Class of 2023</h3>
+                        </div>
+                        <div>
+                            <h3 class="heading is--small is--dim mbot--4">Scope</h3>
+                            <div class="metadata__list">
+                                <h3 class="heading is--small">Product</h3>
+                                <div class="metadata__comma"><h3
+                                        class="heading is--small">,</h3></div>
+                                <h3 class="heading is--small">Identity</h3>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="heading is--small is--dim mbot--4">Contributors</h3>
+                            <div class="metadata__list">
+                                <a href="https://justinchiu.design/"
+                                    class="heading is--small is--link">Justin
+                                    Chiu</a>
+                                <div class="metadata__comma"><h3
+                                        class="heading is--small">,</h3></div>
+                                <a href="https://khadijabari.design/"
+                                    class="heading is--small is--link">Khadija
+                                    Bari</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                        ‍<br><br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </p>
+                </div>
+            </section>
+            <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
+            <section class="content">
+                
+            </section>
+            <!-- CONTENT BLOCK TEMPLATE END -->
+            <section class="prevnext">
+                <h3 class="heading is--small pbot--24">More Projects</h3>
+                <div class="grid">
+                    <a href="/portfolio/waypoint.html" class="project">
+                        <div class="project__thumbnail cs--bgimg--2 mbot--24"></div>
+                        <h1 class="heading is--small mbot--2">Waypoint</h1>
+                        <h2 class="heading is--small is--dim">Connecting students to campus community</h2>
+                    </a>
+                    <a href="/portfolio/campus-workplace-study.html" class="project">
+                        <div class="project__thumbnail cs--bgimg--3 mbot--24"></div>
+                        <h1 class="heading is--small mbot--2">Campus Workplace Study</h1>
+                        <h2 class="heading is--small is--dim">Interactive web experience for York University</h2>
+                    </a>
+                </div>
+            </section>
+        </main>
+        <script src="https://unpkg.com/swup@3"></script>
+        <script src="js/global.js" async defer></script>
+    </body>
+    <footer>
+        <div class="footer__container ptop--100 pbot--50">
+            <div class="footer__content is--left">
+                <div class="footer__content">
+                    <a href="/about.html" class="heading is--nav is--dim">Privacy
+                        Policy</a>
+                    <a href="/about.html" class="heading is--nav is--dim">Terms
+                        of
+                        Use</a>
+                </div>
+                <div><h1 class="heading is--nav is--dim nohover">© 2023 Sean
+                        Reibling</h1></div>
+            </div>
+            <div class="footer__content is--right">
+                <a href="/about.html" class="heading is--nav is--dim">LinkedIn</a>
+                <a href="/about.html" class="heading is--nav is--dim">Instagram</a>
+                <a href="/about.html" class="heading is--nav is--dim">Dribbble</a>
+            </div>
+        </div>
+        <div>
+        </footer>
+    </html>
