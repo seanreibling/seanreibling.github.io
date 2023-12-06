@@ -6,3 +6,17 @@
 html.is-animating .transition-fade {
     opacity: 0;
 }
+
+/* CSS Element animations */
+
+#nav {
+    transition: transform 0.2s ease;
+  }
+
+.slide--up {
+    transform: translateY(-100%);
+}
+
+.slide--down {
+    transform: translateY(0);
+}
