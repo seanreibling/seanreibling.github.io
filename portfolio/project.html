@@ -17,14 +17,14 @@
         <link rel="stylesheet" href="../colours.css">
     </head>
     <body>
-        <nav>
+        <nav id="nav" class="slide--down">
             <div class="nav__container">
                 <div><a href="/index.html" class="wordmark">Sean Reibling</a></div>
                 <div class="nav__links">
                     <a href="/portfolio.html" class="heading is--nav is--dim">Portfolio</a>
                     <a href="/about.html" class="heading is--nav is--dim">About</a>
                     <!-- <a href="/latest.html" class="heading is--nav is--dim">Latest</a> -->
-                    <a href="/contact.html" class="heading is--nav is--dim">Contact</a>
+                    <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
                 </div>
                 <div class="nav__btn">
                     <div class="btn__bar"></div>
@@ -36,7 +36,7 @@
                     <a href="/portfolio.html" class="heading is--menu">Portfolio</a>
                     <a href="/about.html" class="heading is--menu">About</a>
                     <a href="/latest.html" class="heading is--menu">Latest</a>
-                    <a href="/contact.html" class="heading is--menu">Contact</a>
+                    <a id="trigger--open" class="heading is--menu">Contact</a>
                 </div>
                 <div>
                     <div class="mobile__social mbot--16">
@@ -48,10 +48,10 @@
                 </div>
             </div>
         </nav>
-        <div class="contact">
-            <div class="contact__bg"></div>
-            <div class="contact__card">
-                <img class="contact__close"
+        <div id="contact" class="is--hidden">
+            <div id="contact__bg"></div>
+            <div class="slide--right" id="contact__card">
+                <img class="contact__close" id="trigger--close"
                     src="https://seanreibling.github.io/assets/icons/close.svg">
                 <h1 class="heading is--large mbot--24">Contact</h1>
                 <p class="mtop--24">Have a project, opportunity, or just want to

@@ -27,7 +27,7 @@
                     <a href="/portfolio.html" class="heading is--nav is--dim">Portfolio</a>
                     <a href="/about.html" class="heading is--nav is--dim">About</a>
                     <!-- <a href="/latest.html" class="heading is--nav is--dim">Latest</a> -->
-                    <a href="/contact.html" class="heading is--nav is--dim">Contact</a>
+                    <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
                 </div>
                 <div class="nav__btn">
                     <div class="btn__bar"></div>
@@ -39,7 +39,7 @@
                     <a href="/portfolio.html" class="heading is--menu">Portfolio</a>
                     <a href="/about.html" class="heading is--menu">About</a>
                     <a href="/latest.html" class="heading is--menu">Latest</a>
-                    <a href="/contact.html" class="heading is--menu">Contact</a>
+                    <a id="trigger--open" class="heading is--menu">Contact</a>
                 </div>
                 <div>
                     <div class="mobile__social mbot--16">
@@ -51,10 +51,10 @@
                 </div>
             </div>
         </nav>
-        <div class="contact">
-            <div class="contact__bg"></div>
-            <div class="contact__card">
-                <img class="contact__close"
+        <div id="contact" class="is--hidden">
+            <div id="contact__bg"></div>
+            <div class="slide--right" id="contact__card">
+                <img class="contact__close" id="trigger--close"
                     src="https://seanreibling.github.io/assets/icons/close.svg">
                 <h1 class="heading is--large mbot--24">Contact</h1>
                 <p class="mtop--24">Have a project, opportunity, or just want to
@@ -110,11 +110,13 @@
                     <a href="/about.html" class="heading is--small is--link">Get
                         to know me</a>
                 </div>
-                <a href="/portfolio/design-grad-show.html" id="home-2" class="project">
+                <a href="/portfolio/design-grad-show.html" id="home-2"
+                    class="project">
                     <div class="project__thumbnail cs--bgimg--4 mbot--24"></div>
                     <h1 class="heading is--small mbot--2">York Design Grad Show
-                        </h1>
-                    <h2 class="heading is--small is--dim">Showcasing four years of culminating design</h2>
+                    </h1>
+                    <h2 class="heading is--small is--dim">Showcasing four years
+                        of culminating design</h2>
                 </a>
                 <div id="home-3" class="ptop--150 pbot--150">
                     <h1 class="heading mbot--24">My goal is to add value to
@@ -127,12 +129,14 @@
                 <a href="/portfolio/shopquest.html" id="home-4" class="project">
                     <div class="project__thumbnail cs--bgimg--1 mbot--24"></div>
                     <h1 class="heading is--small mbot--2">Shopquest</h1>
-                    <h2 class="heading is--small is--dim">Simplifying the online shopping experience</h2>
+                    <h2 class="heading is--small is--dim">Simplifying the online
+                        shopping experience</h2>
                 </a>
                 <a href="/portfolio/waypoint.html" id="home-5" class="project">
                     <div class="project__thumbnail cs--bgimg--2 mbot--24"></div>
                     <h1 class="heading is--small mbot--2">Waypoint</h1>
-                    <h2 class="heading is--small is--dim">Connecting students to campus community</h2>
+                    <h2 class="heading is--small is--dim">Connecting students to
+                        campus community</h2>
                 </a>
                 <div id="home-6" class="ptop--150 pbot--150">
                     <h1 class="heading mbot--24">I'm always open to new
@@ -143,14 +147,14 @@
                         in touch</a>
                 </div>
             </section>
-            <div class="banner bgcol--blue">
+            <section class="banner bgcol--blue">
                 <h1 class="heading is--white"><span
                         class="heading is--white is--dim">There's more</span><br />Check
                     out my portfolio</h1>
                 <a href="/portfolio.html"
                     class="heading is--small is--white is--link">View
                     Portfolio</a>
-            </div>
+            </section>
         </main>
         <script src="https://unpkg.com/swup@3"></script>
         <script src="js/global.js" async defer></script>

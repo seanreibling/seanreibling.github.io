@@ -19,6 +19,7 @@ h6 {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .wordmark {
@@ -618,7 +619,6 @@ main {
 .banner {
   height: 350px;
   width: 100vw;
-  max-width: 1600px;
   margin-left: -5vw !important;
   padding: 0 5%;
   display: flex;
@@ -626,6 +626,7 @@ main {
   justify-content: center;
   align-items: start;
   row-gap: 24px;
+  box-sizing: border-box;
 }
 
 /* Mobile Portrait */
@@ -638,16 +639,16 @@ main {
 
 /* ---Contact Form--- */
 
-.contact {
+#contact {
   position: fixed;
   z-index: 99999;
   height: 100%;
   width: 100%;
-  display: none;
+  display: flex;
   justify-content: flex-end;
 }
 
-.contact__bg {
+#contact__bg {
   position: absolute;
   top: 0%;
   bottom: 0%;
@@ -657,7 +658,7 @@ main {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.contact__card {
+#contact__card {
   height: 100%;
   width: 60%;
   min-width: 400px;
@@ -1099,8 +1100,8 @@ expanding past 1760px (1600 plus 5% margin) */
     margin-left: -5%;
   }
   .banner {
-    width: 110%;
-    margin-left: -5%;
+    width: 110% !important;
+    margin-left: -5% !important;
   }
 }
 

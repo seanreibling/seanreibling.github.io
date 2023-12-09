@@ -7,6 +7,12 @@ html.is-animating .transition-fade {
     opacity: 0;
 }
 
+/* Scroll Disabled */
+
+.scroll--disabled {
+    overflow: hidden;
+}
+
 /* CSS Element animations */
 
 #nav {
@@ -19,4 +25,28 @@ html.is-animating .transition-fade {
 
 .slide--down {
     transform: translateY(0);
+}
+
+#contact__card {
+    transition: transform 0.4s cubic-bezier(.222, .763, 0, .997);
+}
+
+#contact__bg {
+    transition: opacity 0.3s ease;
+}
+
+.slide--right {
+    transform: translateX(100%);
+}
+
+.slide--left {
+    transform: translateX(0%);
+}
+
+.is--hidden {
+    display: none !important;
+}
+
+.is--transparent {
+    opacity: 0;
 }
