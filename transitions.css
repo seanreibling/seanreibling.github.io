@@ -15,9 +15,11 @@ html.is-animating .transition-fade {
 
 /* CSS Element animations */
 
-#nav {
+#nav, #subnav {
     transition: transform 0.2s ease;
-  }
+}
+
+
 
 .slide--up {
     transform: translateY(-100%);

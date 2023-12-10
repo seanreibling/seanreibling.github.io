@@ -3,19 +3,20 @@ const swup = new Swup();
 swup.on('pageView', () => {
   // This runs after every page change
 
-
-  //Scroll to page top
-  function scrollTop() {
-    setTimeout(function () {
-      window.scrollTo(0, 0)
-    }, 50);
-  }
-
   scrollTop();
   getNewCol();
   checkHomeContactLink();
   projectCard();
 });
+
+
+
+//Scroll to page top
+function scrollTop() {
+  setTimeout(function () {
+    window.scrollTo(0, 0)
+  }, 50);
+}
 
 
 
@@ -43,19 +44,31 @@ function scrollEnable() {
 
 let prevScrollPos = window.pageYOffset;
 const navbar = document.getElementById("nav");
-const navbarHeight = navbar.offsetHeight;
 
 window.onscroll = function () {
+  const subnav = document.getElementById("subnav");
   const currentScrollPos = window.pageYOffset;
   if ((prevScrollPos > currentScrollPos) || (currentScrollPos <= 24)) {
     navbar.classList.remove('slide--up');
     navbar.classList.add('slide--down');
+    if (subnav) {
+      subnav.classList.add('slide--up');
+      subnav.classList.remove('slide--down');
+    } else { }
   } else {
     navbar.classList.add('slide--up');
     navbar.classList.remove('slide--down');
+    if (subnav) {
+      setTimeout(function () {
+        subnav.classList.remove('slide--up');
+        subnav.classList.add('slide--down');
+      }, 100)
+    } else { }
   }
   prevScrollPos = currentScrollPos;
 };
+
+
 
 
 
@@ -95,11 +108,11 @@ triggerCloseBg.addEventListener('click', function () { hideContact(); });
 //check if this page is homepage
 function checkHomeContactLink() {
 
-const triggerOpenHome = document.getElementById("trigger--home");
+  const triggerOpenHome = document.getElementById("trigger--home");
 
-if (triggerOpenHome) {
-  triggerOpenHome.addEventListener('click', function () { showContact(); });
-  } else {}
+  if (triggerOpenHome) {
+    triggerOpenHome.addEventListener('click', function () { showContact(); });
+  } else { }
 }
 checkHomeContactLink();
 
@@ -134,8 +147,8 @@ function getRandomCol() {
 
 //run the previous two functions as one function
 function getNewCol() {
-let accentCol = getRandomCol();
-changeCol(accentCol);
+  let accentCol = getRandomCol();
+  changeCol(accentCol);
 }
 
 getNewCol();
@@ -147,19 +160,19 @@ getNewCol();
 //Project card hover interaction
 
 function projectCard() {
-let projects = document.querySelectorAll('.project');
+  let projects = document.querySelectorAll('.project');
 
-projects.forEach(project => {
-  const text = project.querySelector('.heading.is--dim');
+  projects.forEach(project => {
+    const text = project.querySelector('.heading.is--dim');
 
-  project.addEventListener('mouseover', function() {
-    text.style.color = 'black';
+    project.addEventListener('mouseover', function () {
+      text.style.color = 'black';
+    });
+
+    project.addEventListener('mouseout', function () {
+      text.style.color = 'rgba(0, 0, 0, 0.4)';
+    });
   });
-
-  project.addEventListener('mouseout', function() {
-    text.style.color = 'rgba(0, 0, 0, 0.4)';
-  });
-});
 }
 projectCard();
 
