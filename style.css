@@ -1076,6 +1076,9 @@ button:hover {
   #subnav {
     margin-top: -70px;
   }
+  .arrow {
+    height: 16px;
+  }
 }
 
 .arrow {
