@@ -12,10 +12,9 @@ swup.on('pageView', () => {
   }
 
   scrollTop();
-
-
-  //Randomize accent colour
   getNewCol();
+  checkHomeContactLink();
+  projectCard();
 });
 
 
@@ -67,7 +66,6 @@ window.onscroll = function () {
 const contact = document.getElementById("contact");
 const contactCard = document.getElementById("contact__card");
 const triggerOpen = document.getElementById("trigger--open");
-const triggerOpenHome = document.getElementById("trigger--home");
 const triggerClose = document.getElementById("trigger--close");
 const triggerCloseBg = document.getElementById("contact__bg");
 
@@ -91,9 +89,19 @@ function hideContact() {
 }
 
 triggerOpen.addEventListener('click', function () { showContact(); });
-triggerOpenHome.addEventListener('click', function () { showContact(); });
 triggerClose.addEventListener('click', function () { hideContact(); });
 triggerCloseBg.addEventListener('click', function () { hideContact(); });
+
+//check if this page is homepage
+function checkHomeContactLink() {
+
+const triggerOpenHome = document.getElementById("trigger--home");
+
+if (triggerOpenHome) {
+  triggerOpenHome.addEventListener('click', function () { showContact(); });
+  } else {}
+}
+checkHomeContactLink();
 
 
 
@@ -133,5 +141,26 @@ changeCol(accentCol);
 getNewCol();
 
 
+
+
+
+//Project card hover interaction
+
+function projectCard() {
+let projects = document.querySelectorAll('.project');
+
+projects.forEach(project => {
+  const text = project.querySelector('.heading.is--dim');
+
+  project.addEventListener('mouseover', function() {
+    text.style.color = 'black';
+  });
+
+  project.addEventListener('mouseout', function() {
+    text.style.color = 'rgba(0, 0, 0, 0.4)';
+  });
+});
+}
+projectCard();
 
 

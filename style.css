@@ -232,7 +232,7 @@ nav {
   width: 100%;
   background-color: white;
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .nav__container {
@@ -1061,6 +1061,36 @@ button:hover {
   margin-top: 48px;
   padding: 96px 5%;
   background-color: #f4f4f4;
+}
+
+#subnav {
+  height: 70px;
+  position: fixed;
+  width: 100vw;
+  margin-left: -5vw;
+  z-index: 9998;
+  background-color: white;
+}
+
+@media only screen and (max-width: 767px) {
+  #subnav {
+    margin-top: -70px;
+  }
+}
+
+.arrow {
+  height: 18px;
+}
+
+.arrow__container {
+  height: 100%;
+  opacity: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.arrow__container:hover {
+  opacity: 100%;
 }
 
 /*Image block layouts*/
