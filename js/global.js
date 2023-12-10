@@ -7,6 +7,7 @@ swup.on('pageView', () => {
   getNewCol();
   checkHomeContactLink();
   projectCard();
+  urlCheck();
 });
 
 
@@ -16,6 +17,26 @@ function scrollTop() {
   setTimeout(function () {
     window.scrollTo(0, 0)
   }, 50);
+}
+
+
+
+
+//Check URL and highlight links
+
+const linkContainer = document.getElementById('links');
+let links = linkContainer.querySelectorAll('a');
+
+function urlCheck() {
+links.forEach(link => {
+  if((link.href.includes('portfolio')) && (window.location.href.includes('portfolio'))) {
+    link.style.color = 'black'
+  } else if ((link.href.includes('about')) && (window.location.href.includes('about'))) {
+    link.style.color = 'black'
+  } else {
+    link.style.color = 'rgba(0, 0, 0, 0.4)'
+  }
+});
 }
 
 
