@@ -1072,15 +1072,6 @@ button:hover {
   background-color: white;
 }
 
-@media only screen and (max-width: 767px) {
-  #subnav {
-    margin-top: -70px;
-  }
-  .arrow {
-    height: 16px;
-  }
-}
-
 .arrow {
   height: 18px;
 }
@@ -1094,6 +1085,15 @@ button:hover {
 
 .arrow__container:hover {
   opacity: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  #subnav {
+    margin-top: -70px;
+  }
+  .arrow {
+    height: 16px;
+  }
 }
 
 /*Image block layouts*/
