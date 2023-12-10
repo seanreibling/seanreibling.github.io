@@ -1,54 +1,91 @@
 .transition-fade {
-    transition: 0.2s;
-    opacity: 1;
+  transition: 0.2s;
+  opacity: 1;
 }
 
 html.is-animating .transition-fade {
-    opacity: 0;
+  opacity: 0;
 }
 
 /* Scroll Disabled */
 
 .scroll--disabled {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 /* CSS Element animations */
 
-#nav, #subnav {
-    transition: transform 0.2s ease;
+#nav,
+#subnav {
+  transition: transform 0.2s ease;
 }
 
-
-
 .slide--up {
-    transform: translateY(-100%);
+  transform: translateY(-100%);
 }
 
 .slide--down {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 #contact__card {
-    transition: transform 0.4s cubic-bezier(.222, .763, 0, .997);
+  transition: transform 0.4s cubic-bezier(0.222, 0.763, 0, 0.997);
 }
 
 #contact__bg {
-    transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .slide--right {
-    transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .slide--left {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 .is--hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .is--transparent {
-    opacity: 0;
+  opacity: 0;
 }
+
+/* Mobile nav animations */
+
+#nav__mobile {
+  transition: height 0.5s cubic-bezier(0.222, 0.763, 0, 0.997);
+}
+
+#mobile__link1,
+#mobile__link2,
+#mobile__link3,
+#mobile__link4,
+#mobile__link5,
+#mobile__link6,
+#mobile__link7,
+#mobile__link8 {
+  transition: opacity 0.7s, transform 0.25s cubic-bezier(0.222, 0.763, 0, 0.997);
+}
+
+.nav__collapse {
+    overflow: hidden;
+    height: 0px !important;
+}
+
+.nav__expand {
+    height: auto;
+}
+
+.link__hide {
+  opacity: 0%;
+  transform: translateY(36px);
+}
+
+.link__show {
+    opacity: 100%;
+    transform: translateY(0px);
+  }
+
+

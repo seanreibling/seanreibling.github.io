@@ -28,15 +28,15 @@ const linkContainer = document.getElementById('links');
 let links = linkContainer.querySelectorAll('a');
 
 function urlCheck() {
-links.forEach(link => {
-  if((link.href.includes('portfolio')) && (window.location.href.includes('portfolio'))) {
-    link.style.color = 'black'
-  } else if ((link.href.includes('about')) && (window.location.href.includes('about'))) {
-    link.style.color = 'black'
-  } else {
-    link.style.color = 'rgba(0, 0, 0, 0.4)'
-  }
-});
+  links.forEach(link => {
+    if ((link.href.includes('portfolio')) && (window.location.href.includes('portfolio'))) {
+      link.style.color = 'black'
+    } else if ((link.href.includes('about')) && (window.location.href.includes('about'))) {
+      link.style.color = 'black'
+    } else {
+      link.style.color = 'rgba(0, 0, 0, 0.4)'
+    }
+  });
 }
 
 
@@ -56,6 +56,127 @@ function scrollEnable() {
   document.body.classList.remove('scroll--disabled');
   window.scrollTo(0, scrollPos)
 }
+
+
+
+
+
+//Open and close mobile nav menu
+
+const mobileNav = document.getElementById('nav__mobile');
+const mobileMenuBtn = document.getElementById('nav__btn');
+const mobileCloseBtn = document.getElementById('close__btn');
+
+
+function mobileNavPrep() {
+  mobileNav.classList.add('nav__collapse');
+  document.getElementById('mobile__link1').classList.add('link__hide');
+  document.getElementById('mobile__link2').classList.add('link__hide');
+  // document.getElementById('mobile__link3').classList.add('link__hide');
+  document.getElementById('mobile__link4').classList.add('link__hide');
+  document.getElementById('mobile__link5').classList.add('link__hide');
+  document.getElementById('mobile__link6').classList.add('link__hide');
+  document.getElementById('mobile__link7').classList.add('link__hide');
+  document.getElementById('mobile__link8').classList.add('link__hide');
+}
+mobileNavPrep();
+
+function mobileNavOpen() {
+
+  scrollDisable();
+  mobileNav.classList.remove('is--hidden');
+  mobileMenuBtn.classList.add('is--hidden');
+  mobileCloseBtn.classList.remove('is--hidden');
+
+  setTimeout(function () {
+    mobileNav.classList.remove('nav__collapse');
+    mobileNav.classList.add('nav__expand');
+  }, 25);
+
+  setTimeout(function () {
+    document.getElementById('mobile__link1').classList.remove('link__hide');
+    document.getElementById('mobile__link1').classList.add('link__show');
+  }, 150);
+  setTimeout(function () {
+    document.getElementById('mobile__link2').classList.remove('link__hide');
+    document.getElementById('mobile__link2').classList.add('link__show');
+  }, 200);
+  // setTimeout(function() {
+  //   document.getElementById('mobile__link3').classList.remove('link__hide');
+  //   document.getElementById('mobile__link3').classList.add('link__show');
+  // }, 0);
+  setTimeout(function () {
+    document.getElementById('mobile__link4').classList.remove('link__hide');
+    document.getElementById('mobile__link4').classList.add('link__show');
+  }, 250);
+  setTimeout(function () {
+    document.getElementById('mobile__link5').classList.remove('link__hide');
+    document.getElementById('mobile__link5').classList.add('link__show');
+  }, 400);
+  setTimeout(function () {
+    document.getElementById('mobile__link6').classList.remove('link__hide');
+    document.getElementById('mobile__link6').classList.add('link__show');
+  }, 450);
+  setTimeout(function () {
+    document.getElementById('mobile__link7').classList.remove('link__hide');
+    document.getElementById('mobile__link7').classList.add('link__show');
+  }, 500);
+  setTimeout(function () {
+    document.getElementById('mobile__link8').classList.remove('link__hide');
+    document.getElementById('mobile__link8').classList.add('link__show');
+  }, 550);
+}
+
+function mobileNavClose() {
+
+  scrollEnable();
+
+  mobileMenuBtn.classList.remove('is--hidden');
+  mobileCloseBtn.classList.add('is--hidden');
+
+  setTimeout(function () {
+    document.getElementById('mobile__link8').classList.add('link__hide');
+    document.getElementById('mobile__link8').classList.remove('link__show');
+  }, 0);
+  setTimeout(function () {
+    document.getElementById('mobile__link7').classList.add('link__hide');
+    document.getElementById('mobile__link7').classList.remove('link__show');
+  }, 0);
+  setTimeout(function () {
+    document.getElementById('mobile__link6').classList.add('link__hide');
+    document.getElementById('mobile__link6').classList.remove('link__show');
+  }, 0);
+  setTimeout(function () {
+    document.getElementById('mobile__link5').classList.add('link__hide');
+    document.getElementById('mobile__link5').classList.remove('link__show');
+  }, 0);
+  setTimeout(function () {
+    document.getElementById('mobile__link4').classList.add('link__hide');
+    document.getElementById('mobile__link4').classList.remove('link__show');
+  }, 100);
+  // setTimeout(function() {
+  //   document.getElementById('mobile__link3').classList.add('link__hide');
+  //   document.getElementById('mobile__link3').classList.remove('link__show');
+  // }, 0);
+  setTimeout(function () {
+    document.getElementById('mobile__link2').classList.add('link__hide');
+    document.getElementById('mobile__link2').classList.remove('link__show');
+  }, 150);
+  setTimeout(function () {
+    document.getElementById('mobile__link1').classList.add('link__hide');
+    document.getElementById('mobile__link1').classList.remove('link__show');
+  }, 200);
+
+  setTimeout(function () {
+    mobileNav.classList.add('nav__collapse');
+    mobileNav.classList.add('is--hidden');
+  }, 250);
+}
+
+mobileMenuBtn.addEventListener('click', function () { mobileNavOpen(); });
+mobileCloseBtn.addEventListener('click', function () { mobileNavClose(); });
+
+
 
 
 
