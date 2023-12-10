@@ -137,23 +137,23 @@ function mobileNavClose() {
   setTimeout(function () {
     document.getElementById('mobile__link8').classList.add('link__hide');
     document.getElementById('mobile__link8').classList.remove('link__show');
-  }, 0);
+  }, 25);
   setTimeout(function () {
     document.getElementById('mobile__link7').classList.add('link__hide');
     document.getElementById('mobile__link7').classList.remove('link__show');
-  }, 0);
+  }, 50);
   setTimeout(function () {
     document.getElementById('mobile__link6').classList.add('link__hide');
     document.getElementById('mobile__link6').classList.remove('link__show');
-  }, 0);
+  }, 75);
   setTimeout(function () {
     document.getElementById('mobile__link5').classList.add('link__hide');
     document.getElementById('mobile__link5').classList.remove('link__show');
-  }, 0);
+  }, 100);
   setTimeout(function () {
     document.getElementById('mobile__link4').classList.add('link__hide');
     document.getElementById('mobile__link4').classList.remove('link__show');
-  }, 100);
+  }, 200);
   // setTimeout(function() {
   //   document.getElementById('mobile__link3').classList.add('link__hide');
   //   document.getElementById('mobile__link3').classList.remove('link__show');
@@ -161,16 +161,15 @@ function mobileNavClose() {
   setTimeout(function () {
     document.getElementById('mobile__link2').classList.add('link__hide');
     document.getElementById('mobile__link2').classList.remove('link__show');
-  }, 150);
+  }, 250);
   setTimeout(function () {
     document.getElementById('mobile__link1').classList.add('link__hide');
     document.getElementById('mobile__link1').classList.remove('link__show');
-  }, 200);
+  }, 300);
 
   setTimeout(function () {
     mobileNav.classList.add('nav__collapse');
-    mobileNav.classList.add('is--hidden');
-  }, 250);
+  }, 100);
 }
 
 mobileMenuBtn.addEventListener('click', function () { mobileNavOpen(); });
