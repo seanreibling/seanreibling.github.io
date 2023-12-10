@@ -75,7 +75,7 @@ html.is-animating .transition-fade {
 }
 
 .nav__expand {
-    height: auto;
+    height: 100vh;
 }
 
 .link__hide {
