@@ -3,6 +3,8 @@ const swup = new Swup();
 swup.on('pageView', () => {
   // This runs after every page change
 
+
+  //Scroll to page top
   function scrollTop() {
     setTimeout(function () {
       window.scrollTo(0, 0)
@@ -10,11 +12,19 @@ swup.on('pageView', () => {
   }
 
   scrollTop();
+
+
+  //Randomize accent colour
+  getNewCol();
 });
 
-//Scroll enable/disable
 
-let scrollPos = 0; //Variable to store current scroll positon
+
+
+
+//Scroll Enable/Disable
+
+let scrollPos = 0;
 
 function scrollDisable() {
   document.body.classList.add('scroll--disabled');
@@ -25,6 +35,9 @@ function scrollEnable() {
   document.body.classList.remove('scroll--disabled');
   window.scrollTo(0, scrollPos)
 }
+
+
+
 
 
 //Show and hide nav menu when scrolling up and down
@@ -46,11 +59,15 @@ window.onscroll = function () {
 };
 
 
+
+
+
 //Show and hide contact card
 
 const contact = document.getElementById("contact");
 const contactCard = document.getElementById("contact__card");
 const triggerOpen = document.getElementById("trigger--open");
+const triggerOpenHome = document.getElementById("trigger--home");
 const triggerClose = document.getElementById("trigger--close");
 const triggerCloseBg = document.getElementById("contact__bg");
 
@@ -74,5 +91,47 @@ function hideContact() {
 }
 
 triggerOpen.addEventListener('click', function () { showContact(); });
+triggerOpenHome.addEventListener('click', function () { showContact(); });
 triggerClose.addEventListener('click', function () { hideContact(); });
 triggerCloseBg.addEventListener('click', function () { hideContact(); });
+
+
+
+
+
+//Randomize accent colour from 4 options
+
+const colours = ['#d3a226', '#05995c', '#a82c3e', '#3f46bf']
+
+
+//assign color to designated elements
+function changeCol(color) {
+  const elements = document.querySelectorAll('.col--switch');
+  const bgElements = document.querySelectorAll('.bgcol--switch');
+
+  elements.forEach(element => {
+    element.style.color = color;
+  });
+
+  bgElements.forEach(element => {
+    element.style.background = color;
+  });
+}
+
+//randomize between bank of colours and store the result
+function getRandomCol() {
+  const randomIndex = Math.floor(Math.random() * colours.length);
+  return colours[randomIndex];
+}
+
+//run the previous two functions as one function
+function getNewCol() {
+let accentCol = getRandomCol();
+changeCol(accentCol);
+}
+
+getNewCol();
+
+
+
+
