@@ -71,7 +71,7 @@ html.is-animating .transition-fade {
 
 .nav__collapse {
     overflow: hidden;
-    height: 0px !important;
+    height: 0vh !important;
 }
 
 .nav__expand {

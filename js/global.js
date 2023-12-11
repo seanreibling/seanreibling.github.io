@@ -54,7 +54,7 @@ function scrollDisable() {
 
 function scrollEnable() {
   document.body.classList.remove('scroll--disabled');
-  window.scrollTo(0, scrollPos)
+  window.scrollTo(0, scrollPos);
 }
 
 
@@ -130,7 +130,7 @@ function mobileNavOpen() {
 function mobileNavClose() {
 
   scrollEnable();
-
+  
   mobileMenuBtn.classList.remove('is--hidden');
   mobileCloseBtn.classList.add('is--hidden');
 
@@ -169,6 +169,7 @@ function mobileNavClose() {
 
   setTimeout(function () {
     mobileNav.classList.add('nav__collapse');
+    mobileNav.classList.remove('nav__expand');
   }, 100);
 }
 
@@ -186,7 +187,7 @@ mobileCloseBtn.addEventListener('click', function () { mobileNavClose(); });
 let prevScrollPos = window.pageYOffset;
 const navbar = document.getElementById("nav");
 
-window.onscroll = function () {
+window.onscroll = function scrollUpDown() {
   const subnav = document.getElementById("subnav");
   const currentScrollPos = window.pageYOffset;
   if ((prevScrollPos > currentScrollPos) || (currentScrollPos <= 24)) {
