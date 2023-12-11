@@ -586,8 +586,12 @@ main {
   cursor: pointer;
 }
 
+.close__icon {
+  height: 28px;
+}
+
 .btn__bar {
-  width: 20px;
+  width: 22px;
   height: 2px;
   background-color: black;
 }
@@ -787,6 +791,10 @@ button:hover {
 @media only screen and (max-width: 768px) {
   .contact__card {
     padding: 50px 36px;
+  }
+
+  .contact__close {
+    height: 26px;
   }
 }
 
