@@ -68,18 +68,17 @@ const mobileMenuBtn = document.getElementById('nav__btn');
 const mobileCloseBtn = document.getElementById('close__btn');
 
 
-function mobileNavPrep() {
-  mobileNav.classList.add('nav__collapse');
-  document.getElementById('mobile__link1').classList.add('link__hide');
-  document.getElementById('mobile__link2').classList.add('link__hide');
-  // document.getElementById('mobile__link3').classList.add('link__hide');
-  document.getElementById('mobile__link4').classList.add('link__hide');
-  document.getElementById('mobile__link5').classList.add('link__hide');
-  document.getElementById('mobile__link6').classList.add('link__hide');
-  document.getElementById('mobile__link7').classList.add('link__hide');
-  document.getElementById('mobile__link8').classList.add('link__hide');
-}
-mobileNavPrep();
+
+mobileNav.classList.add('nav__collapse');
+document.getElementById('mobile__link1').classList.add('link__hide');
+document.getElementById('mobile__link2').classList.add('link__hide');
+// document.getElementById('mobile__link3').classList.add('link__hide');
+document.getElementById('mobile__link4').classList.add('link__hide');
+document.getElementById('mobile__link5').classList.add('link__hide');
+document.getElementById('mobile__link6').classList.add('link__hide');
+document.getElementById('mobile__link7').classList.add('link__hide');
+document.getElementById('mobile__link8').classList.add('link__hide');
+
 
 function mobileNavOpen() {
 
@@ -130,7 +129,7 @@ function mobileNavOpen() {
 function mobileNavClose() {
 
   scrollEnable();
-  
+
   mobileMenuBtn.classList.remove('is--hidden');
   mobileCloseBtn.classList.add('is--hidden');
 
@@ -175,7 +174,20 @@ function mobileNavClose() {
 
 mobileMenuBtn.addEventListener('click', function () { mobileNavOpen(); });
 mobileCloseBtn.addEventListener('click', function () { mobileNavClose(); });
-
+document.getElementById('mobile__link1').addEventListener('click', function (event) { 
+  mobileNavClose(); 
+  event.preventDefault();
+  setTimeout(function () {
+    window.location.href = event.target.href;
+  }, 500);
+});
+document.getElementById('mobile__link2').addEventListener('click', function (event) { 
+  mobileNavClose(); 
+  event.preventDefault(); 
+  setTimeout(function () {
+    window.location.href = event.target.href;
+  }, 500);
+});
 
 
 
