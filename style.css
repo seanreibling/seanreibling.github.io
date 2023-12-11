@@ -272,6 +272,10 @@ nav {
     margin-top: 124px;
   }
 
+  #shadow__link1, #shadow__link2, #shadow__link3 {
+    display: none;
+  } 
+
   .mobile__social {
     display: flex;
     column-gap: 24px;
