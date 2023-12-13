@@ -170,6 +170,10 @@ function mobileNavClose() {
     mobileNav.classList.add('nav__collapse');
     mobileNav.classList.remove('nav__expand');
   }, 100);
+
+  setTimeout(function () {
+    mobileNav.classList.add('is--hidden');
+  }, 600);
 }
 
 mobileMenuBtn.addEventListener('click', function () { mobileNavOpen(); });
