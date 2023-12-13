@@ -591,7 +591,7 @@ main {
 }
 
 .close__icon {
-  height: 28px;
+  height: 30px;
 }
 
 .btn__bar {
@@ -610,6 +610,12 @@ main {
     justify-content: center;
     flex-direction: column;
     row-gap: 6px;
+    height: 100%;
+    padding: 0 16px;
+    margin-right: -16px;
+  }
+
+  #close__btn {
     height: 100%;
     padding: 0 16px;
     margin-right: -16px;
