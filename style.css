@@ -591,7 +591,7 @@ main {
 }
 
 .close__icon {
-  height: 30px;
+  height: 28px;
 }
 
 .btn__bar {
@@ -1055,7 +1055,7 @@ button:hover {
 
 @media only screen and (max-width: 991px) {
   .grid {
-    gap: 28px;
+    gap: 36px;
   }
 
   .portfolio__subhead {
