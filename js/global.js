@@ -175,7 +175,7 @@ function mobileNavClose() {
 mobileMenuBtn.addEventListener('click', function () { mobileNavOpen(); });
 mobileCloseBtn.addEventListener('click', function () { mobileNavClose(); });
 
-//simulate click on shadow link to delay navigation until menu is closed
+//Simulate click on shadow link to delay navigation until menu is closed
 document.getElementById('mobile__link1').addEventListener('click', function () {
   mobileNavClose();
   setTimeout(function () {
@@ -197,6 +197,18 @@ document.getElementById('mobile__link2').addEventListener('click', function () {
 //   }, 400);
 // });
 
+
+//Simulate click on logo and close mobile nav if needed
+document.getElementById('wordmark').addEventListener('click', function () {
+  if (!mobileNav.classList.contains('is--hidden')) {
+    mobileNavClose();
+    setTimeout(function () {
+      document.getElementById('shadow__link0').click();
+    }, 400);
+  } else {
+    document.getElementById('shadow__link0').click();
+  }
+});
 
 
 
