@@ -201,6 +201,20 @@ document.getElementById('mobile__link2').addEventListener('click', function () {
 
 
 
+//Close nav menu if device width is greater than 479px
+
+function checkWindowWidth() {
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth > 479) {
+    mobileNavClose();
+  }
+}
+
+window.addEventListener('resize', checkWindowWidth);
+
+
+
 //Show and hide nav menu when scrolling up and down
 
 let prevScrollPos = window.pageYOffset;
