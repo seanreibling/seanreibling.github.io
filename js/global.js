@@ -200,13 +200,13 @@ document.getElementById('mobile__link2').addEventListener('click', function () {
 
 //Simulate click on logo and close mobile nav if needed
 document.getElementById('wordmark').addEventListener('click', function () {
-  if (!mobileNav.classList.contains('is--hidden')) {
+  if (mobileNav.classList.contains('is--hidden')) {
+    document.getElementById('shadow__link0').click();
+  } else {
     mobileNavClose();
     setTimeout(function () {
       document.getElementById('shadow__link0').click();
     }, 400);
-  } else {
-    document.getElementById('shadow__link0').click();
   }
 });
 
