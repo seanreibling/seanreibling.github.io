@@ -1058,8 +1058,9 @@ button:hover {
     gap: 48px;
   }
 
-  .portfolio__subhead {
+  .portfolio__subhead:nth-child(2) {
     grid-area: auto / span 2;
+    margin-top: -24px;
   }
 }
 
@@ -1070,6 +1071,7 @@ button:hover {
 
   .portfolio__subhead {
     grid-area: auto / span 1;
+    
   }
 }
 
