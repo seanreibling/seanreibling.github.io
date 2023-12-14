@@ -810,7 +810,7 @@ button:hover {
   }
 
   .contact__close {
-    height: 26px;
+    height: 30px;
   }
 }
 
@@ -826,12 +826,13 @@ button:hover {
     width: 100% !important;
     padding: 50px 16px;
     min-width: 200px;
+    overflow: scroll;
 
   }
 
   .contact__close {
     right: 16px;
-    top: 16px;
+    top: 24px;
   }
 
 
