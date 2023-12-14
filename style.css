@@ -772,6 +772,7 @@ textarea::placeholder {
 }
 
 textarea {
+  -webkit-appearance: none;
   resize: none;
   border: none;
   outline: none;
