@@ -317,6 +317,28 @@ checkHomeContactLink();
 
 
 
+// Dealing with Input width
+// let el = document.querySelector(".input-wrap .input");
+// let widthMachine = document.querySelector(".input-wrap .width-machine");
+// el.addEventListener("keyup", () => {
+//   widthMachine.innerHTML = el.value;
+// });
+
+// Dealing with Textarea Height
+function calcHeight(value) {
+  let numberOfLineBreaks = (value.match(/\n/g) || []).length;
+  // min-height + lines x line-height + padding + border
+  let newHeight = 35 + numberOfLineBreaks * 35 + 0 + 0;
+  return newHeight;
+}
+
+let textarea = document.getElementById("form__message");
+textarea.addEventListener("keyup", () => {
+  textarea.style.height = calcHeight(textarea.value) + "px";
+});
+
+
+
 //Randomize accent colour from 4 options
 
 const colours = ['#d3a226', '#05995c', '#a82c3e', '#3f46bf']
