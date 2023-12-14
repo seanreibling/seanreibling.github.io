@@ -4,6 +4,8 @@
   font-family: Inter;
   font-weight: 500;
   color: black;
+  -webkit-tap-highlight-color: transparent; /* for removing the highlight */
+
 }
 
 body,
