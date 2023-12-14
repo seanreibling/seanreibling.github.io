@@ -773,7 +773,8 @@ textarea::placeholder {
 
 textarea {
   padding: 0 !important;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
+  appearance: none;
   resize: none;
   border: none;
   outline: none;
