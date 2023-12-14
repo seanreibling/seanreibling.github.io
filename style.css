@@ -737,6 +737,7 @@ select:hover {
 
 input,
 select {
+  padding: 0 !important;
   appearance: none;
   border: none;
   outline: none;
