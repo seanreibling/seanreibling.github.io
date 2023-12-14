@@ -214,6 +214,12 @@ document.getElementById('wordmark').addEventListener('click', function () {
   }
 });
 
+//simulate click on contact link
+document.getElementById('mobile__link4').addEventListener('click', function () {
+  mobileNavClose();
+  showContact();
+});
+
 
 
 
