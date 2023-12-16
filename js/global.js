@@ -8,6 +8,7 @@ swup.on('pageView', () => {
   checkHomeContactLink();
   projectCard();
   urlCheck();
+  urlHover();
   createPlayPauseButtons();
 });
 
@@ -31,16 +32,41 @@ let links = linkContainer.querySelectorAll('a');
 function urlCheck() {
   links.forEach(link => {
     if ((link.href.includes('portfolio')) && (window.location.href.includes('portfolio'))) {
-      link.style.color = 'black'
+      link.style.color = 'black';
+      link.setAttribute('data-status', 'active');
     } else if ((link.href.includes('about')) && (window.location.href.includes('about'))) {
       link.style.color = 'black'
+      link.setAttribute('data-status', 'active');
     } else {
-      link.style.color = 'rgba(0, 0, 0, 0.4)'
+      link.style.color = 'rgba(0, 0, 0, 0.4)';
+      link.removeAttribute('data-status');
     }
   });
 }
 
+urlCheck();
 
+function urlHover() {
+  links.forEach(link => {
+    if (!link.hasAttribute(`data-status`)) {
+      link.addEventListener('mouseover', function () {
+        link.style.color = 'black';
+      })
+    }
+
+    if (!link.hasAttribute(`data-status`)) {
+      link.addEventListener('mouseout', function () {
+        link.style.color = 'rgba(0, 0, 0, 0.4)';
+      });
+    } else {
+      link.addEventListener('mouseout', function () {
+        link.style.color = 'black';
+      });
+    }
+  });
+}
+
+urlHover();
 
 
 
