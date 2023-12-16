@@ -17,32 +17,42 @@
     <body>
         <nav id="nav" class="slide--down">
             <div class="nav__container">
-                <div><a href="/index.html" class="wordmark">Sean Reibling</a></div>
+                <div><a id="wordmark" class="wordmark">Sean Reibling</a></div>
                 <div class="nav__links" id="links">
                     <a href="/portfolio.html" class="heading is--nav is--dim">Portfolio</a>
                     <a href="/about.html" class="heading is--nav is--dim">About</a>
                     <!-- <a href="/latest.html" class="heading is--nav is--dim">Latest</a> -->
                     <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
                 </div>
-                <div class="nav__btn">
+                <div id="nav__btn">
                     <div class="btn__bar"></div>
                     <div class="btn__bar"></div>
+                </div>
+                <div id="close__btn" class="is--hidden">
+                    <img class="close__icon" src="https://seanreibling.github.io/assets/icons/close.svg">
                 </div>
             </div>
-            <div class="nav__mobile">
+            <div id="nav__mobile" class="is--hidden">
                 <div class="mobile__links">
-                    <a href="/portfolio.html" class="heading is--menu">Portfolio</a>
-                    <a href="/about.html" class="heading is--menu">About</a>
-                    <a href="/latest.html" class="heading is--menu">Latest</a>
-                    <a id="trigger--open" class="heading is--menu">Contact</a>
+                    <a class="heading is--menu" id="mobile__link1">Portfolio</a>
+                    <a class="heading is--menu" id="mobile__link2">About</a>
+                    <!-- <a href="/latest.html" class="heading is--menu" id="mobile__link3">Latest</a> -->
+                    <a class="heading is--menu" id="mobile__link4">Contact</a>
+                    <a href="/index.html" id="shadow__link0">Home</a>
+                    <a href="/portfolio.html" id="shadow__link1">Portfolio</a>
+                    <a href="/about.html" id="shadow__link2">About</a>
+                    <!-- <a href="/latest.html" id="shadow__link3">About</a> -->
                 </div>
-                <div>
+                <div class="mbot--50">
                     <div class="mobile__social mbot--16">
-                        <a href="/portfolio.html" class="heading is--small">LinkedIn</a>
-                        <a href="/about.html" class="heading is--small">Instagram</a>
-                        <a href="/latest.html" class="heading is--small">Dribbble</a>
+                        <a href="https://www.linkedin.com/in/seanreibling/"
+                            target=”_blank” class="heading is--small" id="mobile__link5">LinkedIn</a>
+                        <a href="https://www.instagram.com/seanreibling2/"
+                            target=”_blank” class="heading is--small" id="mobile__link6">Instagram</a>
+                        <a href="https://dribbble.com/seanreibling"
+                            target=”_blank” class="heading is--small" id="mobile__link7">Dribbble</a>
                     </div>
-                    <h1 class="heading is--small is--dim">© 2023 Sean Reibling</h1>
+                    <h1 class="heading is--small is--dim" id="mobile__link8">© 2023 Sean Reibling</h1>
                 </div>
             </div>
         </nav>

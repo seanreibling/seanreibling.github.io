@@ -303,6 +303,27 @@ button {
   width: 250px;
 }
 
+.video__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 360;
+}
+
+.icon__play {
+  height: 32px;
+}
+
+.icon__pause {
+  height: 32px;
+}
+
 @media only screen and (max-width: 767px) {
   .has--padding {
     width: auto;
@@ -1064,6 +1085,7 @@ button:hover {
 .portfolio__subhead {
   max-width: 540px;
 }
+
 
 @media only screen and (max-width: 991px) {
   .grid {

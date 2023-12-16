@@ -318,10 +318,20 @@ checkHomeContactLink();
 
 
 // Dealing with Input width
-// let el = document.querySelector(".input-wrap .input");
-// let widthMachine = document.querySelector(".input-wrap .width-machine");
-// el.addEventListener("keyup", () => {
-//   widthMachine.innerHTML = el.value;
+
+const textarea = document.getElementById('form__message');
+
+// textarea.addEventListener('input', function() {
+//   const style = window.getComputedStyle(this);
+//   const width = parseInt(style.width, 10);
+//   const canvas = document.createElement('canvas');
+//   const context = canvas.getContext('2d');
+//   context.font = style.font;
+//   const textWidth = context.measureText(this.value).width;
+
+//   if (textWidth > width) {
+//     this.value += '\n'; // Add a line break when the text exceeds the width
+//   }
 // });
 
 // Dealing with Textarea Height
@@ -332,7 +342,6 @@ function calcHeight(value) {
   return newHeight;
 }
 
-let textarea = document.getElementById("form__message");
 textarea.addEventListener("keyup", () => {
   textarea.style.height = calcHeight(textarea.value) + "px";
 });
@@ -396,3 +405,70 @@ function projectCard() {
 projectCard();
 
 
+
+
+
+// Vimeo Background Video Play/Pause
+
+// Function to create play/pause buttons for Vimeo videos
+function createPlayPauseButtons() {
+  const videoContainers = document.querySelectorAll('.is--video');
+
+  videoContainers.forEach((container) => {
+    const videoIframe = container.querySelector('.videobg');
+    const videoSrc = videoIframe.getAttribute('src');
+    const videoId = getVimeoVideoId(videoSrc);
+
+    if (videoId) {
+      const button = document.createElement('div');
+      button.classList.add('video__button');
+      const pauseIcon = document.createElement('i');
+      pauseIcon.classList.add('icon__pause');
+      const playIcon = document.createElement('i');
+      playIcon.classList.add('icon__play');
+      button.appendChild(pauseIcon);
+      button.appendChild(playIcon);
+      container.appendChild(button);
+
+      const player = new Vimeo.Player(videoIframe);
+
+      button.addEventListener('click', () => {
+        player.getPaused().then((paused) => {
+          if (paused) {
+            player.play();
+            pauseIcon.style.display = 'block';
+            playIcon.style.display = 'none';
+          } else {
+            player.pause();
+            pauseIcon.style.display = 'none';
+            playIcon.style.display = 'block';
+          }
+        }).catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+
+      // Initial button state based on video playback
+      player.getPaused().then((paused) => {
+        if (paused) {
+          pauseIcon.style.display = 'none';
+          playIcon.style.display = 'block';
+        } else {
+          pauseIcon.style.display = 'block';
+          playIcon.style.display = 'none';
+        }
+      }).catch((error) => {
+        console.error('Error:', error);
+      });
+    }
+  });
+}
+
+// Function to extract Vimeo video ID from the URL
+function getVimeoVideoId(url) {
+  const match = url.match(/player.vimeo.com\/video\/(\d+)\?background=1&autopause=0/);
+  return match ? match[1] : null;
+}
+
+// Call the function to create play/pause buttons for Vimeo videos
+createPlayPauseButtons();
