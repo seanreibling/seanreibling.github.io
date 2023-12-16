@@ -308,7 +308,7 @@ button {
   z-index: 997;
   bottom: 16px;
   right: 16px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
