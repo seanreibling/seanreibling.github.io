@@ -8,6 +8,7 @@ swup.on('pageView', () => {
   checkHomeContactLink();
   projectCard();
   urlCheck();
+  createPlayPauseButtons();
 });
 
 
@@ -415,51 +416,61 @@ function createPlayPauseButtons() {
   const videoContainers = document.querySelectorAll('.is--video');
 
   videoContainers.forEach((container) => {
-    const videoIframe = container.querySelector('.videobg');
-    const videoSrc = videoIframe.getAttribute('src');
-    const videoId = getVimeoVideoId(videoSrc);
+    const videoIframe = container.querySelector('.bgvideo');
 
-    if (videoId) {
-      const button = document.createElement('div');
-      button.classList.add('video__button');
-      const pauseIcon = document.createElement('i');
-      pauseIcon.classList.add('icon__pause');
-      const playIcon = document.createElement('i');
-      playIcon.classList.add('icon__play');
-      button.appendChild(pauseIcon);
-      button.appendChild(playIcon);
-      container.appendChild(button);
+    // Check if videoIframe exists within the container
+    if (videoIframe) {
+      const videoSrc = videoIframe.getAttribute('src');
+      const videoId = getVimeoVideoId(videoSrc);
 
-      const player = new Vimeo.Player(videoIframe);
+      if (videoId) {
+        const button = document.createElement('div');
+        button.classList.add('video__button');
+        container.appendChild(button);
 
-      button.addEventListener('click', () => {
+        const pauseIcon = document.createElement('img');
+        pauseIcon.classList.add('icon__pause');
+        pauseIcon.src = 'https://seanreibling.github.io/assets/icons/icon-pause.svg';
+        pauseIcon.style.display = 'block';
+        button.appendChild(pauseIcon);
+
+        const playIcon = document.createElement('img');
+        playIcon.classList.add('icon__play');
+        playIcon.src = 'https://seanreibling.github.io/assets/icons/icon-play.svg';
+        playIcon.style.display = 'none';
+        button.appendChild(playIcon);
+
+        const player = new Vimeo.Player(videoIframe);
+
+        button.addEventListener('click', () => {
+          player.getPaused().then((paused) => {
+            if (paused) {
+              player.play();
+              pauseIcon.style.display = 'block';
+              playIcon.style.display = 'none';
+            } else {
+              player.pause();
+              pauseIcon.style.display = 'none';
+              playIcon.style.display = 'block';
+            }
+          }).catch((error) => {
+            console.error('Error:', error);
+          });
+        });
+
+        // Initial button state based on video playback
         player.getPaused().then((paused) => {
           if (paused) {
-            player.play();
-            pauseIcon.style.display = 'block';
-            playIcon.style.display = 'none';
-          } else {
-            player.pause();
             pauseIcon.style.display = 'none';
             playIcon.style.display = 'block';
+          } else {
+            pauseIcon.style.display = 'block';
+            playIcon.style.display = 'none';
           }
         }).catch((error) => {
           console.error('Error:', error);
         });
-      });
-
-      // Initial button state based on video playback
-      player.getPaused().then((paused) => {
-        if (paused) {
-          pauseIcon.style.display = 'none';
-          playIcon.style.display = 'block';
-        } else {
-          pauseIcon.style.display = 'block';
-          playIcon.style.display = 'none';
-        }
-      }).catch((error) => {
-        console.error('Error:', error);
-      });
+      }
     }
   });
 }
