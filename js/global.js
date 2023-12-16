@@ -461,11 +461,11 @@ function createPlayPauseButtons() {
         // Initial button state based on video playback
         player.getPaused().then((paused) => {
           if (paused) {
-            pauseIcon.style.display = 'none';
-            playIcon.style.display = 'block';
-          } else {
             pauseIcon.style.display = 'block';
             playIcon.style.display = 'none';
+          } else {
+            pauseIcon.style.display = 'none';
+            playIcon.style.display = 'block';
           }
         }).catch((error) => {
           console.error('Error:', error);

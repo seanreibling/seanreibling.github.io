@@ -308,14 +308,15 @@ button {
   z-index: 997;
   bottom: 24px;
   right: 24px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 360px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .video__button:hover {
@@ -323,11 +324,12 @@ button {
 }
 
 .icon__play {
-  height: 32px;
+  height: 14px;
+  margin-left: 3px;
 }
 
 .icon__pause {
-  height: 32px;
+  height: 14px;
 }
 
 @media only screen and (max-width: 767px) {
