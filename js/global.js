@@ -12,6 +12,7 @@ swup.hooks.on('page:view', () => {
   urlCheck();
   urlHover();
   createPlayPauseButtons();
+  aboutTextAnimate();
 });
 
 
@@ -513,3 +514,39 @@ function getVimeoVideoId(url) {
 
 // Call the function to create play/pause buttons for Vimeo videos
 createPlayPauseButtons();
+
+
+
+
+
+// About page text animation loop
+
+
+function aboutTextAnimate () {
+  if (window.location.href.includes('about')) {
+    const textContainer = document.getElementById("animation__container");
+
+    setTimeout(function(){
+      textContainer.classList.add('textanimate__1');
+      textContainer.classList.remove('textanimate__4');
+    }, 6000);
+    setTimeout(function(){
+      textContainer.classList.add('textanimate__2');
+      textContainer.classList.remove('textanimate__1');
+    }, 12000);
+    setTimeout(function(){
+      textContainer.classList.add('textanimate__3');
+      textContainer.classList.remove('textanimate__2');
+
+    }, 18000);
+    setTimeout(function(){
+      textContainer.classList.add('textanimate__4');
+      textContainer.classList.remove('textanimate__3');
+
+    }, 24000);
+    setTimeout(function(){
+      aboutTextAnimate();
+    }, 30000);
+}}
+
+aboutTextAnimate();

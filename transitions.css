@@ -100,3 +100,29 @@ html.is-animating .transition-fade {
   }
 
 
+
+
+  /* About heading text animations */
+
+#animation__container {
+  transition: transform 1s cubic-bezier(0, .997, .602, .944); 
+}
+
+  .textanimate__1 {
+    transform: translateY(-21%);
+  }
+
+  .textanimate__2 {
+    transform: translateY(-41%);
+  }
+
+  .textanimate__3 {
+    transform: translateY(-61%);
+  }
+
+  .textanimate__4 {
+    transform: translateY(-81%);
+  }
+
+
+
