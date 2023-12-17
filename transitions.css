@@ -1,3 +1,14 @@
+/* Swup progress bar transition */
+
+.swup-progress-bar {
+  height: 4px;
+  background-color: blue;
+}
+
+
+
+
+
 .transition-fade {
   transition: 0.2s;
   opacity: 1;

@@ -1,6 +1,8 @@
-const swup = new Swup();
+const swup = new Swup({
+  plugins: [new SwupProgressPlugin()]
+});
 
-swup.on('pageView', () => {
+swup.hooks.on('page:view', () => {
   // This runs after every page change
 
   scrollTop();
@@ -11,6 +13,8 @@ swup.on('pageView', () => {
   urlHover();
   createPlayPauseButtons();
 });
+
+
 
 
 

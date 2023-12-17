@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name=“viewport” content=“width=device-width, initial-scale=1.0”>
+        <title>Sean Reibling: Digital Product Designer</title>
+        <meta name="description" content>
+        <meta name="theme-color" content="#000000">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="transitions.css">
+        <link rel="stylesheet" href="colours.css">
+    </head>
+
+    <body>
+        <nav id="nav" class="slide--down">
+            <div class="nav__container">
+                <div><a id="wordmark" class="wordmark">Sean Reibling</a></div>
+                <div class="nav__links" id="links">
+                    <a href="/portfolio.html" class="heading is--nav is--dim">Portfolio</a>
+                    <a href="/about.html" class="heading is--nav is--dim">About</a>
+                    <!-- <a href="/latest.html" class="heading is--nav is--dim">Latest</a> -->
+                    <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
+                </div>
+                <div id="nav__btn">
+                    <div class="btn__bar"></div>
+                    <div class="btn__bar"></div>
+                </div>
+                <div id="close__btn" class="is--hidden">
+                    <img class="close__icon"
+                        src="https://seanreibling.github.io/assets/icons/close.svg">
+                </div>
+            </div>
+            <div id="nav__mobile" class="is--hidden">
+                <div class="mobile__links">
+                    <a class="heading is--menu" id="mobile__link1">Portfolio</a>
+                    <a class="heading is--menu" id="mobile__link2">About</a>
+                    <!-- <a href="/latest.html" class="heading is--menu" id="mobile__link3">Latest</a> -->
+                    <a class="heading is--menu" id="mobile__link4">Contact</a>
+                    <a href="/index.html" id="shadow__link0">Home</a>
+                    <a href="/portfolio.html" id="shadow__link1">Portfolio</a>
+                    <a href="/about.html" id="shadow__link2">About</a>
+                    <!-- <a href="/latest.html" id="shadow__link3">About</a> -->
+                </div>
+                <div class="mbot--50">
+                    <div class="mobile__social mbot--16">
+                        <a href="https://www.linkedin.com/in/seanreibling/"
+                            target=”_blank” class="heading is--small"
+                            id="mobile__link5">LinkedIn</a>
+                        <a href="https://www.instagram.com/seanreibling2/"
+                            target=”_blank” class="heading is--small"
+                            id="mobile__link6">Instagram</a>
+                        <a href="https://dribbble.com/seanreibling"
+                            target=”_blank” class="heading is--small"
+                            id="mobile__link7">Dribbble</a>
+                    </div>
+                    <h1 class="heading is--small is--dim" id="mobile__link8">©
+                        2023 Sean Reibling</h1>
+                </div>
+            </div>
+        </nav>
+        <div id="contact" class="is--hidden">
+            <div id="contact__bg"></div>
+            <div class="slide--right" id="contact__card">
+                <img class="contact__close" id="trigger--close"
+                    src="https://seanreibling.github.io/assets/icons/close.svg">
+                <h1 class="heading is--large mbot--24">Contact</h1>
+                <p class="mtop--24">Have a project, opportunity, or just want to
+                    chat? I'd love
+                    to get in touch! I try to respond to messages within 2
+                    business days.</p>
+                <form action method="get">
+                    <div class="form ptop--50">
+                        <input type="text" class="heading is--nav"
+                            name="first name"
+                            placeholder="First name" id="form__fname" required />
+                        <input type="text" class="heading is--nav"
+                            name="last name"
+                            placeholder="Last name" id="form__lname" required />
+                        <input type="email" class="heading is--nav" name="email"
+                            placeholder="Email address" id="form__email"
+                            required />
+                        <input type="text" class="heading is--nav"
+                            name="organization"
+                            placeholder="Organization" id="form__organization" />
+                        <div class="select__container">
+                            <select class="heading is--nav" name="topic"
+                                placeholder="Topic" id="form__topic">
+                                <option value="proposal">Project proposal</option>
+                                <option value="opportunity">Job opportunity</option>
+                                <option value="opportunity">Coffee chat</option>
+                                <option value="opportunity">Other</option>
+                            </select>
+                            <img
+                                src="https://seanreibling.github.io/assets/icons/chevron-down.svg"
+                                class="select__icon">
+                        </div>
+                        <textarea data-expandable
+                            class="heading is--nav mbot--24"
+                            placeholder="Message"
+                            maxlength="5000" id="form__message" name="message"
+                            required data-name="message"
+                            spellcheck="false" rows="4"></textarea>
+                        <button id="form__button">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <main id="swup" class="transition-fade">
+            <section class="legal__hero">
+                <h1 class="heading is--xlarge">Privacy Policy</h1>
+            </section>
+            <section class="legal__content">
+                <div class="content__group">
+                    <p class="paragraph"><strong>This privacy policy was last
+                            updated on January 1, 2022.</strong></p>
+                    <p class="paragraph">https://seanreibling.com (the "Site")
+                        is
+                        owned and operated by Sean Reibling. You can contact me
+                        via
+                        email at design@seanreibling.com</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Purpose</h2>
+                    <p class="paragraph">The purpose of this privacy policy
+                        (this "Privacy Policy") is to inform Site users of the
+                        following:</p>
+                    <ol>
+                        <li><p class="paragraph">The personal data this Site
+                                will collect;</p></li>
+                        <li><p class="paragraph">Use of collected data;</p></li>
+                        <li><p class="paragraph">Who has access to the data
+                                collected;</p></li>
+                        <li><p class="paragraph">The rights of Site users; and</p></li>
+                        <li><p class="paragraph">The Site's cookie policy.</p></li>
+                    </ol>
+                    <p class="paragraph">This Privacy Policy applies in addition
+                        to the terms and conditions of the Site.</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Consent</h2>
+                    <p class="paragraph">By using this Site users agree that
+                        they consent to:</p>
+                    <ol>
+                        <li><p class="paragraph">The conditions set out in this
+                                Privacy Policy; and</p></li>
+                        <li><p class="paragraph">The collection, use, and
+                                retention of the data listed in this Privacy
+                                Policy.</p></li>
+
+                    </ol>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Collection of Personal Data</h2>
+                    <p class="paragraph">Only data that helps us achieve the
+                        purpose set out in this Privacy Policy is collected.
+                        This site will not collect any additional data beyond
+                        the data listed below without notifying you first.</p>
+                    <h3 class="heading is--med mtop--16">Data Collected in a
+                        Non-Automatic Way</h2>
+                    <p class="paragraph">This site may also collect the
+                        following data when you perform certain functions on the
+                        Site:</p>
+                    <ol>
+                        <li><p class="paragraph">Email address; and</p></li>
+                        <li><p class="paragraph">Auto fill data</p></li>
+
+                    </ol>
+                    <p class="paragraph">This data may be collected using the
+                        following methods:</p>
+                    <ol>
+                        <li><p>Submitting a message</p></li>
+                    </ol>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Use of Personal Data</h2>
+                    <p class="paragraph">Data collected on this Site will only
+                        be used for the purposes specified in this Privacy
+                        Policy or indicated on the relevant pages of the Site.
+                        This data data will not be used beyond what is disclosed
+                        in this Privacy Policy.</p>
+                    <p class="paragraph">The data this Site collects when the
+                        user performs certain functions may be used for the
+                        following purposes:</p>
+                    <ol>
+                        <li><p>Communication.</p></li>
+                    </ol>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Sharing of Personal Data</h2>
+                    <h3 class="heading is--med mtop--16">Site Contributors</h3>
+                    <p class="paragraph">User data may be disclosed to any
+                        member of this organization who reasonably needs access
+                        to user data to achieve the purposes set out in this
+                        Privacy Policy.</p>
+                    <h3 class="heading is--med mtop--16">Other Disclosures</h3>
+                    <p class="paragraph">Your data will not be sold or shared
+                        with other third parties, except in the following cases:</p>
+                    <ol>
+                        <li><p>If the law requires it;</p></li>
+                        <li><p>If it is required for any legal proceeding; and</p></li>
+                        <li><p>To prove or protect legal rights;</p></li>
+                    </ol>
+                    <p class="paragraph">If you follow hyperlinks from this Site
+                        to another Site, please note that this Site is not
+                        responsible for and has no control over their privacy
+                        policies and practices.</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">How Long Personal Data is Stored</h2>
+                    <p class="paragraph">User data will be stored until the
+                        purpose the data was collected for has been achieved.</p>
+                    <p class="paragraph">You will be notified if your data is
+                        kept for longer than this period.</p>
+                    <p class="paragraph">While this Site takes all reasonable
+                        precautions to ensure that user data is secure and that
+                        users are protected, there always remains the risk of
+                        harm. The Internet as a whole can be insecure at times
+                        and therefore this Site is unable to guarantee the
+                        security of user data beyond what is reasonably
+                        practical.</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">International Data Transfers</h2>
+                    <p class="paragraph">User personal data may be transferred
+                        to the following countries:</p>
+                    <ol>
+                        <li><p>United States</p></li>
+                    </ol>
+                    <p class="paragraph">When user personal data is transferred,
+                        this Site will protect that data as described in this
+                        Privacy Policy and comply with applicable legal
+                        requirements for transferring personal data
+                        internationally.</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Children</h2>
+                    <p class="paragraph">This Site does not knowingly collect or
+                        use personal data from children under 13 years of age.
+                        If it is learned that personal data has been collected
+                        from a child under 13 years of age, the personal data
+                        will be deleted as soon as possible. If a child under 13
+                        years of age has provided this Site with personal data
+                        their parent or guardian may contact the site owner.</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">How to Access, Modify, Delete, or
+                        Challenge the Data Collected</h2>
+                    <p class="paragraph">If you would like to know if this Site
+                        has collected your personal data, how this Site has used
+                        your personal data, if this Site has disclosed your
+                        personal data and to who it was disclosed, or if you
+                        would like your data to be deleted or modified in any
+                        way, please contact the site owner, Sean Reibling, via
+                        email at design@seanreibling.com.</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Cookie Policy</h2>
+                    <p class="paragraph">A cookie is a small file, stored on a
+                        user's hard drive by a website. Its purpose is to
+                        collect data relating to the user's browsing habits. You
+                        can choose to be notified each time a cookie is
+                        transmitted. You can also choose to disable cookies
+                        entirely in your internet browser, but this may decrease
+                        the quality of your user experience.</p>
+                    <p class="paragraph">This Site may use the following types
+                        of cookies:</p>
+                    <ol>
+                        <li class="mbot--24"><p><span style="font-weight: 600">Functional
+                                    Cookies</span><br>Functional cookies are
+                                used to remember the selections you make on our
+                                Site so that your selections are saved for your
+                                next visits; and</p></li>
+                        <li><p><span style="font-weight: 600">Third-Party
+                                    Cookies</span><br>Third-party cookies are
+                                created by a website other than ours.
+                                Third-party cookies may be used to achieve the
+                                following purposes:<br><br>a) Store user
+                                preferences for site banners and popups.</p></li>
+                    </ol>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Modifications</h2>
+                    <p class="paragraph">This Privacy Policy may be amended from
+                        time to time in order to maintain compliance with the
+                        law and to reflect any changes to the data collection
+                        process. When this Privacy Policy is amended, this Site
+                        will update the "Effective Date" at the top of this
+                        Privacy Policy. It is recommend that users periodically
+                        review this Privacy Policy to ensure that they are
+                        notified of any updates. If necessary, this Site may
+                        notify users by email of changes to this Privacy Policy.</p>
+                </div>
+                <div class="content__group">
+                    <h2 class="heading">Contact Information</h2>
+                    <p class="paragraph">If you have any questions, concerns or
+                        complaints, you can contact the site owner, Sean
+                        Reibling, at:</p>
+                    <p class="paragraph">design@seanreibling.com</p>
+                </div>
+            </section>
+        </main>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <script src="https://unpkg.com/@swup/parallel-plugin@0"></script>
+        <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
+        <script src="https://unpkg.com/swup@4"></script>
+        <script src="js/global.js" async defer></script>
+    </body>
+    <footer>
+        <div class="footer__container ptop--100 pbot--50">
+            <div class="footer__content is--left">
+                <div class="footer__content">
+                    <a href="/privacy-policy.html"
+                        class="heading is--nav is--dim">Privacy
+                        Policy</a>
+                    <a href="/terms-and-conditions.html"
+                        class="heading is--nav is--dim">Terms
+                        of
+                        Use</a>
+                </div>
+                <div><h1 class="heading is--nav is--dim nohover">© 2023 Sean
+                        Reibling</h1></div>
+            </div>
+            <div class="footer__content is--right">
+                <a href="https://www.linkedin.com/in/seanreibling/"
+                    target=”_blank” class="heading is--nav is--dim">LinkedIn</a>
+                <a href="https://www.instagram.com/seanreibling2/"
+                    target=”_blank” class="heading is--nav is--dim">Instagram</a>
+                <a href="https://dribbble.com/seanreibling" target=”_blank”
+                    class="heading is--nav is--dim">Dribbble</a>
+            </div>
+        </div>
+        <div>
+        </footer>
+    </html>
