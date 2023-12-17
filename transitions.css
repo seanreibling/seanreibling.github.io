@@ -124,5 +124,12 @@ html.is-animating .transition-fade {
     transform: translateY(-81%);
   }
 
+  .notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+  }
+
 
 

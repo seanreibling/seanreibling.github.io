@@ -527,8 +527,8 @@ function aboutTextAnimate () {
     const textContainer = document.getElementById("animation__container");
 
     setTimeout(function(){
+      textContainer.classList.remove('notransition');
       textContainer.classList.add('textanimate__1');
-      textContainer.classList.remove('textanimate__4');
     }, 6000);
     setTimeout(function(){
       textContainer.classList.add('textanimate__2');
@@ -546,7 +546,9 @@ function aboutTextAnimate () {
     }, 24000);
     setTimeout(function(){
       aboutTextAnimate();
-    }, 30000);
+      textContainer.classList.add('notransition');
+      textContainer.classList.remove('textanimate__4');
+    }, 26000);
 }}
 
 aboutTextAnimate();
