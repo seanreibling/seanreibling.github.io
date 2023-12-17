@@ -1381,12 +1381,12 @@ ol {
 }
 
 .legal__hero {
-  margin-left: 150px;
+  margin-left: 10%;
   padding-top: 150px;
 }
 
 .legal__content {
-  margin-left: 150px;
+  margin-left: 10%;
   padding: 64px 0;
   display: flex;
   flex-direction: column;
@@ -1419,5 +1419,6 @@ ol {
   }
   .legal__content {
     margin-left: 0px;
+    row-gap: 36px;
   }
 }
