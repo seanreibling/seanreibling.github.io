@@ -105,23 +105,24 @@ html.is-animating .transition-fade {
   /* About heading text animations */
 
 #animation__container {
+  box-sizing: border-box;
   transition: transform 1s cubic-bezier(0, .997, .602, .944); 
 }
 
   .textanimate__1 {
-    transform: translateY(-21%);
+    transform: translateY(-20%);
   }
 
   .textanimate__2 {
-    transform: translateY(-41%);
+    transform: translateY(-40%);
   }
 
   .textanimate__3 {
-    transform: translateY(-61%);
+    transform: translateY(-60%);
   }
 
   .textanimate__4 {
-    transform: translateY(-81%);
+    transform: translateY(-80%);
   }
 
   .notransition {

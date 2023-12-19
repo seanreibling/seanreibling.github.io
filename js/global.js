@@ -521,7 +521,6 @@ createPlayPauseButtons();
 
 // About page text animation loop
 
-
 function aboutTextAnimate () {
   if (window.location.href.includes('about')) {
     const textContainer = document.getElementById("animation__container");
@@ -529,26 +528,26 @@ function aboutTextAnimate () {
     setTimeout(function(){
       textContainer.classList.remove('notransition');
       textContainer.classList.add('textanimate__1');
-    }, 6000);
+    }, 5000);
     setTimeout(function(){
       textContainer.classList.add('textanimate__2');
       textContainer.classList.remove('textanimate__1');
-    }, 12000);
+    }, 11000);
     setTimeout(function(){
       textContainer.classList.add('textanimate__3');
       textContainer.classList.remove('textanimate__2');
 
-    }, 18000);
+    }, 17000);
     setTimeout(function(){
       textContainer.classList.add('textanimate__4');
       textContainer.classList.remove('textanimate__3');
 
-    }, 24000);
+    }, 23000);
     setTimeout(function(){
       aboutTextAnimate();
       textContainer.classList.add('notransition');
       textContainer.classList.remove('textanimate__4');
-    }, 26000);
+    }, 24000);
 }}
 
 aboutTextAnimate();
