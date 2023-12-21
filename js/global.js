@@ -349,32 +349,35 @@ function hideContact() {
 
 
 function hideContactCheck() {
-    function checkFormChanges() {
-      let formChanged = false;
-  
-      formInputs.forEach(input => {
-        if (input.defaultValue !== input.value) {
-          formChanged = true;
-        }
-      });
-  
-      if (formChanged) {
-        const confirmClose = window.confirm("Are you sure you want to close this form?");
-        if (confirmClose) {
-          hideContact(); // Call hideContact if changes detected and confirmed
-        }
-      } else {
-        hideContact(); // Call hideContact directly if no changes detected
+  function checkFormChanges() {
+    let formChanged = false;
+
+    formInputs.forEach(input => {
+      if (
+        (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') && input.defaultValue !== input.value ||
+        (input.tagName === 'SELECT' && input.selectedIndex !== 0)
+      ) {
+        formChanged = true;
       }
+    });
+
+    if (formChanged) {
+      const confirmClose = window.confirm("Are you sure you want to close this form?");
+      if (confirmClose) {
+        hideContact(); // Call hideContact if changes detected and confirmed
+      }
+    } else {
+      hideContact(); // Call hideContact directly if no changes detected
     }
-  
-    // Call checkFormChanges when needed, e.g., when closing or navigating away from the page
-    // Example: checkFormChanges();
-  
-    // Simulate calling checkFormChanges when a user attempts to close the form
-    // Replace this with your actual event trigger or call the function as needed
-    // For instance, attach it to a 'Close' button or a 'beforeunload' event
-    checkFormChanges();
+  }
+
+  // Call checkFormChanges when needed, e.g., when closing or navigating away from the page
+  // Example: checkFormChanges();
+
+  // Simulate calling checkFormChanges when a user attempts to close the form
+  // Replace this with your actual event trigger or call the function as needed
+  // For instance, attach it to a 'Close' button or a 'beforeunload' event
+  checkFormChanges();
 }
 
 triggerOpen.addEventListener('click', function () { showContact(); });
@@ -406,7 +409,7 @@ function updateTextarea() {
   textarea.style.height = textarea.scrollHeight + 'px';
 }
 
-textarea.addEventListener('input', function() {
+textarea.addEventListener('input', function () {
   const lineBreaks = (this.value.match(/\n/g) || []).length;
   const totalLines = lineBreaks + 1;
 
@@ -420,7 +423,7 @@ textarea.addEventListener('input', function() {
   }
 });
 
-textarea.addEventListener('keydown', function(e) {
+textarea.addEventListener('keydown', function (e) {
   if (e.key === 'Backspace' && textarea.scrollHeight > textarea.offsetHeight) {
     setTimeout(updateTextarea, 0);
   }
@@ -574,33 +577,34 @@ createPlayPauseButtons();
 
 // About page text animation loop
 
-function aboutTextAnimate () {
+function aboutTextAnimate() {
   if (window.location.href.includes('about')) {
     const textContainer = document.getElementById("animation__container");
 
-    setTimeout(function(){
+    setTimeout(function () {
       textContainer.classList.remove('notransition');
       textContainer.classList.add('textanimate__1');
     }, 5000);
-    setTimeout(function(){
+    setTimeout(function () {
       textContainer.classList.add('textanimate__2');
       textContainer.classList.remove('textanimate__1');
     }, 11000);
-    setTimeout(function(){
+    setTimeout(function () {
       textContainer.classList.add('textanimate__3');
       textContainer.classList.remove('textanimate__2');
 
     }, 17000);
-    setTimeout(function(){
+    setTimeout(function () {
       textContainer.classList.add('textanimate__4');
       textContainer.classList.remove('textanimate__3');
 
     }, 23000);
-    setTimeout(function(){
+    setTimeout(function () {
       aboutTextAnimate();
       textContainer.classList.add('notransition');
       textContainer.classList.remove('textanimate__4');
     }, 24000);
-}}
+  }
+}
 
 aboutTextAnimate();
