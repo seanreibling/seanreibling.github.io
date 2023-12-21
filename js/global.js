@@ -305,6 +305,9 @@ window.onscroll = function scrollUpDown() {
 
 //Show and hide contact card
 
+const form = document.getElementById('form');
+const formInputs = form.querySelectorAll('input, textarea, select');
+
 const contact = document.getElementById("contact");
 const contactCard = document.getElementById("contact__card");
 const triggerOpen = document.getElementById("trigger--open");
@@ -328,11 +331,55 @@ function hideContact() {
   contactCard.classList.remove('slide--left');
   contactCard.classList.add('slide--right');
   setTimeout(function () { contact.classList.add("is--hidden") }, 250);
+
+  // Clear all form fields
+  formInputs.forEach(input => {
+    if (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
+      input.value = '';
+    } else if (input.tagName === 'SELECT') {
+      input.selectedIndex = 0;
+    }
+  });
+
+  // Scroll the contact__card div to the top
+  contactCard.scrollTop = 0;
+}
+
+
+
+
+function hideContactCheck() {
+    function checkFormChanges() {
+      let formChanged = false;
+  
+      formInputs.forEach(input => {
+        if (input.defaultValue !== input.value) {
+          formChanged = true;
+        }
+      });
+  
+      if (formChanged) {
+        const confirmClose = window.confirm("Are you sure you want to close this form?");
+        if (confirmClose) {
+          hideContact(); // Call hideContact if changes detected and confirmed
+        }
+      } else {
+        hideContact(); // Call hideContact directly if no changes detected
+      }
+    }
+  
+    // Call checkFormChanges when needed, e.g., when closing or navigating away from the page
+    // Example: checkFormChanges();
+  
+    // Simulate calling checkFormChanges when a user attempts to close the form
+    // Replace this with your actual event trigger or call the function as needed
+    // For instance, attach it to a 'Close' button or a 'beforeunload' event
+    checkFormChanges();
 }
 
 triggerOpen.addEventListener('click', function () { showContact(); });
-triggerClose.addEventListener('click', function () { hideContact(); });
-triggerCloseBg.addEventListener('click', function () { hideContact(); });
+triggerClose.addEventListener('click', function () { hideContactCheck(); });
+triggerCloseBg.addEventListener('click', function () { hideContactCheck(); });
 
 //check if this page is homepage
 function checkHomeContactLink() {
@@ -352,31 +399,37 @@ checkHomeContactLink();
 // Dealing with Input width
 
 const textarea = document.getElementById('form__message');
+const defaultLines = 6; // Change this to your desired default number of lines
 
-// textarea.addEventListener('input', function() {
-//   const style = window.getComputedStyle(this);
-//   const width = parseInt(style.width, 10);
-//   const canvas = document.createElement('canvas');
-//   const context = canvas.getContext('2d');
-//   context.font = style.font;
-//   const textWidth = context.measureText(this.value).width;
-
-//   if (textWidth > width) {
-//     this.value += '\n'; // Add a line break when the text exceeds the width
-//   }
-// });
-
-// Dealing with Textarea Height
-function calcHeight(value) {
-  let numberOfLineBreaks = (value.match(/\n/g) || []).length;
-  // min-height + lines x line-height + padding + border
-  let newHeight = 35 + numberOfLineBreaks * 35 + 0 + 0;
-  return newHeight;
+function updateTextarea() {
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
 }
 
-textarea.addEventListener("keyup", () => {
-  textarea.style.height = calcHeight(textarea.value) + "px";
+textarea.addEventListener('input', function() {
+  const lineBreaks = (this.value.match(/\n/g) || []).length;
+  const totalLines = lineBreaks + 1;
+
+  if (totalLines > defaultLines) {
+    if (this.value.slice(-1) !== '\n') {
+      this.value += '\n';
+      updateTextarea();
+    }
+  } else {
+    updateTextarea();
+  }
 });
+
+textarea.addEventListener('keydown', function(e) {
+  if (e.key === 'Backspace' && textarea.scrollHeight > textarea.offsetHeight) {
+    setTimeout(updateTextarea, 0);
+  }
+});
+
+updateTextarea();
+
+
+
 
 
 
