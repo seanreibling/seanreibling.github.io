@@ -226,12 +226,9 @@ document.getElementById('mobile__link2').addEventListener('click', function () {
   }, 400);
 });
 
-// document.getElementById('mobile__link3').addEventListener('click', function () {
-//   mobileNavClose();
-//   setTimeout(function () {
-//     document.getElementById('shadow__link3').click();
-//   }, 400);
-// });
+
+
+
 
 
 //Simulate click on logo and close mobile nav if needed
@@ -318,7 +315,7 @@ const triggerCloseBg = document.getElementById("contact__bg");
 
 
 function showContact() {
-  
+
   scrollDisable();
   contact.classList.remove('is--hidden');
   setTimeout(function () {
@@ -475,7 +472,7 @@ document.getElementById('form').addEventListener('submit', function (event) {
       setTimeout(() => {
         document.getElementById('timer__bar').classList.add('is--filled');
       }, 50);
-      
+
 
       closeSubmitTimeout = setTimeout(() => {
         hideContact();
