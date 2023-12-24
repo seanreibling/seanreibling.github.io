@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-     <!-- Version 1.44 -->
+     <!-- Version 1.45 -->
      <!-- This site was designed and coded by me -->
     <head>
         <meta charset="utf-8">
@@ -66,13 +66,24 @@
         </nav>
         <div id="contact" class="is--hidden">
             <div id="contact__bg"></div>
+            <div id="contact__submit" class="is--hidden">
+                <img class="contact__close" id="submit--close"
+                    src="https://seanreibling.github.io/assets/icons/close.svg">
+                <h1 class="heading is--large">Success</h1>
+                <h2 class="heading is--large is--dim mbot--50" style="margin-top:-4px;">Thank you</h2>
+                <h3 class="heading is--small mbot--50">Thanks for reaching out, I look forward to talking.<br>I try to respond within 2 business days.</h3>
+                <div class="contact__timer">
+                    <div id="timer__bar" class=""></div>
+                </div>
+                
+            </div>
             <div class="slide--right" id="contact__card">
                 <img class="contact__close" id="trigger--close"
                     src="https://seanreibling.github.io/assets/icons/close.svg">
                 <h1 class="heading is--large mbot--24">Contact</h1>
                 <h2 class="heading is--small mbot--8">Shoot me a message – I'd love to chat.</h2>
                 <a class="heading is--small is--bold is--link" href="mailto:design@seanreibling.com">design@seanreibling.com</a>
-                <form id="form" class="mtop--50" action method="get">
+                <form id="form" class="mtop--50">
                     <div class="form ptop--50">
                         <input type="text" class="heading is--nav"
                             name="first name"
@@ -89,10 +100,10 @@
                         <div class="select__container">
                             <select class="heading is--nav" name="topic"
                                 placeholder="Topic" id="form__topic">
-                                <option value="proposal">Project proposal</option>
-                                <option value="opportunity">Job opportunity</option>
-                                <option value="opportunity">Coffee chat</option>
-                                <option value="opportunity">Other</option>
+                                <option value="Project proposal">Project proposal</option>
+                                <option value="Job opportunity">Job opportunity</option>
+                                <option value="Coffee chat">Coffee chat</option>
+                                <option value="Other">Other</option>
                             </select>
                             <img
                                 src="https://seanreibling.github.io/assets/icons/chevron-down.svg"

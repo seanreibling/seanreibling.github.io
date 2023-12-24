@@ -714,7 +714,7 @@ main {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-#contact__card {
+#contact__card, #contact__submit {
   height: 100%;
   width: 80%;
   min-width: 400px;
@@ -725,6 +725,15 @@ main {
   overflow: auto;
   box-sizing: border-box;
 }
+
+.contact__timer {
+  display: block;
+  width: 40%;
+  height: 3px;
+  background-color: rgb(227, 227, 227);
+  border-radius: 100px;
+}
+
 
 .contact__close {
   height: 32px;
@@ -842,7 +851,7 @@ button:hover {
 /* Mobile Landscape  */
 
 @media only screen and (max-width: 768px) {
-  #contact__card {
+  #contact__card, #contact__submit {
     padding: 64px 24px;
     width: 100%;
   }
@@ -861,7 +870,7 @@ button:hover {
     overflow: auto;
   }
 
-  #contact__card {
+  #contact__card, #contact__submit {
     width: 100% !important;
     padding: 70px 16px;
     min-width: 200px;

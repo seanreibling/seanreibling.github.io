@@ -310,15 +310,19 @@ const formInputs = form.querySelectorAll('input, textarea, select');
 
 const contact = document.getElementById("contact");
 const contactCard = document.getElementById("contact__card");
+const submitCard = document.getElementById("contact__submit");
 const triggerOpen = document.getElementById("trigger--open");
 const triggerClose = document.getElementById("trigger--close");
+const submitClose = document.getElementById("submit--close");
 const triggerCloseBg = document.getElementById("contact__bg");
 
 
 function showContact() {
+  
   scrollDisable();
   contact.classList.remove('is--hidden');
   setTimeout(function () {
+    contactCard.scrollTop = 0;
     triggerCloseBg.classList.remove('is--transparent');
     contactCard.classList.add('slide--left');
     contactCard.classList.remove('slide--right');
@@ -330,7 +334,17 @@ function hideContact() {
   triggerCloseBg.classList.add('is--transparent');
   contactCard.classList.remove('slide--left');
   contactCard.classList.add('slide--right');
-  setTimeout(function () { contact.classList.add("is--hidden") }, 250);
+  submitCard.classList.add('slide--right');
+  setTimeout(function () {
+    contact.classList.add("is--hidden");
+    submitCard.classList.remove('slide--right');
+  }, 350);
+
+  //if in submitted state, revert to contact card
+  document.getElementById('contact__submit').classList.add('is--hidden');
+  document.getElementById('contact__card').classList.remove('is--hidden');
+  document.getElementById('timer__bar').classList.remove('is--filled');
+  clearTimeout(closeSubmitTimeout);
 
   // Clear all form fields
   formInputs.forEach(input => {
@@ -340,9 +354,6 @@ function hideContact() {
       input.selectedIndex = 0;
     }
   });
-
-  // Scroll the contact__card div to the top
-  contactCard.scrollTop = 0;
 }
 
 
@@ -382,6 +393,7 @@ function hideContactCheck() {
 
 triggerOpen.addEventListener('click', function () { showContact(); });
 triggerClose.addEventListener('click', function () { hideContactCheck(); });
+submitClose.addEventListener('click', function () { hideContact(); });
 triggerCloseBg.addEventListener('click', function () { hideContactCheck(); });
 
 //check if this page is homepage
@@ -399,7 +411,7 @@ checkHomeContactLink();
 
 
 
-// Dealing with Input width
+// Textarea form input customization
 
 const textarea = document.getElementById('form__message');
 const defaultLines = 6; // Change this to your desired default number of lines
@@ -431,6 +443,49 @@ textarea.addEventListener('keydown', function (e) {
 
 updateTextarea();
 
+
+
+
+//Stop form refresh when submitting
+
+document.getElementById('form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Get form data
+  const formData = new FormData(this);
+
+  // Send form data to Formspree using Fetch API
+  fetch('https://formspree.io/f/xpzvabzd', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Handle successful form submission response
+      console.log('Form submitted successfully', data);
+
+      // Hide contact__card, show contact__submit for 5 seconds, then revert
+
+      document.getElementById('contact__card').classList.add('is--hidden');
+      document.getElementById('contact__submit').classList.remove('is--hidden');
+      submitCard.scrollTop = 0;
+      setTimeout(() => {
+        document.getElementById('timer__bar').classList.add('is--filled');
+      }, 50);
+      
+
+      closeSubmitTimeout = setTimeout(() => {
+        hideContact();
+      }, 8000);
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('Error submitting form', error);
+    });
+});
 
 
 

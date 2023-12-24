@@ -31,6 +31,13 @@ html.is-animating .transition-fade {
   transition: transform 0.2s ease;
 }
 
+#timer__bar {
+  width: 0%;
+  height: 100%;
+  background-color: black;
+  transition: width 8s;
+}
+
 .slide--up {
   transform: translateY(-100%);
 }
@@ -39,7 +46,7 @@ html.is-animating .transition-fade {
   transform: translateY(0);
 }
 
-#contact__card {
+#contact__card, #contact__submit {
   transition: transform 0.4s cubic-bezier(0.222, 0.763, 0, 0.997);
 }
 
@@ -55,12 +62,20 @@ html.is-animating .transition-fade {
   transform: translateX(0%);
 }
 
+.is--filled {
+  width: 100% !important;
+}
+
 .is--hidden {
   display: none !important;
 }
 
 .is--transparent {
   opacity: 0;
+}
+
+.is--error {
+  color: red !important;
 }
 
 /* Mobile nav animations */
