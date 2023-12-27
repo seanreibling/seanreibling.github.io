@@ -474,7 +474,7 @@ document.getElementById('form').addEventListener('submit', function (event) {
       }, 50);
 
 
-      closeSubmitTimeout = setTimeout(() => {
+      let closeSubmitTimeout = setTimeout(() => {
         hideContact();
       }, 8000);
     })
