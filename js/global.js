@@ -337,12 +337,6 @@ function hideContact() {
     submitCard.classList.remove('slide--right');
   }, 350);
 
-  //if in submitted state, revert to contact card
-  document.getElementById('contact__submit').classList.add('is--hidden');
-  document.getElementById('contact__card').classList.remove('is--hidden');
-  document.getElementById('timer__bar').classList.remove('is--filled');
-  clearTimeout(closeSubmitTimeout);
-
   // Clear all form fields
   formInputs.forEach(input => {
     if (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
@@ -351,6 +345,12 @@ function hideContact() {
       input.selectedIndex = 0;
     }
   });
+
+  //if in submitted state, revert to contact card
+  document.getElementById('contact__submit').classList.add('is--hidden');
+  document.getElementById('contact__card').classList.remove('is--hidden');
+  document.getElementById('timer__bar').classList.remove('is--filled');
+  clearTimeout(closeSubmitTimeout);
 }
 
 
