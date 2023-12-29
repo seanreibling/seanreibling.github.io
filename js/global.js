@@ -660,3 +660,109 @@ function aboutTextAnimate() {
 }
 
 aboutTextAnimate();
+
+
+
+
+
+// Case Study Slideshow Funcationality
+
+function setInitialSlideshowHeight(slideshow) {
+  resizeImagesInSlideshows(); // Assuming resizeImagesInSlideshows is defined elsewhere
+
+  let firstSlide = slideshow.querySelector('.image.is--slideshow');
+  let initialHeight = firstSlide.height;
+  console.log(initialHeight);
+
+  slideshow.style.height = initialHeight + 'px';
+}
+
+function initializeSlideshowsInContent() {
+  let slideshows = document.querySelectorAll('.elem.is--slideshow');
+  let resizeTimer;
+
+  slideshows.forEach((slideshow) => {
+    let slides = slideshow.querySelectorAll('.image.is--slideshow');
+    let currentSlide = 0;
+    let interval = slideshow.dataset.interval || 5000; // Default interval: 5 seconds
+
+    function showSlide(n) {
+      slides.forEach((slide) => {
+        slide.classList.remove('is--active');
+      });
+
+      slides[n].classList.add('is--active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function handleResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setInitialSlideshowHeight(slideshow);
+        showSlide(currentSlide); // Maintain current slide after resize
+      }, 250); // Adjust this delay as needed (250ms delay in this case)
+    }
+
+    setInitialSlideshowHeight(slideshow);
+
+    setInterval(() => {
+      nextSlide();
+    }, interval); // Change slides based on the specified or default interval
+
+    showSlide(currentSlide);
+
+    window.addEventListener('resize', handleResize);
+  });
+}
+
+initializeSlideshowsInContent();
+
+
+
+
+
+
+
+
+
+
+
+// Force Slideshow Images to Respond to Elem Classes
+
+function resizeImagesInSlideshows() {
+  let slideshows = document.querySelectorAll('.elem.is--slideshow');
+
+  slideshows.forEach((slideshow) => {
+    let images = slideshow.querySelectorAll('.image.is--slideshow');
+    let additionalClasses = slideshow.classList;
+
+    images.forEach((image) => {
+      // Check if any of the additional classes that affect image size are present
+      if (
+        additionalClasses.contains('is--desktop') ||
+        additionalClasses.contains('is--desktopcut') ||
+        additionalClasses.contains('is--mobile') ||
+        additionalClasses.contains('is--mobileframe')
+      ) {
+        // Adjust image size based on the additional classes
+        if (additionalClasses.contains('is--desktop')) {
+          // For is--desktop class
+          image.style.width = '80%'; // Adjust width as needed
+        } else if (additionalClasses.contains('is--desktopcut')) {
+          // For is--desktopcut class
+          image.style.width = '80%'; // Adjust width as needed
+        } else if (additionalClasses.contains('is--mobile') || additionalClasses.contains('is--mobileframe')) {
+          // For is--mobile or is--mobileframe classes
+          image.style.width = '50%'; // Adjust width as needed
+        }
+      }
+    });
+  });
+}
+
+// Call the function to resize images and adjust height in slideshows
+resizeImagesInSlideshows();

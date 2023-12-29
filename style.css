@@ -1199,9 +1199,6 @@ button:hover {
   grid-template: auto / 1fr 1fr 1fr;
 }
 
-.block.is--slideshow {
-}
-
 .block.is--hero {
   width: 100vw;
   margin-left: -5vw;
@@ -1230,7 +1227,7 @@ expanding past 1760px (1600 plus 5% margin) */
 .block.is--quote {
   text-align: center;
   width: 100%;
-  padding: 72px 5%;
+  padding: 150px 5%;
   box-sizing: border-box;
 }
 
@@ -1252,11 +1249,10 @@ expanding past 1760px (1600 plus 5% margin) */
 
 .elem {
   background-color: rgb(214, 214, 214);
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border: none;
-  padding: none !important;
-  margin: none;
   display: flex;
+  align-items: start;
   height: max-content;
 }
 
@@ -1276,7 +1272,7 @@ expanding past 1760px (1600 plus 5% margin) */
 }
 
 .elem.is--mobile {
-  padding: 25%;
+  padding: 10% 25%;
 }
 
 .elem.is--mobileframe {
@@ -1287,6 +1283,27 @@ expanding past 1760px (1600 plus 5% margin) */
   padding-top: 56.25%;
   position: relative;
 }
+
+.elem.is--slideshow {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.image.is--slideshow {
+  position: absolute;
+  width: 100%;
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+
+.image.is--slideshow.is--active {
+  opacity: 1;
+}
+
+
+
+
 
 /* Mobile Landscape */
 
@@ -1311,7 +1328,7 @@ expanding past 1760px (1600 plus 5% margin) */
 
   .block.is--quote {
     text-align: center;
-    padding: 72px 0;
+    padding: 96px 0;
   }
 
   .metadata {
