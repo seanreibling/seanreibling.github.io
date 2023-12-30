@@ -1239,11 +1239,15 @@ expanding past 1760px (1600 plus 5% margin) */
 
 .metadata__list {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  row-gap: 12px;
 }
 
 .metadata__comma {
   margin-right: 12px;
 }
+
 
 /*Image element options*/
 
