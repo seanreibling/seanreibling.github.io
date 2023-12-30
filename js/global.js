@@ -13,6 +13,8 @@ swup.hooks.on('page:view', () => {
   urlHover();
   createPlayPauseButtons();
   aboutTextAnimate();
+  initializeSlideshowsInContent();
+  resizeImagesInSlideshows();
 });
 
 
