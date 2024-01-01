@@ -1241,7 +1241,7 @@ expanding past 1760px (1600 plus 5% margin) */
   display: flex;
   flex-wrap: wrap;
   max-width: 400px;
-  row-gap: 12px;
+  row-gap: 8px;
 }
 
 .metadata__comma {

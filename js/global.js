@@ -12,10 +12,14 @@ swup.hooks.on('page:view', () => {
   urlCheck();
   urlHover();
   createPlayPauseButtons();
-  aboutTextAnimate();
-  initializeSlideshowsInContent();
-  resizeImagesInSlideshows();
+  aboutTextAnimate();    
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // This only runs once, so we need some other event for triggering code
+    initializeSlideshowsInContent();
+  });
 });
+
 
 
 
@@ -24,7 +28,8 @@ swup.hooks.on('page:view', () => {
 //Scroll to page top
 function scrollTop() {
   setTimeout(function () {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+    
   }, 50);
 }
 
@@ -670,7 +675,7 @@ aboutTextAnimate();
 // Case Study Slideshow Funcationality
 
 function setInitialSlideshowHeight(slideshow) {
-  resizeImagesInSlideshows(); // Assuming resizeImagesInSlideshows is defined elsewhere
+  resizeImagesInSlideshows(); 
 
   let firstSlide = slideshow.querySelector('.image.is--slideshow');
   let initialHeight = firstSlide.height;
