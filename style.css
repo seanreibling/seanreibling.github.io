@@ -1227,7 +1227,7 @@ expanding past 1760px (1600 plus 5% margin) */
 .block.is--quote {
   text-align: center;
   width: 100%;
-  padding: 150px 5%;
+  padding: 150px 10%;
   box-sizing: border-box;
 }
 
