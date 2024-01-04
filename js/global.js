@@ -13,11 +13,13 @@ swup.hooks.on('page:view', () => {
   urlHover();
   createPlayPauseButtons();
   aboutTextAnimate();    
+});
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // This only runs once, so we need some other event for triggering code
-    initializeSlideshowsInContent();
-  });
+swup.hooks.on('visit:end', () => {
+  // This runs after each Swup transition completes
+  console.log('Transition completed. Initializing slideshows...');
+  initializeSlideshowsInContent();
+  resizeImagesInSlideshows();
 });
 
 
