@@ -1005,25 +1005,6 @@ button:hover {
   grid-area: auto / span 2;
 }
 
-.slide {
-  width: 100%;
-  padding-bottom: 60%;
-  background-size: cover;
-  background-position: 0%;
-}
-
-#about__slide1 {
-  background-image: url("assets/about/seanreibling_about_1.png");
-}
-
-#about__slide1 {
-  background-image: url("assets/about/seanreibling_about_2.png");
-}
-
-#about__slide1 {
-  background-image: url("assets/about/seanreibling_about_3.png");
-}
-
 .about__process {
   grid-area: auto / span 2;
   display: grid;
