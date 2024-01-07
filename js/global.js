@@ -672,7 +672,23 @@ aboutTextAnimate();
 
 
 
+// Preload images before setting initial slideshow height
+function preloadImages(images) {
+  let count = 0;
 
+  function imageLoaded() {
+    count++;
+    if (count === images.length) {
+      initializeSlideshowsInContent();
+    }
+  }
+
+  images.forEach((image) => {
+    const img = new Image();
+    img.onload = imageLoaded;
+    img.src = image.src;
+  });
+}
 
 // Case Study Slideshow Funcationality
 
