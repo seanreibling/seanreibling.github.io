@@ -657,9 +657,6 @@ main {
 
 /* ---Project Card--- */
 
-.project {
-}
-
 .project__thumbnail {
   width: 100%;
   padding-bottom: 60%;
@@ -1250,11 +1247,12 @@ expanding past 1760px (1600 plus 5% margin) */
   padding-bottom: 0;
 }
 
-.elem.is--tablet {
-}
+/* .elem.is--tablet {
 
-.elem.is--tabletframe {
-}
+} */
+
+/* .elem.is--tabletframe {
+} */
 
 .elem.is--mobile {
   padding: 10% 25%;
@@ -1340,9 +1338,6 @@ footer {
   width: 100%;
   display: grid;
   grid-template: 1fr / 1fr 1fr;
-}
-
-.footer__left {
 }
 
 .footer__content {
