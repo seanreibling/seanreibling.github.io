@@ -1,471 +1,418 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Portfolio – Design Grad Show</title>
-        <link rel="shortcut icon" type="image/png"
-            href="https://seanreibling.github.io/assets/favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180"
-            href="https://seanreibling.github.io/assets/webclip.png">
-        <meta name="description" content>
-        <meta name="theme-color" content="#000000">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="../transitions.css">
-        <link rel="stylesheet" href="../colours.css">
-    </head>
-    <body>
-        <nav id="nav" class="slide--down">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfolio – Design Grad Show</title>
+    <link rel="shortcut icon" type="image/png" href="https://seanreibling.github.io/assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://seanreibling.github.io/assets/webclip.png">
+    <meta name="description" content>
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../transitions.css">
+    <link rel="stylesheet" href="../colours.css">
+</head>
+
+<body>
+    <nav id="nav" class="slide--down">
+        <div class="nav__container">
+            <div><a id="wordmark" class="wordmark">Sean Reibling</a></div>
+            <div class="nav__links" id="links">
+                <a href="/portfolio" class="heading is--nav is--dim">Portfolio</a>
+                <a href="/about" class="heading is--nav is--dim">About</a>
+                <!-- <a href="/latest" class="heading is--nav is--dim">Latest</a> -->
+                <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
+            </div>
+            <div id="nav__btn">
+                <div class="btn__bar"></div>
+                <div class="btn__bar"></div>
+            </div>
+            <div id="close__btn" class="is--hidden">
+                <img class="close__icon" src="https://seanreibling.github.io/assets/icons/close.svg">
+            </div>
+        </div>
+        <div id="nav__mobile" class="is--hidden">
+            <div class="mobile__links">
+                <a class="heading is--menu" id="mobile__link1">Portfolio</a>
+                <a class="heading is--menu" id="mobile__link2">About</a>
+                <!-- <a href="/latest" class="heading is--menu" id="mobile__link3">Latest</a> -->
+                <a class="heading is--menu" id="mobile__link4">Contact</a>
+                <a href="/" id="shadow__link0">Home</a>
+                <a href="/portfolio" id="shadow__link1">Portfolio</a>
+                <a href="/about" id="shadow__link2">About</a>
+                <!-- <a href="/latest" id="shadow__link3">About</a> -->
+            </div>
+            <div class="mbot--50">
+                <div class="mobile__social mbot--16">
+                    <a href="https://www.linkedin.com/in/seanreibling/" target=”_blank” class="heading is--small"
+                        id="mobile__link5">LinkedIn</a>
+                    <a href="https://www.instagram.com/seanreibling2/" target=”_blank” class="heading is--small"
+                        id="mobile__link6">Instagram</a>
+                    <a href="https://dribbble.com/seanreibling" target=”_blank” class="heading is--small"
+                        id="mobile__link7">Dribbble</a>
+                </div>
+                <h1 class="heading is--small is--dim" id="mobile__link8">©
+                    2023 Sean Reibling</h1>
+            </div>
+        </div>
+    </nav>
+    <div id="contact" class="is--hidden">
+        <div id="contact__bg"></div>
+        <div id="contact__submit" class="is--hidden">
+            <img class="contact__close" id="submit--close" src="https://seanreibling.github.io/assets/icons/close.svg">
+            <h1 class="heading is--large">Success</h1>
+            <h2 class="heading is--large is--dim mbot--50" style="margin-top:-4px;">Thank you</h2>
+            <h3 class="heading is--small mbot--50">Thanks for reaching
+                out!<br>I try to respond within 2 business days.</h3>
+            <div class="contact__timer">
+                <div id="timer__bar" class></div>
+            </div>
+
+        </div>
+        <div class="slide--right" id="contact__card">
+            <img class="contact__close" id="trigger--close" src="https://seanreibling.github.io/assets/icons/close.svg">
+            <h1 class="heading is--large mbot--24">Contact</h1>
+            <h2 class="heading is--small mbot--8">Shoot me a message – I'd
+                love to chat.</h2>
+            <a class="heading is--small is--bold is--link"
+                href="mailto:design@seanreibling.com">design@seanreibling.com</a>
+            <form id="form" class="mtop--50">
+                <div class="form ptop--50">
+                    <input type="text" class="heading is--nav" name="first name" placeholder="First name"
+                        id="form__fname" required />
+                    <input type="text" class="heading is--nav" name="last name" placeholder="Last name" id="form__lname"
+                        required />
+                    <input type="email" class="heading is--nav" name="email" placeholder="Email address"
+                        id="form__email" required />
+                    <input type="text" class="heading is--nav" name="organization" placeholder="Organization"
+                        id="form__organization" />
+                    <div class="select__container">
+                        <select class="heading is--nav" name="topic" placeholder="Topic" id="form__topic">
+                            <option value="Project proposal">Project
+                                proposal</option>
+                            <option value="Job opportunity">Job
+                                opportunity</option>
+                            <option value="Coffee chat">Coffee chat</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <img src="https://seanreibling.github.io/assets/icons/chevron-down.svg" class="select__icon">
+                    </div>
+                    <textarea data-expandable class="heading is--nav mbot--24" placeholder="Message" maxlength="5000"
+                        id="form__message" name="message" required data-name="message" spellcheck="false"
+                        rows="4"></textarea>
+                    <button id="form__button">Submit</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <main id="swup" class="transition-fade">
+        <div id="subnav">
             <div class="nav__container">
-                <div><a id="wordmark" class="wordmark">Sean Reibling</a></div>
-                <div class="nav__links" id="links">
-                    <a href="/portfolio"
-                        class="heading is--nav is--dim">Portfolio</a>
-                    <a href="/about" class="heading is--nav is--dim">About</a>
-                    <!-- <a href="/latest" class="heading is--nav is--dim">Latest</a> -->
-                    <a id="trigger--open"
-                        class="heading is--nav is--dim">Contact</a>
-                </div>
-                <div id="nav__btn">
-                    <div class="btn__bar"></div>
-                    <div class="btn__bar"></div>
-                </div>
-                <div id="close__btn" class="is--hidden">
-                    <img class="close__icon"
-                        src="https://seanreibling.github.io/assets/icons/close.svg">
-                </div>
-            </div>
-            <div id="nav__mobile" class="is--hidden">
-                <div class="mobile__links">
-                    <a class="heading is--menu" id="mobile__link1">Portfolio</a>
-                    <a class="heading is--menu" id="mobile__link2">About</a>
-                    <!-- <a href="/latest" class="heading is--menu" id="mobile__link3">Latest</a> -->
-                    <a class="heading is--menu" id="mobile__link4">Contact</a>
-                    <a href="/" id="shadow__link0">Home</a>
-                    <a href="/portfolio" id="shadow__link1">Portfolio</a>
-                    <a href="/about" id="shadow__link2">About</a>
-                    <!-- <a href="/latest" id="shadow__link3">About</a> -->
-                </div>
-                <div class="mbot--50">
-                    <div class="mobile__social mbot--16">
-                        <a href="https://www.linkedin.com/in/seanreibling/"
-                            target=”_blank” class="heading is--small"
-                            id="mobile__link5">LinkedIn</a>
-                        <a href="https://www.instagram.com/seanreibling2/"
-                            target=”_blank” class="heading is--small"
-                            id="mobile__link6">Instagram</a>
-                        <a href="https://dribbble.com/seanreibling"
-                            target=”_blank” class="heading is--small"
-                            id="mobile__link7">Dribbble</a>
-                    </div>
-                    <h1 class="heading is--small is--dim" id="mobile__link8">©
-                        2023 Sean Reibling</h1>
-                </div>
-            </div>
-        </nav>
-        <div id="contact" class="is--hidden">
-            <div id="contact__bg"></div>
-            <div id="contact__submit" class="is--hidden">
-                <img class="contact__close" id="submit--close"
-                    src="https://seanreibling.github.io/assets/icons/close.svg">
-                <h1 class="heading is--large">Success</h1>
-                <h2 class="heading is--large is--dim mbot--50"
-                    style="margin-top:-4px;">Thank you</h2>
-                <h3 class="heading is--small mbot--50">Thanks for reaching
-                    out!<br>I try to respond within 2 business days.</h3>
-                <div class="contact__timer">
-                    <div id="timer__bar" class></div>
-                </div>
-
-            </div>
-            <div class="slide--right" id="contact__card">
-                <img class="contact__close" id="trigger--close"
-                    src="https://seanreibling.github.io/assets/icons/close.svg">
-                <h1 class="heading is--large mbot--24">Contact</h1>
-                <h2 class="heading is--small mbot--8">Shoot me a message – I'd
-                    love to chat.</h2>
-                <a class="heading is--small is--bold is--link"
-                    href="mailto:design@seanreibling.com">design@seanreibling.com</a>
-                <form id="form" class="mtop--50">
-                    <div class="form ptop--50">
-                        <input type="text" class="heading is--nav"
-                            name="first name"
-                            placeholder="First name" id="form__fname"
-                            required />
-                        <input type="text" class="heading is--nav"
-                            name="last name"
-                            placeholder="Last name" id="form__lname" required />
-                        <input type="email" class="heading is--nav" name="email"
-                            placeholder="Email address" id="form__email"
-                            required />
-                        <input type="text" class="heading is--nav"
-                            name="organization"
-                            placeholder="Organization"
-                            id="form__organization" />
-                        <div class="select__container">
-                            <select class="heading is--nav" name="topic"
-                                placeholder="Topic" id="form__topic">
-                                <option value="Project proposal">Project
-                                    proposal</option>
-                                <option value="Job opportunity">Job
-                                    opportunity</option>
-                                <option value="Coffee chat">Coffee chat</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <img
-                                src="https://seanreibling.github.io/assets/icons/chevron-down.svg"
-                                class="select__icon">
-                        </div>
-                        <textarea data-expandable
-                            class="heading is--nav mbot--24"
-                            placeholder="Message"
-                            maxlength="5000" id="form__message" name="message"
-                            required data-name="message"
-                            spellcheck="false" rows="4"></textarea>
-                        <button id="form__button">Submit</button>
-
-                    </div>
-                </form>
+                <a href="/portfolio/waypoint" class="arrow__container"><img src="../assets/icons/arrow-left.svg"
+                        class="arrow"></a>
+                <h2 class="heading is--small">York Design Grad Show</h2>
+                <a href="/portfolio/campus-workplace-study" class="arrow__container"><img
+                        src="../assets/icons/arrow-right.svg" class="arrow"></a>
             </div>
         </div>
-        <main id="swup" class="transition-fade">
-            <div id="subnav">
-                <div class="nav__container">
-                    <a href="/portfolio/waypoint" class="arrow__container"><img
-                            src="../assets/icons/arrow-left.svg"
-                            class="arrow"></a>
-                    <h2 class="heading is--small">York Design Grad Show</h2>
-                    <a href="/portfolio/campus-workplace-study"
-                        class="arrow__container"><img
-                            src="../assets/icons/arrow-right.svg"
-                            class="arrow"></a>
-                </div>
+        <section class="ps__hero">
+            <div class="fw ptop--150">
+                <h1 class="heading">York Design Grad Show</h1>
+                <h1 class="heading is--dim">Showcasing four years of
+                    culminating talent</h1>
             </div>
-            <section class="ps__hero">
-                <div class="fw ptop--150">
-                    <h1 class="heading">York Design Grad Show</h1>
-                    <h1 class="heading is--dim">Showcasing four years of
-                        culminating talent</h1>
+            <div class="block is--hero mtop--50 cs--bgcol--4">
+                <img class="image"
+                    src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_0.png">
+            </div>
+            <div class="block is--text">
+                <div class="metadata">
+                    <h2 class="heading">2023</h2>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Client</h3>
+                        <h3 class="heading is--small">Class of 2023</h3>
+                    </div>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Scope</h3>
+                        <div class="metadata__list">
+                            <h3 class="heading is--small">Product</h3>
+                            <div class="metadata__comma">
+                                <h3 class="heading is--small">,</h3>
+                            </div>
+                            <h3 class="heading is--small">Identity</h3>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Contributors</h3>
+                        <div class="metadata__list">
+                            <a href="https://justinchiu.design/" target=”_blank”
+                                class="heading is--small is--link">Justin
+                                Chiu</a>
+                            <div class="metadata__comma">
+                                <h3 class="heading is--small">,</h3>
+                            </div>
+                            <a href="https://khadijabari.design/" target=”_blank”
+                                class="heading is--small is--link">Khadija
+                                Bari</a><br>
+                            <div class="metadata__comma">
+                                <h3 class="heading is--small">,</h3>
+                            </div>
+                            <a href="https://desn2023.github.io/desn2023/casestudy.pdf#page=8" target=”_blank”
+                                class="heading is--small is--link">Additional
+                                contributors</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="block is--hero mtop--50 cs--bgcol--4">
+                <p>As 2023 graduates of the York Program in Design, our cohort worked to prepare an event that would
+                    showcase our culminating design pieces to potential employers and the broader design community. An
+                    important aspect of this showcase was a digital exhibition that would extend our reach beyond
+                    Toronto. The website would also serve as an archive of our work to look back on in the years to
+                    come.
+                    <br><br>
+                    Working alongside marketing and branding efforts, my team and I were tasked with developing a
+                    responsive website that both incorporated our theme and design guidelines while allowing our work to
+                    remain front-and-center. The site needed to be easily navigable and highlight designers and their
+                    work at strategic points throughout every user flow. Through a 5-week process of brainstorming,
+                    designing, testing, and developing, we were able to launch a site that met all of our key objectives
+                    and properly showcase our skills to the world.
+                    <br><br>
+                    This project is a first-place winner in the RGD Student Awards competition for web design. An
+                    in-depth analysis of every aspect of our process is available through the link below.
+                    <br><br>
+                    <a href="https://desn2023.github.io/desn2023/casestudy.pdf" target=”_blank”
+                        class="heading is--small is--link">View full case
+                        study</a>
+
+                </p>
+            </div>
+        </section>
+        <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
+        <section class="content">
+            <div class="block">
+                <div class="elem is--desktop is--video cs--bgcol--4"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 10%;"
+                        src="https://player.vimeo.com/video/898615162?background=1&autopause=0" width="80%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--grid">
+                <div class="elem is--mobile is--slideshow cs--bgcol--4">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_2-1.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_2-2.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_2-3.png">
+                </div>
+                <div class="elem cs--bgcol--4">
                     <img class="image"
-                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_0.png">
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_3.png">
                 </div>
-                <div class="block is--text">
-                    <div class="metadata">
-                        <h2 class="heading">2023</h2>
-                        <div>
-                            <h3
-                                class="heading is--small is--dim mbot--4">Client</h3>
-                            <h3 class="heading is--small">Class of 2023</h3>
-                        </div>
-                        <div>
-                            <h3
-                                class="heading is--small is--dim mbot--4">Scope</h3>
-                            <div class="metadata__list">
-                                <h3 class="heading is--small">Product</h3>
-                                <div class="metadata__comma"><h3
-                                        class="heading is--small">,</h3></div>
-                                <h3 class="heading is--small">Identity</h3>
-                            </div>
-                        </div>
-                        <div>
-                            <h3
-                                class="heading is--small is--dim mbot--4">Contributors</h3>
-                            <div class="metadata__list">
-                                <a href="https://justinchiu.design/"
-                                    target=”_blank”
-                                    class="heading is--small is--link">Justin
-                                    Chiu</a>
-                                <div class="metadata__comma"><h3
-                                        class="heading is--small">,</h3></div>
-                                <a href="https://khadijabari.design/"
-                                    target=”_blank”
-                                    class="heading is--small is--link">Khadija
-                                    Bari</a><br>
-                                <div class="metadata__comma"><h3
-                                        class="heading is--small">,</h3></div>
-                                <a
-                                    href="https://desn2023.github.io/desn2023/casestudy.pdf#page=8"
-                                    target=”_blank”
-                                    class="heading is--small is--link">Additional
-                                    contributors</a>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                        ‍<br><br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                        <br><br>
-                        <a
-                            href="https://desn2023.github.io/desn2023/casestudy.pdf"
-                            target=”_blank”
-                            class="heading is--small is--link">View full case
-                            study</a>
-
-                    </p>
-                </div>
-            </section>
-            <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
-            <section class="content">
-                <div class="block">
-                    <div class="elem is--desktop is--video cs--bgcol--4"><iframe
-                            class="bgvideo"
-                            style="position: absolute; top: 0; left: 10%;"
-                            src="https://player.vimeo.com/video/898615162?background=1&autopause=0"
-                            width="80%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen"
-                            allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem is--mobile is--slideshow cs--bgcol--4">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_2-1.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_2-2.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_2-3.png">
-                    </div>
-                    <div class="elem cs--bgcol--4">
-                        <img class="image"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_3.png">
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="elem is--desktop is--video cs--bgcol--4"><iframe
-                            class="bgvideo"
-                            style="position: absolute; top: 0; left: 10%;"
-                            src="https://player.vimeo.com/video/898658309?background=1&autopause=0"
-                            width="80%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen"
-                            allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--quote">
-                    <h2
-                        class="heading">"this project has beautiful, tight typography with a design opinion but allows each individual designer and their work and the photography to come forward. The splash page and the animation with the cubes is a real statement feature that sets the desired tone."<br><span
-                            class="heading is--small is--dim">Judges, RGD Student Awards</span>
-                    </h2>
-                </div>
-                <div class="block">
-                    <div class="elem is--desktopcut is--slideshow cs--bgcol--4"
-                        data-interval="5000">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_5-1.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_5-2.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_5-3.png">
-                    </div>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem cs--bgcol--4">
-                        <img class="image"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_6.png">
-                    </div>
-                    <div class="elem is--mobile is--slideshow cs--bgcol--4">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_7-1.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_7-2.png">
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="elem is--desktop is--video cs--bgcol--4"><iframe
-                            class="bgvideo"
-                            style="position: absolute; top: 0; left: 10%;"
-                            src="https://player.vimeo.com/video/898660119?background=1&autopause=0"
-                            width="80%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen"
-                            allowfullscreen></iframe></div>
-                    <div class="elem is--desktopcut is--slideshow cs--bgcol--4"
-                        data-interval="10000">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_8-1.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_8-2.png">
-                    </div>
-                </div>
-                <div class="block is--text ">
-                    <h2 class="heading is--small is--bold">Emphasizing the work
-                    </h2>
-                    <p>The branding and user interface were designed with the
-                        primary goal of surfacing and showcasing design work. To
-                        achieve this, the brand utilizes subtle penrose elements
-                        on a clean, black-and-white backdrop. Typography is
-                        minimal, and white space is generous. In order to give
-                        the website a distinct design opinion while remaining
-                        true to its objective, tight swiss-style margins,
-                        typography, and grids are used to bring an elegant and
-                        modern style to each page. Subtle hover interactions
-                        over links and seamless page transition fades help
-                        polish the user experience.
-                    </p>
-                </div>
-                <div class="block">
-                    <div class="elem is--desktopcut is--slideshow cs--bgcol--4"
-                        data-interval="5000">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_9-1.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_9-2.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_9-3.png">
-                    </div>
-                    <div class="elem is--desktopcut is--slideshow cs--bgcol--4"
-                        data-interval="5000">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_10-1.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_10-2.png">
-                    </div>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem is--desktopcut cs--bgcol--4">
-                        <img class="image"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_11.png">
-                    </div>
-                    <div class="elem is--desktopcut cs--bgcol--4">
-                        <img class="image"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_12.png">
-                    </div>
-                </div>
-                <div class="block is--quote">
-                    <h2
-                        class="heading">"A clean type hierarchy, immediate and subtle feedback on interaction with UI elements, and a strong grid makes this website dynamic, modern and effective."<br><span
-                            class="heading is--small is--dim">Judges, RGD Student Awards
-                            </span>
-                    </h2>
-                </div>
-                <div class="block">
-                    <div class="elem is--desktop is--video cs--bgcol--4"><iframe
-                            class="bgvideo"
-                            style="position: absolute; top: 0; left: 10%;"
-                            src="https://player.vimeo.com/video/898660314?background=1&autopause=0"
-                            width="80%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen"
-                            allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem is--desktopcut cs--bgcol--4">
-                        <img class="image"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_14.png">
-                    </div>
-                    <div class="elem is--desktopcut cs--bgcol--4">
-                        <img class="image"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_15.png">
-                    </div>
-                </div>
-                <div class="block is--text ">
-                    <h2 class="heading is--small is--bold">End of a chapter,
-                        start of an era
-                    </h2>
-                    <p>On a personal note, this project is significant because
-                        it marks the end of a four-year journey in design
-                        education. This program stretched and challenged me as a
-                        creative thinker, and introduced me to many incredible
-                        people along the way. Working alongside my colleagues
-                        and
-                        friends to properly showcase our cohort's culminating
-                        work
-                        was a fulfilling way to close out my time
-                        at York University. Conversely, this site
-                        also marks the beginning of a new era of designers. As
-                        the first cohort of graduates in the
-                        York Program in Design, it was a unique opportunity to
-                        introduce the wider community to a new program that is
-                        sure to produce high quality talent in the years to
-                        come.
-                    </p>
-                </div>
-                <div class="block">
-                    <div class="elem is--slideshow cs--bgcol--4">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_16-1.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_16-2.png">
-                        <img class="image is--slideshow"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_16-3.png">
-                    </div>
-                    <div class="elem cs--bgcol--4">
-                        <img class="image"
-                            src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_17.png">
-                    </div>
-                </div>
-            </section>
-            <!-- CONTENT BLOCK TEMPLATE END -->
-            <section class="prevnext">
-                <h3 class="heading is--small pbot--24">More Projects</h3>
-                <div class="grid">
-                    <a href="/portfolio/waypoint" class="project">
-                        <div
-                            class="project__thumbnail cs--bgimg--2 mbot--24"></div>
-                        <h1 class="heading is--small mbot--2">Waypoint</h1>
-                        <h2 class="heading is--small is--dim">Connecting
-                            students to campus community</h2>
-                    </a>
-                    <a href="/portfolio/campus-workplace-study" class="project">
-                        <div
-                            class="project__thumbnail cs--bgimg--3 mbot--24"></div>
-                        <h1 class="heading is--small mbot--2">Campus Workplace
-                            Study</h1>
-                        <h2 class="heading is--small is--dim">Interactive web
-                            experience for York University</h2>
-                    </a>
-                </div>
-            </section>
-        </main>
-        <script src="https://player.vimeo.com/api/player.js"></script>
-        <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
-        <script src="https://unpkg.com/swup@4"></script>
-        <script src="../js/global.js" async defer></script>
-    </body>
-    <footer>
-        <div class="footer__container ptop--100 pbot--50">
-            <div class="footer__content is--left">
-                <div class="footer__content">
-                    <a href="/privacy-policy"
-                        class="heading is--nav is--dim">Privacy
-                        Policy</a>
-                    <a href="/terms-and-conditions"
-                        class="heading is--nav is--dim">Terms
-                        of
-                        Use</a>
-                </div>
-                <div><h1 class="heading is--nav is--dim nohover">© 2023 Sean
-                        Reibling</h1></div>
             </div>
-            <div class="footer__content is--right">
-                <a href="https://www.linkedin.com/in/seanreibling/"
-                    target=”_blank” class="heading is--nav is--dim">LinkedIn</a>
-                <a href="https://www.instagram.com/seanreibling2/"
-                    target=”_blank”
-                    class="heading is--nav is--dim">Instagram</a>
-                <a href="https://dribbble.com/seanreibling" target=”_blank”
-                    class="heading is--nav is--dim">Dribbble</a>
+            <div class="block">
+                <div class="elem is--desktop is--video cs--bgcol--4"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 10%;"
+                        src="https://player.vimeo.com/video/898658309?background=1&autopause=0" width="80%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--quote">
+                <h2 class="heading">"This project has beautiful, tight typography with a design opinion but allows each
+                    individual designer and their work to come forward. The splash page and the animation with the cubes
+                    is a real statement feature that sets the desired tone."<br><span
+                        class="heading is--small is--dim">Judges, RGD Student Awards</span>
+                </h2>
+            </div>
+            <div class="block">
+                <div class="elem is--desktopcut is--slideshow cs--bgcol--4" data-interval="5000">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_5-1.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_5-2.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_5-3.png">
+                </div>
+            </div>
+            <div class="block is--grid">
+                <div class="elem cs--bgcol--4">
+                    <img class="image"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_6.png">
+                </div>
+                <div class="elem is--mobile is--slideshow cs--bgcol--4">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_7-1.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_7-2.png">
+                </div>
+            </div>
+            <div class="block">
+                <div class="elem is--desktop is--video cs--bgcol--4"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 10%;"
+                        src="https://player.vimeo.com/video/898660119?background=1&autopause=0" width="80%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+                <div class="elem is--desktopcut is--slideshow cs--bgcol--4" data-interval="10000">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_8-1.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_8-2.png">
+                </div>
+            </div>
+            <div class="block is--text ">
+                <h2 class="heading is--small is--bold">Emphasizing the work
+                </h2>
+                <p>The branding and user interface were designed with the
+                    primary goal of surfacing and showcasing design work. To
+                    achieve this, the brand utilizes subtle penrose elements
+                    on a clean, black-and-white backdrop. Typography is
+                    minimal, and white space is generous. In order to give
+                    the website a distinct design opinion while remaining
+                    true to its objective, tight swiss-style margins,
+                    typography, and grids are used to bring an elegant and
+                    modern style to each page. Subtle hover interactions
+                    over links and seamless page transition fades help
+                    polish the user experience.
+                </p>
+            </div>
+            <div class="block">
+                <div class="elem is--desktopcut is--slideshow cs--bgcol--4" data-interval="5000">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_9-1.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_9-2.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_9-3.png">
+                </div>
+                <div class="elem is--desktopcut is--slideshow cs--bgcol--4" data-interval="5000">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_10-1.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_10-2.png">
+                </div>
+            </div>
+            <div class="block is--grid">
+                <div class="elem is--desktopcut cs--bgcol--4">
+                    <img class="image"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_11.png">
+                </div>
+                <div class="elem is--desktopcut cs--bgcol--4">
+                    <img class="image"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_12.png">
+                </div>
+            </div>
+            <div class="block is--quote">
+                <h2 class="heading">"A clean type hierarchy, immediate and subtle feedback on interaction with UI
+                    elements, and a strong grid makes this website dynamic, modern and effective."<br><span
+                        class="heading is--small is--dim">Judges, RGD Student Awards
+                    </span>
+                </h2>
+            </div>
+            <div class="block">
+                <div class="elem is--desktop is--video cs--bgcol--4"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 10%;"
+                        src="https://player.vimeo.com/video/898660314?background=1&autopause=0" width="80%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--grid">
+                <div class="elem is--desktopcut cs--bgcol--4">
+                    <img class="image"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_14.png">
+                </div>
+                <div class="elem is--desktopcut cs--bgcol--4">
+                    <img class="image"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_15.png">
+                </div>
+            </div>
+            <div class="block is--text ">
+                <h2 class="heading is--small is--bold">End of a chapter,
+                    start of an era
+                </h2>
+                <p>On a personal note, this project is significant because
+                    it marks the end of a four-year journey in design
+                    education. This program stretched and challenged me as a
+                    creative thinker, and introduced me to many incredible
+                    people along the way. Working alongside my colleagues
+                    and
+                    friends to properly showcase our cohort's culminating
+                    work
+                    was a fulfilling way to close out my time
+                    at York University. Conversely, this site
+                    also marks the beginning of a new era of designers. As
+                    the first cohort of graduates in the
+                    York Program in Design, it was a unique opportunity to
+                    introduce the wider community to a new program that is
+                    sure to produce high quality talent in the years to
+                    come.
+                </p>
+            </div>
+            <div class="block">
+                <div class="elem is--slideshow cs--bgcol--4">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_16-1.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_16-2.png">
+                    <img class="image is--slideshow"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_16-3.png">
+                </div>
+                <div class="elem cs--bgcol--4">
+                    <img class="image"
+                        src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_17.png">
+                </div>
+            </div>
+        </section>
+        <!-- CONTENT BLOCK TEMPLATE END -->
+        <section class="prevnext">
+            <h3 class="heading is--small pbot--24">More Projects</h3>
+            <div class="grid">
+                <a href="/portfolio/waypoint" class="project">
+                    <div class="project__thumbnail cs--bgimg--2 mbot--24"></div>
+                    <h1 class="heading is--small mbot--2">Waypoint</h1>
+                    <h2 class="heading is--small is--dim">Connecting
+                        students to campus community</h2>
+                </a>
+                <a href="/portfolio/campus-workplace-study" class="project">
+                    <div class="project__thumbnail cs--bgimg--3 mbot--24"></div>
+                    <h1 class="heading is--small mbot--2">Campus Workplace
+                        Study</h1>
+                    <h2 class="heading is--small is--dim">Interactive web
+                        experience for York University</h2>
+                </a>
+            </div>
+        </section>
+    </main>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="../js/global.js" async defer></script>
+</body>
+<footer>
+    <div class="footer__container ptop--100 pbot--50">
+        <div class="footer__content is--left">
+            <div class="footer__content">
+                <a href="/privacy-policy" class="heading is--nav is--dim">Privacy
+                    Policy</a>
+                <a href="/terms-and-conditions" class="heading is--nav is--dim">Terms
+                    of
+                    Use</a>
+            </div>
+            <div>
+                <h1 class="heading is--nav is--dim nohover">© 2023 Sean
+                    Reibling</h1>
             </div>
         </div>
-        <div>
-        </footer>
-    </html>
+        <div class="footer__content is--right">
+            <a href="https://www.linkedin.com/in/seanreibling/" target=”_blank”
+                class="heading is--nav is--dim">LinkedIn</a>
+            <a href="https://www.instagram.com/seanreibling2/" target=”_blank”
+                class="heading is--nav is--dim">Instagram</a>
+            <a href="https://dribbble.com/seanreibling" target=”_blank” class="heading is--nav is--dim">Dribbble</a>
+        </div>
+    </div>
+    <div>
+</footer>
+
+</html>
