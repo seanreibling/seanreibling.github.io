@@ -590,6 +590,19 @@ function createPlayPauseButtons() {
 
         const player = new Vimeo.Player(videoIframe);
 
+        // Check the initial state of the video and set the button accordingly
+        player.getPaused().then((paused) => {
+          if (paused) {
+            pauseIcon.style.display = 'block';
+            playIcon.style.display = 'none';
+          } else {
+            pauseIcon.style.display = 'none';
+            playIcon.style.display = 'block';
+          }
+        }).catch((error) => {
+          console.error('Error:', error);
+        });
+
         button.addEventListener('click', () => {
           player.getPaused().then((paused) => {
             if (paused) {
@@ -604,19 +617,6 @@ function createPlayPauseButtons() {
           }).catch((error) => {
             console.error('Error:', error);
           });
-        });
-
-        // Initial button state based on video playback
-        player.getPaused().then((paused) => {
-          if (paused) {
-            pauseIcon.style.display = 'block';
-            playIcon.style.display = 'none';
-          } else {
-            pauseIcon.style.display = 'none';
-            playIcon.style.display = 'block';
-          }
-        }).catch((error) => {
-          console.error('Error:', error);
         });
       }
     }
