@@ -734,10 +734,12 @@ function initializeSlideshowsInContent() {
     function handleResize() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
+        resizeImagesInSlideshows();
         setInitialSlideshowHeight(slideshow);
         showSlide(currentSlide); // Maintain current slide after resize
       }, 250); // Adjust this delay as needed (250ms delay in this case)
     }
+    
 
     // Function to handle image load
     function handleImageLoad() {
@@ -814,3 +816,4 @@ function resizeImagesInSlideshows() {
 
 // Call the function to resize images and adjust height in slideshows
 resizeImagesInSlideshows();
+window.addEventListener('resize', handleResize);
