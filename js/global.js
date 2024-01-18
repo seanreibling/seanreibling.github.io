@@ -706,6 +706,13 @@ function initializeSlideshowsInContent() {
   let slideshows = document.querySelectorAll('.elem.is--slideshow');
   let resizeTimer;
 
+  function setInitialSlideshowHeight(slideshow) {
+    resizeImagesInSlideshows();
+    let firstSlide = slideshow.querySelector('.image.is--slideshow');
+    let initialHeight = firstSlide.height;
+    slideshow.style.height = initialHeight + 'px';
+  }
+
   slideshows.forEach((slideshow) => {
     let slides = slideshow.querySelectorAll('.image.is--slideshow');
     let currentSlide = 0;
@@ -732,13 +739,22 @@ function initializeSlideshowsInContent() {
       }, 250); // Adjust this delay as needed (250ms delay in this case)
     }
 
+    // Function to handle image load
+    function handleImageLoad() {
+      setInitialSlideshowHeight(slideshow);
+      showSlide(currentSlide);
+    }
+
     setInitialSlideshowHeight(slideshow);
+
+    // Attach 'load' event listener to each image
+    slides.forEach((image) => {
+      image.addEventListener('load', handleImageLoad);
+    });
 
     setInterval(() => {
       nextSlide();
     }, interval); // Change slides based on the specified or default interval
-
-    showSlide(currentSlide);
 
     window.addEventListener('resize', handleResize);
   });
