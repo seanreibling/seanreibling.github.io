@@ -802,8 +802,15 @@ function resizeImagesInSlideshows() {
         }
       }
     });
+
+    // Set the height of the slideshow container based on the height of the currently displayed image
+    let activeImage = slideshow.querySelector('.image.is--slideshow.is--active');
+    if (activeImage) {
+      slideshow.style.height = activeImage.clientHeight + 'px';
+    }
   });
 }
+
 
 // Call the function to resize images and adjust height in slideshows
 resizeImagesInSlideshows();
