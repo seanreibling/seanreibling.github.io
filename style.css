@@ -1179,7 +1179,7 @@ button:hover {
 
 .block.is--hero {
   width: 100vw;
-  min-height: 30vw;
+  min-height: 40vw;
   margin-left: -5vw;
   max-width: none !important;
 }
