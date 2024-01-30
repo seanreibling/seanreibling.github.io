@@ -1127,8 +1127,8 @@ button:hover {
 #subnav {
   height: 70px;
   position: fixed;
-  width: 100vw;
-  margin-left: -5vw;
+  width: 110%;
+  margin-left: -5%;
   z-index: 9998;
   background-color: white;
 }
