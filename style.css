@@ -1178,9 +1178,9 @@ button:hover {
 }
 
 .block.is--hero {
-  width: 100vw;
+  width: 110%;
   min-height: 40vw;
-  margin-left: -5vw;
+  margin-left: -5%;
   max-width: none !important;
 }
 
