@@ -236,7 +236,7 @@ p {
 
 nav {
   width: 100%;
-  background-color: white;
+  background-color: rgb(240, 233, 232);
   position: fixed;
   z-index: 9999;
 }
