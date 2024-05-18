@@ -722,7 +722,7 @@ main {
   max-width: 800px;
   padding: 64px 5%;
   position: relative;
-  background-color: white;
+  background-color: rgb(243, 241, 241);;
   overflow: auto;
   box-sizing: border-box;
 }
