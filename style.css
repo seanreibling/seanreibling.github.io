@@ -20,7 +20,7 @@ h6 {
 }
 
 body {
-  background-color: rgb(245, 241, 240);
+  background-color: rgb(243, 241, 241);
 }
 
 a {
@@ -236,7 +236,7 @@ p {
 
 nav {
   width: 100%;
-  background-color: rgb(245, 241, 240);
+  background-color: rgb(243, 241, 241);
   position: fixed;
   z-index: 9999;
 }
@@ -297,7 +297,7 @@ nav {
 button {
   padding: 16px 24px;
   appearance: none;
-  background-color: rgb(245, 241, 240);
+  background-color: rgb(243, 241, 241);
   border: 1px solid black;
   font-size: 16px;
   font-weight: 400;
