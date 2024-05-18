@@ -20,7 +20,7 @@ h6 {
 }
 
 body {
-  background-color: rgb(243, 241, 241);
+  background-color: rgb(244, 243, 243);
 }
 
 a {
@@ -236,7 +236,7 @@ p {
 
 nav {
   width: 100%;
-  background-color: rgb(243, 241, 241);
+  background-color: rgb(244, 243, 243);
   position: fixed;
   z-index: 9999;
 }
@@ -722,7 +722,7 @@ main {
   max-width: 800px;
   padding: 64px 5%;
   position: relative;
-  background-color: rgb(243, 241, 241);;
+  background-color: rgb(244, 243, 243);
   overflow: auto;
   box-sizing: border-box;
 }
