@@ -785,8 +785,8 @@ select {
   width: 100%;
   background-image: repeating-linear-gradient(
     to bottom,
-    white,
-    white 34px,
+    rgb(244, 243, 243),
+    rgb(244, 243, 243) 34px,
     rgba(0, 0, 0, 15%) 34px,
     rgba(0, 0, 0, 0.2) 35px
   );
@@ -795,8 +795,8 @@ select {
 input:focus {
   background-image: repeating-linear-gradient(
     to bottom,
-    white,
-    white 34px,
+    rgb(244, 243, 243),
+    rgb(244, 243, 243) 34px,
     rgba(0, 0, 0, 15%) 34px,
     rgba(0, 0, 0, 1) 35px
   );
@@ -819,8 +819,8 @@ textarea {
   outline: none;
   background-image: repeating-linear-gradient(
     to bottom,
-    white,
-    white 34px,
+    rgb(244, 243, 243),
+    rgb(244, 243, 243) 34px,
     rgba(0, 0, 0, 15%) 34px,
     rgba(0, 0, 0, 0.2) 35px
   );
@@ -832,8 +832,8 @@ textarea {
 textarea:focus {
   background-image: repeating-linear-gradient(
     to bottom,
-    white,
-    white 34px,
+    rgb(244, 243, 243),
+    rgb(244, 243, 243) 34px,
     black 35px,
     black 35px
   );
@@ -845,7 +845,7 @@ textarea:focus {
 
 button:hover {
   background-color: black;
-  color: white !important;
+  color: rgb(244, 243, 243) !important;
   cursor: pointer;
 }
 
@@ -1134,7 +1134,7 @@ button:hover {
   width: 100%;
   margin-left: -5%;
   z-index: 9998;
-  background-color: white;
+  background-color: rgb(244, 243, 243);
 }
 
 .arrow {
