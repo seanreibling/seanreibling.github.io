@@ -57,6 +57,16 @@
     background-color: #e3e1e1 !important;
 }
 
+.cs--bgcol--5 {
+    /* Wake App */
+    background-color: #D8DDE0 !important;
+}
+
+.cs--bgcol--4 {
+    /* Atlantic Watch Co. */
+    background-color: #D8DDE0 !important;
+}
+
 
 /* CASE STUDY THUMBNAIL BG IMAGES */
 
@@ -83,5 +93,10 @@
 .cs--bgimg--5 {
     /* Wake App */
     background-image: url("../assets/projects/wake/seanreibling_project_wake_thumbnail.png") !important;
+}
+
+.cs--bgimg--6 {
+    /* Atlantic Watch Co. */
+    background-image: url("../assets/projects/wake/seanreibling_project_atlantic-watch-co_thumbnail.png") !important;
 }
 
