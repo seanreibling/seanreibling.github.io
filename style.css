@@ -685,9 +685,12 @@ main {
   gap: 12px;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
 }
 
-.project__locked:hover {
+.project__locked.active {
   opacity: 100%;
 }
 

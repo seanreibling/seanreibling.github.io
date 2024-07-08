@@ -9,6 +9,7 @@ swup.hooks.on('page:view', () => {
   getNewCol();
   checkHomeContactLink();
   projectCard();
+  projectCardLocked();
   urlCheck();
   urlHover();
   createPlayPauseButtons();
@@ -552,6 +553,31 @@ function projectCard() {
   });
 }
 projectCard();
+
+
+
+
+//Project card locked hover interaction
+function projectCardLocked() {
+  const projects = document.querySelectorAll('.project');
+
+  projects.forEach(project => {
+    project.addEventListener('mouseenter', () => {
+      const lockedElement = project.querySelector('.project__locked');
+      if (lockedElement) {
+        lockedElement.classList.add('active');
+      }
+    });
+
+    project.addEventListener('mouseleave', () => {
+      const lockedElement = project.querySelector('.project__locked');
+      if (lockedElement) {
+        lockedElement.classList.remove('active');
+      }
+    });
+  });
+}
+projectCardLocked();
 
 
 
