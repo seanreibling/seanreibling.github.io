@@ -621,6 +621,15 @@ main {
     flex-direction: column;
     row-gap: 16px;
   }
+  .masonry-col {
+  padding-top: 0px;
+  }
+  .masonry-col.is--sticky {
+    position: fixed;
+    height: auto;
+    justify-content: start;
+    gap: 48px;
+  }
 }
 
 
@@ -895,7 +904,7 @@ footer {
   .footer__container {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 8px;
   }
 
 }

@@ -54,7 +54,7 @@ window.onscroll = function scrollUpDown() {
   const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 24;
 
   // Check if user is within 5px of the bottom of the page
-  const isNearBottom = (window.innerHeight + window.pageYOffset) >= (document.body.offsetHeight - 5);
+  const isNearBottom = (window.innerHeight + window.pageYOffset) >= (document.body.offsetHeight - 56);
 
   if (scrollingUp && !isNearBottom) {
     // Show navbar
