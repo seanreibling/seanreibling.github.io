@@ -38,7 +38,7 @@ function scrollTop() {
 
 
 
-//Show and hide nav menu when scrolling up and down
+// Show and hide nav menu when scrolling up and down
 
 let prevScrollPos = window.pageYOffset;
 const navbar = document.getElementById("nav");
@@ -53,7 +53,10 @@ window.onscroll = function scrollUpDown() {
 
   const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 24;
 
-  if (scrollingUp) {
+  // Check if user is within 5px of the bottom of the page
+  const isNearBottom = (window.innerHeight + window.pageYOffset) >= (document.body.offsetHeight - 5);
+
+  if (scrollingUp && !isNearBottom) {
     // Show navbar
     navbar.classList.remove("slide--up");
     navbar.classList.add("slide--down");
