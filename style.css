@@ -81,7 +81,7 @@ p {
   text-decoration: underline;
   text-underline-offset: 6px;
   text-decoration-style: dashed;
-  text-decoration-color: rgba(126, 71, 254, 0.4);
+  text-decoration-color: rgba(255, 255, 255, 0.4);
 }
 
 .link:hover {
@@ -583,7 +583,7 @@ main {
     height: auto;
     justify-content: start;
     gap: 48px;
-    padding-top: 92px;
+    padding-top: 104px;
 
   }
     .hero__item {
