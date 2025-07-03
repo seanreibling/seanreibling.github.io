@@ -116,14 +116,14 @@ p {
   text-align: center;
 }
 
-/* Tablet */
-@media only screen and (min-width: 768px) and (max-width: 991px) {}
 
-/* Mobile Landscape */
-@media only screen and (min-width: 480px) and (max-width: 767px) {}
 
 /* Mobile Portrait */
-@media only screen and (max-width: 479px) {}
+@media only screen and (max-width: 479px) {
+  .display {
+  font-size: 32px;
+}
+}
 
 /* ---NAVIGATION STYLES--- */
 
@@ -153,11 +153,6 @@ nav {
   align-items: center;
   gap: 8px;
 }
-
-#nav__mobile {
-  display: none;
-}
-
 
 /* ---UNIVERSAL STYLES--- */
 
@@ -222,9 +217,7 @@ main {
 }
 
 @media only screen and (max-width: 767px) {
-  main {
-    padding-top: 70px;
-  }
+
 }
 
 /* ---Margin--- */
@@ -485,49 +478,6 @@ main {
   column-gap: 24px;
 }
 
-#nav__btn {
-  display: none;
-  cursor: pointer;
-}
-
-#close__btn {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.close__icon {
-  height: 28px;
-}
-
-.btn__bar {
-  width: 22px;
-  height: 2px;
-  background-color: black;
-}
-
-@media only screen and (max-width: 479px) {
-  .nav__links {
-    display: none;
-  }
-
-  #nav__btn {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    row-gap: 6px;
-    height: 100%;
-    padding: 0 16px;
-    margin-right: -16px;
-  }
-
-  #close__btn {
-    height: 100%;
-    padding: 0 16px;
-    margin-right: -16px;
-  }
-}
-
 
 
 
@@ -567,7 +517,7 @@ main {
   min-width: 63%;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .hero__intro {
     grid-row: 1 / 2;
     grid-column: 1 / 4;
@@ -597,7 +547,7 @@ main {
   top: 0;
   height: 100dvh;
   padding-right: 36px;
-  transition: padding-top 0.3s ease;
+  transition: 0.3s ease;
   /* animation for adjusting based on nav hide */
   justify-content: space-between;
   box-sizing: border-box;
@@ -616,34 +566,24 @@ main {
   width: 100%;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .masonry-grid {
     flex-direction: column;
     row-gap: 16px;
   }
   .masonry-col {
   padding-top: 0px;
+  position: static;
   }
   .masonry-col.is--sticky {
-    position: fixed;
+    position: static;
     height: auto;
     justify-content: start;
     gap: 48px;
+    padding-top: 92px;
+
   }
-}
-
-
-
-
-
-
-@media only screen and (max-width: 991px) {
-
-  .masonry-col.is--sticky {
-    position: static;
-  }
-
-  .hero__item {
+    .hero__item {
     max-width: none;
   }
 
@@ -652,6 +592,11 @@ main {
     min-width: 300px;
   }
 }
+
+
+
+
+
 
 @media only screen and (max-width: 767px) {}
 

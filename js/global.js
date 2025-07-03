@@ -38,6 +38,7 @@ function scrollTop() {
 
 
 
+
 // Show and hide nav menu when scrolling up and down
 
 let prevScrollPos = window.pageYOffset;
@@ -52,18 +53,17 @@ window.onscroll = function scrollUpDown() {
   const currentScrollPos = window.pageYOffset;
 
   const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 24;
-
-  // Check if user is within 5px of the bottom of the page
   const isNearBottom = (window.innerHeight + window.pageYOffset) >= (document.body.offsetHeight - 56);
+  const isDesktop = window.innerWidth >= 992;
 
   if (scrollingUp && !isNearBottom) {
     // Show navbar
     navbar.classList.remove("slide--up");
     navbar.classList.add("slide--down");
 
-    // Adjust sticky padding
+    // Adjust sticky padding only on desktop
     if (stickyCol) {
-      stickyCol.style.paddingTop = `${defaultPadding}px`;
+      stickyCol.style.paddingTop = isDesktop ? `${defaultPadding}px` : "";
     }
 
     // Show subnav (if exists)
@@ -76,9 +76,9 @@ window.onscroll = function scrollUpDown() {
     navbar.classList.add("slide--up");
     navbar.classList.remove("slide--down");
 
-    // Adjust sticky padding
+    // Adjust sticky padding only on desktop
     if (stickyCol) {
-      stickyCol.style.paddingTop = `${reducedPadding}px`;
+      stickyCol.style.paddingTop = isDesktop ? `${reducedPadding}px` : "";
     }
 
     // Hide subnav (if exists)
