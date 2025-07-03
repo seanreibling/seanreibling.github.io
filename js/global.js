@@ -162,104 +162,7 @@ if (window.swup) {
 
 
 
-//Check URL and highlight links
 
-// const linkContainer = document.getElementById('links');
-// let links = linkContainer.querySelectorAll('a');
-
-// function urlCheck() {
-//   links.forEach(link => {
-//     if ((link.href.includes('portfolio')) && (window.location.href.includes('portfolio'))) {
-//       link.style.color = 'white';
-//       link.setAttribute('data-status', 'active');
-//     } else if ((link.href.includes('about')) && (window.location.href.includes('about'))) {
-//       link.style.color = 'white'
-//       link.setAttribute('data-status', 'active');
-//     } else {
-//       link.style.color = 'white';
-//       link.removeAttribute('data-status');
-//     }
-//   });
-// }
-
-// urlCheck();
-
-// function urlHover() {
-//   links.forEach(link => {
-//     if (!link.hasAttribute(`data-status`)) {
-//       link.addEventListener('mouseover', function () {
-//         link.style.color = 'white';
-//       })
-//     }
-
-//     if (!link.hasAttribute(`data-status`)) {
-//       link.addEventListener('mouseout', function () {
-//         link.style.color = 'white';
-//       });
-//     } else {
-//       link.addEventListener('mouseout', function () {
-//         link.style.color = 'white';
-//       });
-//     }
-//   });
-// }
-
-// urlHover();
-
-
-
-//Scroll Enable/Disable
-
-let scrollPos = 0;
-
-function scrollDisable() {
-  document.body.classList.add('scroll--disabled');
-  scrollPos = window.scrollY;
-}
-
-function scrollEnable() {
-  document.body.classList.remove('scroll--disabled');
-  window.scrollTo(0, scrollPos);
-}
-
-
-
-
-
-
-
-//Randomize accent colour from 4 options
-
-const colours = ['#d3a226', '#05995c', '#a82c3e', '#3f46bf']
-
-
-//assign color to designated elements
-function changeCol(color) {
-  const elements = document.querySelectorAll('.col--switch');
-  const bgElements = document.querySelectorAll('.bgcol--switch');
-
-  elements.forEach(element => {
-    element.style.color = color;
-  });
-
-  bgElements.forEach(element => {
-    element.style.background = color;
-  });
-}
-
-//randomize between bank of colours and store the result
-function getRandomCol() {
-  const randomIndex = Math.floor(Math.random() * colours.length);
-  return colours[randomIndex];
-}
-
-//run the previous two functions as one function
-function getNewCol() {
-  let accentCol = getRandomCol();
-  changeCol(accentCol);
-}
-
-getNewCol();
 
 
 
@@ -391,40 +294,6 @@ createPlayPauseButtons();
 
 
 
-
-// About page text animation loop
-
-function aboutTextAnimate() {
-  if (window.location.href.includes('about')) {
-    const textContainer = document.getElementById("animation__container");
-
-    setTimeout(function () {
-      textContainer.classList.remove('notransition');
-      textContainer.classList.add('textanimate__1');
-    }, 5000);
-    setTimeout(function () {
-      textContainer.classList.add('textanimate__2');
-      textContainer.classList.remove('textanimate__1');
-    }, 11000);
-    setTimeout(function () {
-      textContainer.classList.add('textanimate__3');
-      textContainer.classList.remove('textanimate__2');
-
-    }, 17000);
-    setTimeout(function () {
-      textContainer.classList.add('textanimate__4');
-      textContainer.classList.remove('textanimate__3');
-
-    }, 23000);
-    setTimeout(function () {
-      aboutTextAnimate();
-      textContainer.classList.add('notransition');
-      textContainer.classList.remove('textanimate__4');
-    }, 24000);
-  }
-}
-
-aboutTextAnimate();
 
 
 

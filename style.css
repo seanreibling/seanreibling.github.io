@@ -523,6 +523,9 @@ main {
     grid-column: 1 / 4;
     max-width: none;
   }
+  .hero__item {
+  max-width: none;
+}
 }
 
 /* Masonry Grid Styles */
