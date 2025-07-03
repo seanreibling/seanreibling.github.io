@@ -842,17 +842,19 @@ footer {
 
 }
 
-.is--nav.is--dim.nohover {
-  width: 35%;
+.footer-col {
+  width: 35.5%;
 }
 
 
 /* Mobile Portrait */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
   .footer__container {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-
+  .footer__col {
+    width: auto;
+  }
 }
