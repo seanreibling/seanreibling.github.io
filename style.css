@@ -475,7 +475,7 @@ main {
 .nav__links {
   display: flex;
   flex-direction: row;
-  column-gap: 24px;
+  column-gap: 16px;
 }
 
 
