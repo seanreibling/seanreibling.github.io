@@ -1,377 +1,269 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Portfolio – Campus Workplace Study</title>
-        <link rel="shortcut icon" type="image/png" href="https://seanreibling.github.io/assets/favicon.png"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="https://seanreibling.github.io/assets/webclip.png">
-        <meta name="description" content>
-        <meta name="theme-color" content="#000000">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="../transitions.css">
-        <link rel="stylesheet" href="../colours.css">
-    </head>
-    <body>
-        <nav id="nav" class="slide--down">
-            <div class="nav__container">
-                <div><a id="wordmark" class="wordmark">Sean Reibling</a></div>
-                <div class="nav__links" id="links">
-                    <a href="/portfolio" class="heading is--nav is--dim">Portfolio</a>
-                    <a href="/about" class="heading is--nav is--dim">About</a>
-                    <!-- <a href="/latest" class="heading is--nav is--dim">Latest</a> -->
-                    <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
-                </div>
-                <div id="nav__btn">
-                    <div class="btn__bar"></div>
-                    <div class="btn__bar"></div>
-                </div>
-                <div id="close__btn" class="is--hidden">
-                    <img class="close__icon" src="https://seanreibling.github.io/assets/icons/close.svg">
-                </div>
-            </div>
-            <div id="nav__mobile" class="is--hidden">
-                <div class="mobile__links">
-                    <a class="heading is--menu" id="mobile__link1">Portfolio</a>
-                    <a class="heading is--menu" id="mobile__link2">About</a>
-                    <!-- <a href="/latest" class="heading is--menu" id="mobile__link3">Latest</a> -->
-                    <a class="heading is--menu" id="mobile__link4">Contact</a>
-                    <a href="/" id="shadow__link0">Home</a>
-                    <a href="/portfolio" id="shadow__link1">Portfolio</a>
-                    <a href="/about" id="shadow__link2">About</a>
-                    <!-- <a href="/latest" id="shadow__link3">About</a> -->
-                </div>
-                <div class="mbot--50">
-                    <div class="mobile__social mbot--16">
-                        <a href="https://www.linkedin.com/in/seanreibling/"
-                            target=”_blank” class="heading is--small" id="mobile__link5">LinkedIn</a>
-                        <a href="https://www.instagram.com/seanreibling2/"
-                            target=”_blank” class="heading is--small" id="mobile__link6">Instagram</a>
-                        <a href="https://dribbble.com/seanreibling"
-                            target=”_blank” class="heading is--small" id="mobile__link7">Dribbble</a>
-                    </div>
-                    <h1 class="heading is--small is--dim" id="mobile__link8">© 2024 Sean Reibling</h1>
-                </div>
-            </div>
-        </nav>
-        <div id="contact" class="is--hidden">
-            <div id="contact__bg"></div>
-            <div id="contact__submit" class="is--hidden">
-                <img class="contact__close" id="submit--close"
-                    src="https://seanreibling.github.io/assets/icons/close.svg">
-                <h1 class="heading is--large">Success</h1>
-                <h2 class="heading is--large is--dim mbot--50" style="margin-top:-4px;">Thank you</h2>
-                <h3 class="heading is--small mbot--50">Thanks for reaching out!<br>I try to respond within 2 business days.</h3>
-                <div class="contact__timer">
-                    <div id="timer__bar" class=""></div>
-                </div>
-                
-            </div>
-            <div class="slide--right" id="contact__card">
-                <img class="contact__close" id="trigger--close"
-                    src="https://seanreibling.github.io/assets/icons/close.svg">
-                <h1 class="heading is--large mbot--24">Contact</h1>
-                <h2 class="heading is--small mbot--8">Shoot me a message – I'd love to chat.</h2>
-                <a class="heading is--small is--bold is--link" href="mailto:design@seanreibling.com">design@seanreibling.com</a>
-                <form id="form" class="mtop--50">
-                    <div class="form ptop--50">
-                        <input type="text" class="heading is--nav"
-                            name="first name"
-                            placeholder="First name" id="form__fname" required />
-                        <input type="text" class="heading is--nav"
-                            name="last name"
-                            placeholder="Last name" id="form__lname" required />
-                        <input type="email" class="heading is--nav" name="email"
-                            placeholder="Email address" id="form__email"
-                            required />
-                        <input type="text" class="heading is--nav"
-                            name="organization"
-                            placeholder="Organization" id="form__organization" />
-                        <div class="select__container">
-                            <select class="heading is--nav" name="topic"
-                                placeholder="Topic" id="form__topic">
-                                <option value="Project proposal">Project proposal</option>
-                                <option value="Job opportunity">Job opportunity</option>
-                                <option value="Coffee chat">Coffee chat</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <img
-                                src="https://seanreibling.github.io/assets/icons/chevron-down.svg"
-                                class="select__icon">
-                        </div>
-                        <textarea data-expandable
-                            class="heading is--nav mbot--24"
-                            placeholder="Message"
-                            maxlength="5000" id="form__message" name="message"
-                            required data-name="message"
-                            spellcheck="false" rows="4"></textarea>
-                        <button id="form__button">Submit</button>
 
-                    </div>
-                </form>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfolio – Campus Workplace Study</title>
+    <link rel="shortcut icon" type="image/png" href="https://seanreibling.github.io/assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://seanreibling.github.io/assets/webclip.png">
+    <meta name="description" content>
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../transitions.css">
+    <link rel="stylesheet" href="../colours.css">
+</head>
+
+<body>
+    <nav id="nav" class="slide--down">
+        <div class="nav__container">
+            <div class="logo"><a href="/" id="wordmark" class="wordmark">Sean
+                    Reibling</a></div>
+            <div class="nav__links" id="links">
+                <a href="https://linkedin.com/in/seanreibling" target="_blank" class="heading link noudl">LinkedIn</a>
+                <a href="" target="_blank" class="heading link noudl">Resume</a>
             </div>
         </div>
-        <main id="swup" class="transition-fade">
-            <div id="subnav">
-                <div class="nav__container">
-                    <a href="/portfolio/design-grad-show" class="arrow__container"><img src="../assets/icons/arrow-left.svg" class="arrow"></a>
-                    <h2 class="heading is--small">Campus Workplace Study</h2>
-                    <a href="/portfolio/shopquest" class="arrow__container"><img src="../assets/icons/arrow-right.svg" class="arrow"></a>
-                </div>
+    </nav>
+    <main id="swup" class="transition-fade">
+        <section class="ps__hero">
+            <div class="fw ptop--150">
+                <h1 class="heading">Campus Workplace Study</h1>
+                <h1 class="heading is--dim">Interactive web experience for
+                    York University</h1>
             </div>
-            <section class="ps__hero">
-                <div class="fw ptop--150">
-                    <h1 class="heading">Campus Workplace Study</h1>
-                    <h1 class="heading is--dim">Interactive web experience for
-                        York University</h1>
-                </div>
-                <div class="block is--hero mtop--50 cs--bgcol--3">
-                    <img class="image"
-                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_0.png">
-                </div>
-                <div class="block is--text">
-                    <div class="metadata">
-                        <h2 class="heading">2022</h2>
-                        <div>
-                            <h3 class="heading is--small is--dim mbot--4">Client</h3>
-                            <h3 class="heading is--small">Global Labour Research
-                                Centre,<br> York University</h3>
-                        </div>
-                        <div>
-                            <h3 class="heading is--small is--dim mbot--4">Scope</h3>
-                            <div class="metadata__list">
-                                <h3 class="heading is--small">Product</h3>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="heading is--small is--dim mbot--4">Contributors</h3>
-                            <div class="metadata__list">
-                                <a href="https://ingridwongxd.com/" target=”_blank”
-                                    class="heading is--small is--link">Ingrid
-                                    Wong</a>
-                            </div>
+            <div class="block is--hero mtop--50 cs--bgcol--3">
+                <img class="image"
+                    src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_0.png">
+            </div>
+            <div class="block is--text">
+                <div class="metadata">
+                    <h2 class="heading">2022</h2>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Client</h3>
+                        <h3 class="heading is--small">Global Labour Research
+                            Centre,<br> York University</h3>
+                    </div>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Scope</h3>
+                        <div class="metadata__list">
+                            <h3 class="heading is--small">Product</h3>
                         </div>
                     </div>
-                    <p>The pandemic has impacted almost every aspect of life,
-                        the workplace being no exception. As part of an
-                        international research effort to examine the effect of
-                        the pandemic on workplaces, researchers at York
-                        University's Global Labour Research Centre collected
-                        data from faculty and staff members (voluntarily) to
-                        better understand the impact of the pandemic on employee
-                        productivity, mental health, and overall well-being as
-                        well as examine shifting trends in employee wants and
-                        needs. The objective of this project was to visualize
-                        the aggregate data, which was compiled into a report, in
-                        a way that was accurate but also digestible.
-                        ‍<br><br>
-                        In collaboration with Ingrid Wong and York University's
-                        Department of Design, a series of charts were produced
-                        and approved by the GLRC. The selection of bar and pie
-                        charts help present the data in clear and concise way,
-                        while the chart colours align with the university's
-                        branding and identity. A website was then developed to
-                        organize and highlight these charts along with
-                        additional content for added context. The final website
-                        features five pages, one for each section of the report,
-                        as well as a general homepage to explain the nature of
-                        the research study. One of the goals was to create an
-                        experience that felt engaging and fresh, which led to
-                        the implementation of both vertical and horizontal
-                        scrolling. The page layouts include ample margins and
-                        padding to reduce visual clutter, and a clear navigation
-                        was implemented to guide the reader seamlessly through
-                        the report.
-                    </p>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Contributors</h3>
+                        <div class="metadata__list">
+                            <a href="https://ingridwongxd.com/" target=”_blank”
+                                class="heading is--small is--link">Ingrid
+                                Wong</a>
+                        </div>
+                    </div>
                 </div>
-            </section>
-            <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
-            <section class="content">
-                <div class="block">
-                    <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/628685570?background=1&autopause=0"
-                            width="100%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_2.png"></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_3.png"></div>
-                </div>
-                <div class="block is--quote">
-                    <h2 class="heading">The selection of bar and pie charts help
-                        present the data in a clear and concise manner, while
-                        the chart colours align with the university's branding
-                        and identity.
-                    </h2>
-                </div>
-                <div class="block">
-                    <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/629349917?background=1&autopause=0"
-                            width="100%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem is--mobile cs--bgcol--3"><img
-                            class="image is--mobile"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_5.png"></div>
-                    <div class="elem is--mobile cs--bgcol--3"><img
-                            class="image is--mobile"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_6.png"></div>
-                    <div class="elem is--mobile cs--bgcol--3"><img
-                            class="image is--mobile"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_7.png"></div>
-                    <div class="elem is--mobile cs--bgcol--3"><img
-                            class="image is--mobile"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_8.png"></div>
-                </div>
-                <div class="block">
-                    <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/629349917?background=1&autopause=0"
-                            width="100%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--text ">
-                    <h2 class="heading is--small is--bold">The Design</h2>
-                    <p>Although the visual branding of the site is centred
-                        around the York University colour palette, the layout
-                        and interactions diverge from the university's website
-                        to create an immersive and engaging experience for
-                        readers. The site is custom built to display the content
-                        of the study, and each of the five sections of the study
-                        are optimized for the chart types they contain. The
-                        homepage was designed to scroll horizontally, creating a
-                        distinction between the report pages as well as a
-                        memorable interaction. The alternating colours and
-                        positioning of charts adds visual interest and flow to
-                        each page, while the section hero banners contain a
-                        custom bright gradient using university colours, which
-                        clearly indicate the beginning of a new section.</p>
-                </div>
-                <div class="block">
-                    <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/629349928?background=1&autopause=0"
-                            width="100%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_11.png"></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_12.png"></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_13.png"></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_14.png"></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_15.png"></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_16.png"></div>
-                    <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/629349928?background=1&autopause=0"
-                            width="100%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_18.png"></div>
-                    <div class="elem is--desktop cs--bgcol--3"><img
-                            class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_19.png"></div>
-                </div>
-                <div class="block is--text ">
-                    <h2 class="heading is--small is--bold">The Process</h2>
-                    <p>This project was developed over a period of 4 months, and
-                        involved much consultation between the researchers to
-                        ensure that the data was accurately represented. After
-                        the charts were collaboratively developed, the general
-                        web layout was researched and hand-sketched to provide a
-                        solid launch point for the project. Next, the specific
-                        structure and content of the site was detailed, followed
-                        by the development of wireframes using Figma. These
-                        wireframes were later expanded into high-fidelity
-                        mockups following the development of the website style
-                        guide, which included typographic hierarchy, colour
-                        palette, vector assets, images, and more. Finally, the
-                        site was developed, tested, and launched via a press
-                        release from the GLRC.</p>
-                </div>
-                <div class="block">
-                    <div class="elem cs--bgcol--3"><img class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_20.png"></div>
-                    <div class="elem cs--bgcol--3"><img class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_21.png"></div>
-                    <div class="elem cs--bgcol--3"><img class="image"
-                            src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_22.png"></div>
-                    <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/630268963?background=1&autopause=0"
-                            width="100%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-                </div>
-            </section>
-            <!-- CONTENT BLOCK TEMPLATE END -->
-            <section class="prevnext">
-                <h3 class="heading is--small pbot--24">More Projects</h3>
-                <div class="grid">
-                    <a href="/portfolio/design-grad-show" class="project">
-                        <div class="project__thumbnail cs--bgimg--4 mbot--24"></div>
-                        <h1 class="heading is--small mbot--2">York Design Grad Show</h1>
-                        <h2 class="heading is--small is--dim">Showcasing four years of culminating talent</h2>
-                    </a>
-                    <a href="/portfolio/shopquest" class="project">
-                        <div class="project__thumbnail cs--bgimg--1 mbot--24"></div>
-                        <h1 class="heading is--small mbot--2">Shopquest</h1>
-                        <h2 class="heading is--small is--dim">Simplifiying the online shopping experience</h2>
-                    </a>
-                </div>
-            </section>
-        </main>
-        <script src="https://player.vimeo.com/api/player.js"></script>
-        <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
-        <script src="https://unpkg.com/swup@4"></script>
-        <script src="../js/global.js" async defer></script>
-    </body>
-    <footer>
-        <div class="footer__container ptop--100 pbot--50">
-            <div class="footer__content is--left">
-                <div class="footer__content">
-                    <a href="/privacy-policy" class="heading is--nav is--dim">Privacy
-                        Policy</a>
-                    <a href="/terms-and-conditions" class="heading is--nav is--dim">Terms
-                        of
-                        Use</a>
-                </div>
-                <div><h1 class="heading is--nav is--dim nohover">© 2024 Sean
-                        Reibling</h1></div>
+                <p>The pandemic has impacted almost every aspect of life,
+                    the workplace being no exception. As part of an
+                    international research effort to examine the effect of
+                    the pandemic on workplaces, researchers at York
+                    University's Global Labour Research Centre collected
+                    data from faculty and staff members (voluntarily) to
+                    better understand the impact of the pandemic on employee
+                    productivity, mental health, and overall well-being as
+                    well as examine shifting trends in employee wants and
+                    needs. The objective of this project was to visualize
+                    the aggregate data, which was compiled into a report, in
+                    a way that was accurate but also digestible.
+                    ‍<br><br>
+                    In collaboration with Ingrid Wong and York University's
+                    Department of Design, a series of charts were produced
+                    and approved by the GLRC. The selection of bar and pie
+                    charts help present the data in clear and concise way,
+                    while the chart colours align with the university's
+                    branding and identity. A website was then developed to
+                    organize and highlight these charts along with
+                    additional content for added context. The final website
+                    features five pages, one for each section of the report,
+                    as well as a general homepage to explain the nature of
+                    the research study. One of the goals was to create an
+                    experience that felt engaging and fresh, which led to
+                    the implementation of both vertical and horizontal
+                    scrolling. The page layouts include ample margins and
+                    padding to reduce visual clutter, and a clear navigation
+                    was implemented to guide the reader seamlessly through
+                    the report.
+                </p>
             </div>
-            <div class="footer__content is--right">
-                <a href="https://www.linkedin.com/in/seanreibling/"
-                    target=”_blank” class="heading is--nav is--dim">LinkedIn</a>
-                <a href="https://www.instagram.com/seanreibling2/"
-                    target=”_blank” class="heading is--nav is--dim">Instagram</a>
-                <a href="https://dribbble.com/seanreibling" target=”_blank”
-                    class="heading is--nav is--dim">Dribbble</a>
+        </section>
+        <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
+        <section class="content">
+            <div class="block">
+                <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/628685570?background=1&autopause=0" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_2.png">
+                </div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_3.png">
+                </div>
             </div>
+            <div class="block is--quote">
+                <h2 class="heading">The selection of bar and pie charts help
+                    present the data in a clear and concise manner, while
+                    the chart colours align with the university's branding
+                    and identity.
+                </h2>
+            </div>
+            <div class="block">
+                <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/629349917?background=1&autopause=0" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--grid">
+                <div class="elem is--mobile cs--bgcol--3"><img class="image is--mobile"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_5.png">
+                </div>
+                <div class="elem is--mobile cs--bgcol--3"><img class="image is--mobile"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_6.png">
+                </div>
+                <div class="elem is--mobile cs--bgcol--3"><img class="image is--mobile"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_7.png">
+                </div>
+                <div class="elem is--mobile cs--bgcol--3"><img class="image is--mobile"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_8.png">
+                </div>
+            </div>
+            <div class="block">
+                <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/629349917?background=1&autopause=0" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--text ">
+                <h2 class="heading is--small is--bold">The Design</h2>
+                <p>Although the visual branding of the site is centred
+                    around the York University colour palette, the layout
+                    and interactions diverge from the university's website
+                    to create an immersive and engaging experience for
+                    readers. The site is custom built to display the content
+                    of the study, and each of the five sections of the study
+                    are optimized for the chart types they contain. The
+                    homepage was designed to scroll horizontally, creating a
+                    distinction between the report pages as well as a
+                    memorable interaction. The alternating colours and
+                    positioning of charts adds visual interest and flow to
+                    each page, while the section hero banners contain a
+                    custom bright gradient using university colours, which
+                    clearly indicate the beginning of a new section.</p>
+            </div>
+            <div class="block">
+                <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/629349928?background=1&autopause=0" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_11.png">
+                </div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_12.png">
+                </div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_13.png">
+                </div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_14.png">
+                </div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_15.png">
+                </div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_16.png">
+                </div>
+                <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/629349928?background=1&autopause=0" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--grid">
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_18.png">
+                </div>
+                <div class="elem is--desktop cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_19.png">
+                </div>
+            </div>
+            <div class="block is--text ">
+                <h2 class="heading is--small is--bold">The Process</h2>
+                <p>This project was developed over a period of 4 months, and
+                    involved much consultation between the researchers to
+                    ensure that the data was accurately represented. After
+                    the charts were collaboratively developed, the general
+                    web layout was researched and hand-sketched to provide a
+                    solid launch point for the project. Next, the specific
+                    structure and content of the site was detailed, followed
+                    by the development of wireframes using Figma. These
+                    wireframes were later expanded into high-fidelity
+                    mockups following the development of the website style
+                    guide, which included typographic hierarchy, colour
+                    palette, vector assets, images, and more. Finally, the
+                    site was developed, tested, and launched via a press
+                    release from the GLRC.</p>
+            </div>
+            <div class="block">
+                <div class="elem cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_20.png">
+                </div>
+                <div class="elem cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_21.png">
+                </div>
+                <div class="elem cs--bgcol--3"><img class="image"
+                        src="../assets/projects/campus-workplace-study/seanreibling_project_campus-workplace-study_22.png">
+                </div>
+                <div class="elem is--video cs--bgcol--3"><iframe class="bgvideo"
+                        style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/630268963?background=1&autopause=0" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+        </section>
+        <!-- CONTENT BLOCK TEMPLATE END -->
+        <section class="prevnext">
+            <h3 class="heading is--small pbot--24">More Projects</h3>
+            <div class="grid">
+                <a href="/portfolio/design-grad-show" class="project">
+                    <div class="project__thumbnail cs--bgimg--4 mbot--24"></div>
+                    <h1 class="heading is--small mbot--2">York Design Grad Show</h1>
+                    <h2 class="heading is--small is--dim">Showcasing four years of culminating talent</h2>
+                </a>
+                <a href="/portfolio/shopquest" class="project">
+                    <div class="project__thumbnail cs--bgimg--1 mbot--24"></div>
+                    <h1 class="heading is--small mbot--2">Shopquest</h1>
+                    <h2 class="heading is--small is--dim">Simplifiying the online shopping experience</h2>
+                </a>
+            </div>
+        </section>
+    </main>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="../js/global.js" async defer></script>
+</body>
+<footer>
+    <div class="footer__container ptop--50 pbot--50">
+        <div class="footer-col">
+            <h1 class="heading is--dim nohover">© 2025 Sean
+                Reibling</h1>
         </div>
-        <div>
-        </footer>
-    </html>
+        <h1 class="heading is--dim nohover">Designed and coded by me</h1>
+    </div>
+    <div>
+</footer>
+
+</html>

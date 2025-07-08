@@ -1,299 +1,194 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Projects – Example</title>
-        <link rel="shortcut icon" type="image/png" href="https://seanreibling.github.io/assets/favicon.png"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="https://seanreibling.github.io/assets/webclip.png">
-        <meta name="description" content>
-        <meta name="theme-color" content="#000000">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="transitions.css">
-        <link rel="stylesheet" href="../colours.css">
-    </head>
-    <body>
-        <nav id="nav" class="slide--down">
-            <div class="nav__container">
-                <div><a id="wordmark" class="wordmark">Sean Reibling</a></div>
-                <div class="nav__links" id="links">
-                    <a href="/portfolio" class="heading is--nav is--dim">Portfolio</a>
-                    <a href="/about" class="heading is--nav is--dim">About</a>
-                    <!-- <a href="/latest" class="heading is--nav is--dim">Latest</a> -->
-                    <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
-                </div>
-                <div id="nav__btn">
-                    <div class="btn__bar"></div>
-                    <div class="btn__bar"></div>
-                </div>
-                <div id="close__btn" class="is--hidden">
-                    <img class="close__icon" src="https://seanreibling.github.io/assets/icons/close.svg">
-                </div>
-            </div>
-            <div id="nav__mobile" class="is--hidden">
-                <div class="mobile__links">
-                    <a class="heading is--menu" id="mobile__link1">Portfolio</a>
-                    <a class="heading is--menu" id="mobile__link2">About</a>
-                    <!-- <a href="/latest" class="heading is--menu" id="mobile__link3">Latest</a> -->
-                    <a class="heading is--menu" id="mobile__link4">Contact</a>
-                    <a href="/" id="shadow__link0">Home</a>
-                    <a href="/portfolio" id="shadow__link1">Portfolio</a>
-                    <a href="/about" id="shadow__link2">About</a>
-                    <!-- <a href="/latest" id="shadow__link3">About</a> -->
-                </div>
-                <div class="mbot--50">
-                    <div class="mobile__social mbot--16">
-                        <a href="https://www.linkedin.com/in/seanreibling/"
-                            target=”_blank” class="heading is--small" id="mobile__link5">LinkedIn</a>
-                        <a href="https://www.instagram.com/seanreibling2/"
-                            target=”_blank” class="heading is--small" id="mobile__link6">Instagram</a>
-                        <a href="https://dribbble.com/seanreibling"
-                            target=”_blank” class="heading is--small" id="mobile__link7">Dribbble</a>
-                    </div>
-                    <h1 class="heading is--small is--dim" id="mobile__link8">© 2023 Sean Reibling</h1>
-                </div>
-            </div>
-        </nav>
-        <div id="contact" class="is--hidden">
-            <div id="contact__bg"></div>
-            <div id="contact__submit" class="is--hidden">
-                <img class="contact__close" id="submit--close"
-                    src="https://seanreibling.github.io/assets/icons/close.svg">
-                <h1 class="heading is--large">Success</h1>
-                <h2 class="heading is--large is--dim mbot--50" style="margin-top:-4px;">Thank you</h2>
-                <h3 class="heading is--small mbot--50">Thanks for reaching out!<br>I try to respond within 2 business days.</h3>
-                <div class="contact__timer">
-                    <div id="timer__bar" class=""></div>
-                </div>
-                
-            </div>
-            <div class="slide--right" id="contact__card">
-                <img class="contact__close" id="trigger--close"
-                    src="https://seanreibling.github.io/assets/icons/close.svg">
-                <h1 class="heading is--large mbot--24">Contact</h1>
-                <h2 class="heading is--small mbot--8">Shoot me a message – I'd love to chat.</h2>
-                <a class="heading is--small is--bold is--link" href="mailto:design@seanreibling.com">design@seanreibling.com</a>
-                <form id="form" class="mtop--50">
-                    <div class="form ptop--50">
-                        <input type="text" class="heading is--nav"
-                            name="first name"
-                            placeholder="First name" id="form__fname" required />
-                        <input type="text" class="heading is--nav"
-                            name="last name"
-                            placeholder="Last name" id="form__lname" required />
-                        <input type="email" class="heading is--nav" name="email"
-                            placeholder="Email address" id="form__email"
-                            required />
-                        <input type="text" class="heading is--nav"
-                            name="organization"
-                            placeholder="Organization" id="form__organization" />
-                        <div class="select__container">
-                            <select class="heading is--nav" name="topic"
-                                placeholder="Topic" id="form__topic">
-                                <option value="Project proposal">Project proposal</option>
-                                <option value="Job opportunity">Job opportunity</option>
-                                <option value="Coffee chat">Coffee chat</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <img
-                                src="https://seanreibling.github.io/assets/icons/chevron-down.svg"
-                                class="select__icon">
-                        </div>
-                        <textarea data-expandable
-                            class="heading is--nav mbot--24"
-                            placeholder="Message"
-                            maxlength="5000" id="form__message" name="message"
-                            required data-name="message"
-                            spellcheck="false" rows="4"></textarea>
-                        <button id="form__button">Submit</button>
 
-                    </div>
-                </form>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projects – Example</title>
+    <link rel="shortcut icon" type="image/png" href="https://seanreibling.github.io/assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://seanreibling.github.io/assets/webclip.png">
+    <meta name="description" content>
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="transitions.css">
+    <link rel="stylesheet" href="../colours.css">
+</head>
+
+<body>
+    <nav id="nav" class="slide--down">
+        <div class="nav__container">
+            <div class="logo"><a href="/" id="wordmark" class="wordmark">Sean
+                    Reibling</a></div>
+            <div class="nav__links" id="links">
+                <a href="https://linkedin.com/in/seanreibling" target="_blank" class="heading link noudl">LinkedIn</a>
+                <a href="" target="_blank" class="heading link noudl">Resume</a>
             </div>
         </div>
-        <main id="swup" class="transition-fade">
-            <section class="ps__hero">
-                <div class="fw ptop--150">
-                    <h1 class="heading">Shopquest</h1>
-                    <h1 class="heading is--dim">Simplify the online shopping
-                        experience</h1>
-                </div>
-                <div class="block is--hero mtop--50 cs--bgcol--1">
-                    <img class="image"
-                        src="../assets/projects/shopquest/seanreibling_project_shopquest_1.png">
-                </div>
-                <div class="block is--text">
-                    <div class="metadata">
-                        <h2 class="heading">2022</h2>
-                        <div>
-                            <h3 class="heading is--small is--dim mbot--4">Client</h3>
-                            <h3 class="heading is--small">Course Project</h3>
-                        </div>
-                        <div>
-                            <h3 class="heading is--small is--dim mbot--4">Scope</h3>
-                            <div class="metadata__list">
-                                <h3 class="heading is--small">Product</h3>
-                                <div class="metadata__comma"><h3
-                                        class="heading is--small">,</h3></div>
-                                <h3 class="heading is--small">Identity</h3>
+    </nav>
+    <main id="swup" class="transition-fade">
+        <section class="ps__hero">
+            <div class="fw ptop--150">
+                <h1 class="heading">Shopquest</h1>
+                <h1 class="heading is--dim">Simplify the online shopping
+                    experience</h1>
+            </div>
+            <div class="block is--hero mtop--50 cs--bgcol--1">
+                <img class="image" src="../assets/projects/shopquest/seanreibling_project_shopquest_1.png">
+            </div>
+            <div class="block is--text">
+                <div class="metadata">
+                    <h2 class="heading">2022</h2>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Client</h3>
+                        <h3 class="heading is--small">Course Project</h3>
+                    </div>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Scope</h3>
+                        <div class="metadata__list">
+                            <h3 class="heading is--small">Product</h3>
+                            <div class="metadata__comma">
+                                <h3 class="heading is--small">,</h3>
                             </div>
-                        </div>
-                        <div>
-                            <h3 class="heading is--small is--dim mbot--4">Contributors</h3>
-                            <div class="metadata__list">
-                                <a href="https://google.ca"
-                                    class="heading is--small is--link">Joey Wong</a>
-                                <div class="metadata__comma"><h3
-                                        class="heading is--small">,</h3></div>
-                                <a href="https://google.ca"
-                                    class="heading is--small is--link">Joey Wong</a>
-                            </div>
+                            <h3 class="heading is--small">Identity</h3>
                         </div>
                     </div>
-                    <p>Online shopping is convenient, but can often leave users
-                        frustrated. Especially when hunting for popular products
-                        (such as the PS4), a retailer's stock can sell out
-                        within minutes. Users are left with a choice: spend
-                        hours refreshing websites to find available stock, or
-                        wait until supply is greater – which can take weeks or
-                        even months. Shopquest is the solution for those who
-                        want to simplify their shopping experience and take the
-                        stress out of buying popular products.
-                        ‍<br><br>
-                        Looking to purchase the latest gaming console, but can't
-                        find any in stock? Add your item to the app and let
-                        Shopquest search the web for you, 24/7. Simply specify
-                        the retailers you prefer, the price you're looking for,
-                        and your desired quantity. Get notified when your item
-                        is available, or subscribe and let Shopquest purchase
-                        the item instantly on your behalf. Looking for the
-                        perfect gift? Let Shopquest track hard-to-find gift
-                        items in the background. You can even add your friends
-                        and family in the app to share your ideal gift wish
-                        lists.
-                        ‍<br><br>
-                        Shopquest is a concept prototype conceptualized and
-                        designed by Sean Reibling and Joey Wong. It was
-                        completed over 13 weeks as part of a term project for an
-                        interaction design course at York University. The goal
-                        of this project was to find a problem facing consumers
-                        and use automation to solve that problem in the form of
-                        a mobile app. The result of multiple ideation sessions
-                        and numerous pivots led to the concept of this app,
-                        which aims to automate the tedious elements of online
-                        shopping. Stay tuned for a more detailed case study
-                        outlining the full UX journey taken throughout this
-                        course.</p>
+                    <div>
+                        <h3 class="heading is--small is--dim mbot--4">Contributors</h3>
+                        <div class="metadata__list">
+                            <a href="https://google.ca" class="heading is--small is--link">Joey Wong</a>
+                            <div class="metadata__comma">
+                                <h3 class="heading is--small">,</h3>
+                            </div>
+                            <a href="https://google.ca" class="heading is--small is--link">Joey Wong</a>
+                        </div>
+                    </div>
                 </div>
-            </section>
-            <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
-            <section class="content">
-                <div class="block">
-                    <div class="elem is--video cs--bgcol--1"><iframe
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/785617377"
-                            width="100%" height="100%" frameborder="0"
-                            fullscreen" allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem is--desktopcut cs--bgcol--1"><img class="image"
-                            src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
-                    <div class="elem"><img class="image"
-                            src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
-                </div>
-                <div class="block">
-                    <div class="elem is--video cs--bgcol--1"><iframe
-                            style="position: absolute; top: 0; left: 0;"
-                            src="https://player.vimeo.com/video/785617377?background=1&autopause=0"
-                            width="100%" height="100%" frameborder="0"
-                            allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-                </div>
-                <div class="block is--quote">
-                    <h2 class="heading">The branding is minimal yet bold,
-                        remaining identifiable without being overly prominent.
-                        The Q logo is also evocative of a magnifying glass,
-                        alluding to the service's primary function.
-                    </h2>
-                </div>
-                <div class="block is--grid">
-                    <div class="elem is--desktopcut cs--bgcol--1"><img class="image"
-                            src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
-                    <div class="elem"><img class="image"
-                            src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
-                </div>
-                <div class="block is--text ">
-                    <h2 class="heading is--small is--bold">Onboarding &
-                        Subscription</h2>
-                    <p>Onboarding is quick and simple. During this process, the
-                        user can select the free or paid service tiers, the
-                        latter of which provides access to the auto purchasing
-                        function as well as unlimited item tracking. Once a
-                        payment method is provided, the account will be created
-                        and the user can begin tracking items. This subscription
-                        model is an important part of the app, as it would allow
-                        Shopquest to become a viable business while keeping the
-                        interface clear of advertising.</p>
-                </div>
-                <div class="block">
-                    <div class="elem is--desktopcut cs--bgcol--1"><img class="image"
-                            src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
-                </div>
+                <p>Online shopping is convenient, but can often leave users
+                    frustrated. Especially when hunting for popular products
+                    (such as the PS4), a retailer's stock can sell out
+                    within minutes. Users are left with a choice: spend
+                    hours refreshing websites to find available stock, or
+                    wait until supply is greater – which can take weeks or
+                    even months. Shopquest is the solution for those who
+                    want to simplify their shopping experience and take the
+                    stress out of buying popular products.
+                    ‍<br><br>
+                    Looking to purchase the latest gaming console, but can't
+                    find any in stock? Add your item to the app and let
+                    Shopquest search the web for you, 24/7. Simply specify
+                    the retailers you prefer, the price you're looking for,
+                    and your desired quantity. Get notified when your item
+                    is available, or subscribe and let Shopquest purchase
+                    the item instantly on your behalf. Looking for the
+                    perfect gift? Let Shopquest track hard-to-find gift
+                    items in the background. You can even add your friends
+                    and family in the app to share your ideal gift wish
+                    lists.
+                    ‍<br><br>
+                    Shopquest is a concept prototype conceptualized and
+                    designed by Sean Reibling and Joey Wong. It was
+                    completed over 13 weeks as part of a term project for an
+                    interaction design course at York University. The goal
+                    of this project was to find a problem facing consumers
+                    and use automation to solve that problem in the form of
+                    a mobile app. The result of multiple ideation sessions
+                    and numerous pivots led to the concept of this app,
+                    which aims to automate the tedious elements of online
+                    shopping. Stay tuned for a more detailed case study
+                    outlining the full UX journey taken throughout this
+                    course.</p>
+            </div>
+        </section>
+        <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
+        <section class="content">
+            <div class="block">
+                <div class="elem is--video cs--bgcol--1"><iframe style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/785617377" width="100%" height="100%" frameborder="0"
+                        fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--grid">
+                <div class="elem is--desktopcut cs--bgcol--1"><img class="image"
+                        src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
+                <div class="elem"><img class="image"
+                        src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
+            </div>
+            <div class="block">
+                <div class="elem is--video cs--bgcol--1"><iframe style="position: absolute; top: 0; left: 0;"
+                        src="https://player.vimeo.com/video/785617377?background=1&autopause=0" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            </div>
+            <div class="block is--quote">
+                <h2 class="heading">The branding is minimal yet bold,
+                    remaining identifiable without being overly prominent.
+                    The Q logo is also evocative of a magnifying glass,
+                    alluding to the service's primary function.
+                </h2>
+            </div>
+            <div class="block is--grid">
+                <div class="elem is--desktopcut cs--bgcol--1"><img class="image"
+                        src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
+                <div class="elem"><img class="image"
+                        src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
+            </div>
+            <div class="block is--text ">
+                <h2 class="heading is--small is--bold">Onboarding &
+                    Subscription</h2>
+                <p>Onboarding is quick and simple. During this process, the
+                    user can select the free or paid service tiers, the
+                    latter of which provides access to the auto purchasing
+                    function as well as unlimited item tracking. Once a
+                    payment method is provided, the account will be created
+                    and the user can begin tracking items. This subscription
+                    model is an important part of the app, as it would allow
+                    Shopquest to become a viable business while keeping the
+                    interface clear of advertising.</p>
+            </div>
+            <div class="block">
+                <div class="elem is--desktopcut cs--bgcol--1"><img class="image"
+                        src="../assets/projects/shopquest/seanreibling_project_shopquest_13.png"></div>
+            </div>
 
-            </section>
-            <!-- CONTENT BLOCK TEMPLATE END -->
-            <section class="prevnext">
-                <h3 class="heading is--small pbot--24">More Projects</h3>
-                <div class="grid">
-                    <a href="/portfolio/project" class="project">
-                        <div class="project__thumbnail mbot--24"></div>
-                        <h1 class="heading is--small mbot--2">Project Title
-                            Placeholder</h1>
-                        <h2 class="heading is--small is--dim"> Project subtitle
-                            placeholder</h2>
-                    </a>
-                    <a href="/about" class="project">
-                        <div class="project__thumbnail mbot--24"></div>
-                        <h1 class="heading is--small mbot--2">Project Title
-                            Placeholder</h1>
-                        <h2 class="heading is--small is--dim"> Project subtitle
-                            placeholder</h2>
-                    </a>
-                </div>
-            </section>
-        </main>
-        <script src="https://player.vimeo.com/api/player.js"></script>
-        <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
-        <script src="https://unpkg.com/swup@4"></script>
-        <script src="../js/global.js" async defer></script>
-    </body>
-    <footer>
-        <div class="footer__container ptop--100 pbot--50">
-            <div class="footer__content is--left">
-                <div class="footer__content">
-                    <a href="/privacy-policy" class="heading is--nav is--dim">Privacy
-                        Policy</a>
-                    <a href="/terms-and-conditions" class="heading is--nav is--dim">Terms
-                        of
-                        Use</a>
-                </div>
-                <div><h1 class="heading is--nav is--dim nohover">© 2023 Sean
-                        Reibling</h1></div>
+        </section>
+        <!-- CONTENT BLOCK TEMPLATE END -->
+        <section class="prevnext">
+            <h3 class="heading is--small pbot--24">More Projects</h3>
+            <div class="grid">
+                <a href="/portfolio/project" class="project">
+                    <div class="project__thumbnail mbot--24"></div>
+                    <h1 class="heading is--small mbot--2">Project Title
+                        Placeholder</h1>
+                    <h2 class="heading is--small is--dim"> Project subtitle
+                        placeholder</h2>
+                </a>
+                <a href="/about" class="project">
+                    <div class="project__thumbnail mbot--24"></div>
+                    <h1 class="heading is--small mbot--2">Project Title
+                        Placeholder</h1>
+                    <h2 class="heading is--small is--dim"> Project subtitle
+                        placeholder</h2>
+                </a>
             </div>
-            <div class="footer__content is--right">
-                <a href="https://www.linkedin.com/in/seanreibling/"
-                    target=”_blank” class="heading is--nav is--dim">LinkedIn</a>
-                <a href="https://www.instagram.com/seanreibling2/"
-                    target=”_blank” class="heading is--nav is--dim">Instagram</a>
-                <a href="https://dribbble.com/seanreibling" target=”_blank”
-                    class="heading is--nav is--dim">Dribbble</a>
-            </div>
+        </section>
+    </main>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="../js/global.js" async defer></script>
+</body>
+<footer>
+    <div class="footer__container ptop--50 pbot--50">
+        <div class="footer-col">
+            <h1 class="heading is--dim nohover">© 2025 Sean
+                Reibling</h1>
         </div>
-        <div>
-        </footer>
-    </html>
+        <h1 class="heading is--dim nohover">Designed and coded by me</h1>
+    </div>
+    <div>
+</footer>
+
+</html>

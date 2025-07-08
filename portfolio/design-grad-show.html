@@ -12,8 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../transitions.css">
@@ -23,118 +27,27 @@
 <body>
     <nav id="nav" class="slide--down">
         <div class="nav__container">
-            <div><a id="wordmark" class="wordmark">Sean Reibling</a></div>
+            <div class="logo"><a href="/" id="wordmark" class="wordmark">Sean
+                    Reibling</a></div>
             <div class="nav__links" id="links">
-                <a href="/portfolio" class="heading is--nav is--dim">Portfolio</a>
-                <a href="/about" class="heading is--nav is--dim">About</a>
-                <!-- <a href="/latest" class="heading is--nav is--dim">Latest</a> -->
-                <a id="trigger--open" class="heading is--nav is--dim">Contact</a>
-            </div>
-            <div id="nav__btn">
-                <div class="btn__bar"></div>
-                <div class="btn__bar"></div>
-            </div>
-            <div id="close__btn" class="is--hidden">
-                <img class="close__icon" src="https://seanreibling.github.io/assets/icons/close.svg">
-            </div>
-        </div>
-        <div id="nav__mobile" class="is--hidden">
-            <div class="mobile__links">
-                <a class="heading is--menu" id="mobile__link1">Portfolio</a>
-                <a class="heading is--menu" id="mobile__link2">About</a>
-                <!-- <a href="/latest" class="heading is--menu" id="mobile__link3">Latest</a> -->
-                <a class="heading is--menu" id="mobile__link4">Contact</a>
-                <a href="/" id="shadow__link0">Home</a>
-                <a href="/portfolio" id="shadow__link1">Portfolio</a>
-                <a href="/about" id="shadow__link2">About</a>
-                <!-- <a href="/latest" id="shadow__link3">About</a> -->
-            </div>
-            <div class="mbot--50">
-                <div class="mobile__social mbot--16">
-                    <a href="https://www.linkedin.com/in/seanreibling/" target=”_blank” class="heading is--small"
-                        id="mobile__link5">LinkedIn</a>
-                    <a href="https://www.instagram.com/seanreibling2/" target=”_blank” class="heading is--small"
-                        id="mobile__link6">Instagram</a>
-                    <a href="https://dribbble.com/seanreibling" target=”_blank” class="heading is--small"
-                        id="mobile__link7">Dribbble</a>
-                </div>
-                <h1 class="heading is--small is--dim" id="mobile__link8">©
-                    2024 Sean Reibling</h1>
+                <a href="https://linkedin.com/in/seanreibling" target="_blank" class="heading link noudl">LinkedIn</a>
+                <a href="" target="_blank" class="heading link noudl">Resume</a>
             </div>
         </div>
     </nav>
-    <div id="contact" class="is--hidden">
-        <div id="contact__bg"></div>
-        <div id="contact__submit" class="is--hidden">
-            <img class="contact__close" id="submit--close" src="https://seanreibling.github.io/assets/icons/close.svg">
-            <h1 class="heading is--large">Success</h1>
-            <h2 class="heading is--large is--dim mbot--50" style="margin-top:-4px;">Thank you</h2>
-            <h3 class="heading is--small mbot--50">Thanks for reaching
-                out!<br>I try to respond within 2 business days.</h3>
-            <div class="contact__timer">
-                <div id="timer__bar" class></div>
-            </div>
-
-        </div>
-        <div class="slide--right" id="contact__card">
-            <img class="contact__close" id="trigger--close" src="https://seanreibling.github.io/assets/icons/close.svg">
-            <h1 class="heading is--large mbot--24">Contact</h1>
-            <h2 class="heading is--small mbot--8">Shoot me a message – I'd
-                love to chat.</h2>
-            <a class="heading is--small is--bold is--link"
-                href="mailto:design@seanreibling.com">design@seanreibling.com</a>
-            <form id="form" class="mtop--50">
-                <div class="form ptop--50">
-                    <input type="text" class="heading is--nav" name="first name" placeholder="First name"
-                        id="form__fname" required />
-                    <input type="text" class="heading is--nav" name="last name" placeholder="Last name" id="form__lname"
-                        required />
-                    <input type="email" class="heading is--nav" name="email" placeholder="Email address"
-                        id="form__email" required />
-                    <input type="text" class="heading is--nav" name="organization" placeholder="Organization"
-                        id="form__organization" />
-                    <div class="select__container">
-                        <select class="heading is--nav" name="topic" placeholder="Topic" id="form__topic">
-                            <option value="Project proposal">Project
-                                proposal</option>
-                            <option value="Job opportunity">Job
-                                opportunity</option>
-                            <option value="Coffee chat">Coffee chat</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <img src="https://seanreibling.github.io/assets/icons/chevron-down.svg" class="select__icon">
-                    </div>
-                    <textarea data-expandable class="heading is--nav mbot--24" placeholder="Message" maxlength="5000"
-                        id="form__message" name="message" required data-name="message" spellcheck="false"
-                        rows="4"></textarea>
-                    <button id="form__button">Submit</button>
-
-                </div>
-            </form>
-        </div>
-    </div>
     <main id="swup" class="transition-fade">
-        <div id="subnav">
-            <div class="nav__container">
-                <a href="/portfolio/waypoint" class="arrow__container"><img src="../assets/icons/arrow-left.svg"
-                        class="arrow"></a>
-                <h2 class="heading is--small">York Design Grad Show</h2>
-                <a href="/portfolio/campus-workplace-study" class="arrow__container"><img
-                        src="../assets/icons/arrow-right.svg" class="arrow"></a>
-            </div>
-        </div>
         <section class="ps__hero">
-            <div class="fw ptop--150">
-                <h1 class="heading">York Design Grad Show</h1>
-                <h1 class="heading is--dim">Showcasing four years of
-                    culminating talent</h1>
-            </div>
-            <div class="block is--hero mtop--50 cs--bgcol--4">
+            <div class="block is--hero cs--bgcol--4">
                 <img class="image"
                     src="../assets/projects/design-grad-show/seanreibling_project_design-grad-show_0.png">
             </div>
+            <div class="ptop--8">
+                <h1 class="title">York Design Grad Show</h1>
+                <h1 class="heading is--xlarge mtop--16">Showcasing four years of
+                    culminating talent</h1>
+            </div>
             <div class="block is--text">
-                <div class="metadata">
+                <!-- <div class="metadata">
                     <h2 class="heading">2023</h2>
                     <div>
                         <h3 class="heading is--small is--dim mbot--4">Client</h3>
@@ -170,7 +83,7 @@
                                 contributors</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <p>As 2023 graduates of the York Program in Design, our cohort worked to prepare an event that would
                     showcase our culminating design pieces to potential employers and the broader design community. An
                     important aspect of this showcase was a digital exhibition that would extend our reach beyond
@@ -184,17 +97,18 @@
                     brainstorming, designing, testing, and developing, we were able to launch a site that met all of our
                     key objectives and successfully showcased our design skills to the world.
                     <br><br>
-                    We're honoured that this project was selected as the first-place recipient of the 2023 RGD Student Award for web design. An
+                    We're honoured that this project was selected as the first-place recipient of the 2023 RGD Student
+                    Award for web design. An
                     in-depth analysis of every aspect of our process is available via the link below.
                     <br><br>
-                    <a href="https://desn2023.github.io/desn2023/casestudy.pdf" target=”_blank”
-                        class="heading is--small is--link">View full case
-                        study</a>
+                    <a href="https://desn2023.github.io/desn2023/casestudy.pdf" target="_blank" class="btn mtop--8">View
+                        Full Case Study<img src="../assets/icons/arw-r.svg" class="btn__icon"></a>
 
                 </p>
             </div>
         </section>
         <!-- CONTENT BLOCK TEMPLATE START – SELECT BLOCK AND ELEMENT OPTIONS -->
+        <section class=""></section>
         <section class="content">
             <div class="block">
                 <div class="elem is--desktop is--video cs--bgcol--4"><iframe class="bgvideo"
@@ -391,27 +305,12 @@
     <script src="../js/global.js" async defer></script>
 </body>
 <footer>
-    <div class="footer__container ptop--100 pbot--50">
-        <div class="footer__content is--left">
-            <div class="footer__content">
-                <a href="/privacy-policy" class="heading is--nav is--dim">Privacy
-                    Policy</a>
-                <a href="/terms-and-conditions" class="heading is--nav is--dim">Terms
-                    of
-                    Use</a>
-            </div>
-            <div>
-                <h1 class="heading is--nav is--dim nohover">© 2024 Sean
-                    Reibling</h1>
-            </div>
+    <div class="footer__container ptop--50 pbot--50">
+        <div class="footer-col">
+            <h1 class="heading is--dim nohover">© 2025 Sean
+                Reibling</h1>
         </div>
-        <div class="footer__content is--right">
-            <a href="https://www.linkedin.com/in/seanreibling/" target=”_blank”
-                class="heading is--nav is--dim">LinkedIn</a>
-            <a href="https://www.instagram.com/seanreibling2/" target=”_blank”
-                class="heading is--nav is--dim">Instagram</a>
-            <a href="https://dribbble.com/seanreibling" target=”_blank” class="heading is--nav is--dim">Dribbble</a>
-        </div>
+        <h1 class="heading is--dim nohover">Designed and coded by me</h1>
     </div>
     <div>
 </footer>
