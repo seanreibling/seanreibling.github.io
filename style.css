@@ -50,7 +50,7 @@ p {
   font-size: 14px;
   text-transform: uppercase;
   color: #7D7D7D;
-  word-spacing: 0px;
+  word-spacing: -3px;
 }
 
 .title.is--light {
