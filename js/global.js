@@ -21,9 +21,12 @@ swup.hooks.on('visit:end', () => {
   console.log('Transition completed. Initializing slideshows...');
   initializeSlideshowsInContent();
   resizeImagesInSlideshows();
+  initExitRevealScroll();
 });
 
-
+document.addEventListener('DOMContentLoaded', () => {
+  initExitRevealScroll(); // Run on first page load
+});
 
 
 //Scroll to page top
@@ -442,3 +445,67 @@ function resizeImagesInSlideshows() {
 // Call the function to resize images and adjust height in slideshows
 resizeImagesInSlideshows();
 window.addEventListener('resize', handleResize);
+
+
+
+
+
+
+
+
+
+
+
+//Case Study Footer Homepage Preload
+
+function initExitRevealScroll() {
+  if (!window.location.pathname.startsWith('/case-study-slug')) return;
+
+  const exitDiv = document.querySelector('.exit');
+  const swupContainer = document.getElementById('swup');
+
+  if (!exitDiv || !swupContainer) return;
+
+  // Create and insert a preload container for homepage
+  const preloadContainer = document.createElement('div');
+  preloadContainer.classList.add('homepage-preload');
+  document.body.appendChild(preloadContainer);
+
+  // Fetch homepage content via AJAX
+  fetch('/')
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const homepageContent = doc.getElementById('swup');
+      if (homepageContent) {
+        preloadContainer.innerHTML = homepageContent.innerHTML;
+      }
+    });
+
+  // Make it fixed behind the main content
+  preloadContainer.style.position = 'fixed';
+  preloadContainer.style.top = 0;
+  preloadContainer.style.left = 0;
+  preloadContainer.style.width = '100%';
+  preloadContainer.style.height = '100%';
+  preloadContainer.style.overflow = 'hidden';
+  preloadContainer.style.zIndex = '-1';
+
+  // Scroll handler to fade out .exit
+  window.addEventListener('scroll', () => {
+    const rect = exitDiv.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const scrollProgress = 1 - (rect.bottom / windowHeight);
+      exitDiv.style.opacity = Math.max(1 - scrollProgress, 0);
+    }
+
+    // Trigger Swup when user hits the bottom
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+    if (nearBottom) {
+      swup.loadPage({ url: '/', customTransition: 'fade-home' });
+    }
+  });
+}
