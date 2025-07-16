@@ -1,4 +1,4 @@
-console.log("V2.23");
+console.log("V2.24");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -511,10 +511,10 @@ function initExitRevealScroll() {
     const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Fade out .exit based on how much of it is visible
+    // Fade out .exit based on scroll
     if (rect.top < windowHeight && rect.bottom > 0) {
       const visibleAmount = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
-      const progress = 1 - visibleAmount / rect.height; // 0 = fully visible, 1 = fully gone
+      const progress = 1 - visibleAmount / rect.height;
       const opacity = Math.max(1 - progress, 0);
       exitDiv.style.opacity = opacity;
       console.log('🌀 Exit opacity:', opacity.toFixed(2));
@@ -526,8 +526,8 @@ function initExitRevealScroll() {
     const atBottom = scrollY + windowHeight >= docHeight - 10;
 
     if (atBottom) {
-      console.log('🏁 Reached bottom of page — loading homepage...');
-      swup.loadPage({ url: '/', customTransition: 'fade-home' });
+      console.log('🏁 Reached bottom — navigating to homepage');
+      swup.navigate('/', { customTransition: 'fade-home' });
     }
   });
 }
