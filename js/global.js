@@ -446,7 +446,7 @@ function resizeImagesInSlideshows() {
 
 // Call the function to resize images and adjust height in slideshows
 resizeImagesInSlideshows();
-// window.addEventListener('resize', handleResize);
+// window.addEventListener('resize', handleResize);12
 
 
 
