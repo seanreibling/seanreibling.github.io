@@ -459,53 +459,56 @@ window.addEventListener('resize', handleResize);
 //Case Study Footer Homepage Preload
 
 function initExitRevealScroll() {
-  if (!window.location.pathname.startsWith('/case-study-slug')) return;
+  console.log('initExitRevealScroll triggered');
 
   const exitDiv = document.querySelector('.exit');
-  const swupContainer = document.getElementById('swup');
+  if (!exitDiv || document.querySelector('.homepage-preload')) {
+    console.warn('Exit div missing or preload already exists');
+    return;
+  }
 
-  if (!exitDiv || !swupContainer) return;
+  // Create preload container
+  const preload = document.createElement('div');
+  preload.classList.add('homepage-preload');
+  document.body.appendChild(preload);
 
-  // Create and insert a preload container for homepage
-  const preloadContainer = document.createElement('div');
-  preloadContainer.classList.add('homepage-preload');
-  document.body.appendChild(preloadContainer);
+  preload.style.position = 'fixed';
+  preload.style.top = 0;
+  preload.style.left = 0;
+  preload.style.width = '100%';
+  preload.style.height = '100%';
+  preload.style.zIndex = '-1';
+  preload.style.pointerEvents = 'none';
 
-  // Fetch homepage content via AJAX
+  // Fetch homepage
   fetch('/')
     .then(res => res.text())
     .then(html => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
-      const homepageContent = doc.getElementById('swup');
-      if (homepageContent) {
-        preloadContainer.innerHTML = homepageContent.innerHTML;
+      const homepage = doc.getElementById('swup');
+      if (homepage) {
+        preload.innerHTML = homepage.innerHTML;
+        console.log('Homepage inserted');
       }
     });
 
-  // Make it fixed behind the main content
-  preloadContainer.style.position = 'fixed';
-  preloadContainer.style.top = 0;
-  preloadContainer.style.left = 0;
-  preloadContainer.style.width = '100%';
-  preloadContainer.style.height = '100%';
-  preloadContainer.style.overflow = 'hidden';
-  preloadContainer.style.zIndex = '-1';
-
-  // Scroll handler to fade out .exit
+  // Scroll logic
   window.addEventListener('scroll', () => {
     const rect = exitDiv.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      const scrollProgress = 1 - (rect.bottom / windowHeight);
-      exitDiv.style.opacity = Math.max(1 - scrollProgress, 0);
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const progress = 1 - rect.bottom / window.innerHeight;
+      exitDiv.style.opacity = Math.max(1 - progress, 0);
+      console.log('Exit opacity:', exitDiv.style.opacity);
     }
 
-    // Trigger Swup when user hits the bottom
-    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
     if (nearBottom) {
-      swup.loadPage({ url: '/', customTransition: 'fade-home' });
+      console.log('At bottom, loading homepage');
+      swup.loadPage({ url: '/' });
     }
   });
 }
+
+document.addEventListener('DOMContentLoaded', initExitRevealScroll);
+swup.hooks.on('content:replace', initExitRevealScroll);
