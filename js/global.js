@@ -1,4 +1,4 @@
-console.log("V2.19");
+console.log("V2.20");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -529,12 +529,14 @@ function initExitRevealScroll() {
   });
 }
 
-// ✅ Run once on initial load
-document.addEventListener('DOMContentLoaded', () => {
+// Run on first page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initExitRevealScroll);
+} else {
   initExitRevealScroll();
-});
+}
 
-// ✅ Run again after Swup page transitions
+// Run after swup transitions
 swup.hooks.on('content:replace', () => {
   initExitRevealScroll();
 });
