@@ -1,4 +1,4 @@
-console.log("V2.22");
+console.log("V2.23");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -506,20 +506,21 @@ function initExitRevealScroll() {
       }
     });
 
+  // ✅ Scroll logic
   window.addEventListener('scroll', () => {
     const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Fade logic
+    // Fade out .exit based on how much of it is visible
     if (rect.top < windowHeight && rect.bottom > 0) {
       const visibleAmount = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
-      const progress = 1 - visibleAmount / rect.height;
+      const progress = 1 - visibleAmount / rect.height; // 0 = fully visible, 1 = fully gone
       const opacity = Math.max(1 - progress, 0);
       exitDiv.style.opacity = opacity;
       console.log('🌀 Exit opacity:', opacity.toFixed(2));
     }
 
-    // Bottom-of-page trigger
+    // Trigger homepage transition at bottom of page
     const scrollY = window.scrollY;
     const docHeight = document.documentElement.scrollHeight;
     const atBottom = scrollY + windowHeight >= docHeight - 10;
@@ -529,15 +530,16 @@ function initExitRevealScroll() {
       swup.loadPage({ url: '/', customTransition: 'fade-home' });
     }
   });
+}
 
-  // ✅ Run on initial load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initExitRevealScroll);
-  } else {
-    initExitRevealScroll();
-  }
+// ✅ Run on initial load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initExitRevealScroll);
+} else {
+  initExitRevealScroll();
+}
 
-  // ✅ Re-run on Swup transitions
-  swup.hooks.on('content:replace', () => {
-    initExitRevealScroll();
-  });
+// ✅ Re-run on Swup transitions
+swup.hooks.on('content:replace', () => {
+  initExitRevealScroll();
+});
