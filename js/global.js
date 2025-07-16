@@ -1,4 +1,4 @@
-console.log("V2.15");
+console.log("V2.16");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -12,8 +12,6 @@ swup.hooks.on('page:view', () => {
   checkHomeContactLink();
   projectCard();
   projectCardLocked();
-  // urlCheck();
-  // urlHover();
   createPlayPauseButtons();
   aboutTextAnimate();    
 });
