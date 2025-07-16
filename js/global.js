@@ -1,4 +1,4 @@
-console.log("V2.20");
+console.log("V2.21");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -455,13 +455,13 @@ resizeImagesInSlideshows();
 function initExitRevealScroll() {
   console.log('✅ initExitRevealScroll is running');
 
-  // ✅ Only run on case study pages — adjust this if your URL is different
-  if (!window.location.pathname.startsWith('/case-studies/')) {
+  // ✅ Only run on case study pages under /portfolio/
+  if (!window.location.pathname.startsWith('/portfolio/')) {
     console.log('⏭ Not a case study page, skipping...');
     return;
   }
 
-  // ✅ Remove any old preload elements from previous transitions
+  // ✅ Clean up old preload containers
   document.querySelectorAll('.homepage-preload').forEach(el => el.remove());
 
   const exitDiv = document.querySelector('.exit');
@@ -473,7 +473,7 @@ function initExitRevealScroll() {
   }
 
   if (preloadExists) {
-    console.warn('⚠️ .homepage-preload already exists in DOM, skipping preload creation');
+    console.warn('⚠️ .homepage-preload already exists, skipping preload');
     return;
   }
 
@@ -482,7 +482,6 @@ function initExitRevealScroll() {
   preloadContainer.classList.add('homepage-preload');
   document.body.appendChild(preloadContainer);
 
-  // ✅ Style it to be fixed in the background
   preloadContainer.style.position = 'fixed';
   preloadContainer.style.top = 0;
   preloadContainer.style.left = 0;
@@ -501,42 +500,40 @@ function initExitRevealScroll() {
       const homepageContent = doc.getElementById('swup');
       if (homepageContent) {
         preloadContainer.innerHTML = homepageContent.innerHTML;
-        console.log('🟢 Homepage content inserted into preload');
+        console.log('🟢 Homepage content inserted');
       } else {
-        console.warn('❌ Could not find #swup inside fetched homepage');
+        console.warn('❌ #swup not found in fetched homepage');
       }
     });
 
-  // ✅ Scroll handler for fading and navigation
+  // ✅ Scroll logic
   window.addEventListener('scroll', () => {
     const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Fade out .exit as it scrolls into view
     if (rect.top < windowHeight && rect.bottom > 0) {
-      const scrollProgress = 1 - (rect.bottom / windowHeight);
-      const newOpacity = Math.max(1 - scrollProgress, 0);
-      exitDiv.style.opacity = newOpacity;
-      console.log('🌀 Fading .exit opacity to:', newOpacity.toFixed(2));
+      const progress = 1 - rect.bottom / windowHeight;
+      const opacity = Math.max(1 - progress, 0);
+      exitDiv.style.opacity = opacity;
+      console.log('🌀 Exit opacity:', opacity.toFixed(2));
     }
 
-    // Trigger Swup transition when bottom of page is reached
     const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
     if (nearBottom) {
-      console.log('🏁 Reached bottom of page, triggering swup load to homepage');
+      console.log('🏁 Reached bottom, loading homepage');
       swup.loadPage({ url: '/', customTransition: 'fade-home' });
     }
   });
 }
 
-// Run on first page load
+// ✅ Run on initial load
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initExitRevealScroll);
 } else {
   initExitRevealScroll();
 }
 
-// Run after swup transitions
+// ✅ Re-run on Swup transitions
 swup.hooks.on('content:replace', () => {
   initExitRevealScroll();
 });
