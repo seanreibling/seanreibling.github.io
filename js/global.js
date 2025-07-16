@@ -8,7 +8,7 @@ swup.hooks.on('page:view', () => {
   // This runs after every page change
 
   scrollTop();
-  getNewCol();
+  // getNewCol();
   checkHomeContactLink();
   projectCard();
   projectCardLocked();
