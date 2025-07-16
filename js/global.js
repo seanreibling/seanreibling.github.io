@@ -23,9 +23,9 @@ swup.hooks.on('visit:end', () => {
   resizeImagesInSlideshows();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  initExitRevealScroll();
-});
+
+initExitRevealScroll();
+
 
 swup.hooks.on('content:replace', () => {
   initExitRevealScroll();
