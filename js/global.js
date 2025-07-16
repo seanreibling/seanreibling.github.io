@@ -1,4 +1,4 @@
-console.log("V2.21");
+console.log("V2.22");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -13,7 +13,7 @@ swup.hooks.on('page:view', () => {
   projectCard();
   projectCardLocked();
   createPlayPauseButtons();
-  aboutTextAnimate();    
+  aboutTextAnimate();
 });
 
 swup.hooks.on('visit:end', () => {
@@ -27,7 +27,7 @@ swup.hooks.on('visit:end', () => {
 function scrollTop() {
   setTimeout(function () {
     window.scrollTo(0, 0);
-    
+
   }, 50);
 }
 
@@ -315,7 +315,7 @@ function preloadImages(images) {
 // Case Study Slideshow Funcationality
 
 function setInitialSlideshowHeight(slideshow) {
-  resizeImagesInSlideshows(); 
+  resizeImagesInSlideshows();
 
   let firstSlide = slideshow.querySelector('.image.is--slideshow');
   let initialHeight = firstSlide.height;
@@ -361,7 +361,7 @@ function initializeSlideshowsInContent() {
         showSlide(currentSlide); // Maintain current slide after resize
       }, 250); // Adjust this delay as needed (250ms delay in this case)
     }
-    
+
 
     // Function to handle image load
     function handleImageLoad() {
@@ -506,34 +506,38 @@ function initExitRevealScroll() {
       }
     });
 
-  // ✅ Scroll logic
   window.addEventListener('scroll', () => {
     const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
+    // Fade logic
     if (rect.top < windowHeight && rect.bottom > 0) {
-      const progress = 1 - rect.bottom / windowHeight;
+      const visibleAmount = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
+      const progress = 1 - visibleAmount / rect.height;
       const opacity = Math.max(1 - progress, 0);
       exitDiv.style.opacity = opacity;
       console.log('🌀 Exit opacity:', opacity.toFixed(2));
     }
 
-    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
-    if (nearBottom) {
-      console.log('🏁 Reached bottom, loading homepage');
+    // Bottom-of-page trigger
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    const atBottom = scrollY + windowHeight >= docHeight - 10;
+
+    if (atBottom) {
+      console.log('🏁 Reached bottom of page — loading homepage...');
       swup.loadPage({ url: '/', customTransition: 'fade-home' });
     }
   });
-}
 
-// ✅ Run on initial load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initExitRevealScroll);
-} else {
-  initExitRevealScroll();
-}
+  // ✅ Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initExitRevealScroll);
+  } else {
+    initExitRevealScroll();
+  }
 
-// ✅ Re-run on Swup transitions
-swup.hooks.on('content:replace', () => {
-  initExitRevealScroll();
-});
+  // ✅ Re-run on Swup transitions
+  swup.hooks.on('content:replace', () => {
+    initExitRevealScroll();
+  });
