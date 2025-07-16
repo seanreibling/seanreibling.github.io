@@ -1,4 +1,4 @@
-console.log("V2.14");
+console.log("V2.15");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -23,13 +23,15 @@ swup.hooks.on('visit:end', () => {
   console.log('Transition completed. Initializing slideshows...');
   initializeSlideshowsInContent();
   resizeImagesInSlideshows();
-  initExitRevealScroll();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  initExitRevealScroll(); // Run on first page load
+  initExitRevealScroll();
 });
 
+swup.hooks.on('content:replace', () => {
+  initExitRevealScroll();
+});
 
 //Scroll to page top
 function scrollTop() {
