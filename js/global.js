@@ -1,4 +1,4 @@
-console.log("V2.25");
+console.log("V2.26");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -467,15 +467,14 @@ function initExitRevealScroll() {
     return;
   }
 
-  // ✅ Setup preload flag
   let hasPreloadedHomepage = false;
 
-  // ✅ Scroll logic
-  window.addEventListener('scroll', () => {
+  // ✅ Define scroll handler
+  const handleScroll = () => {
     const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Fade out .exit as it scrolls into view
+    // Fade out .exit
     if (rect.top < windowHeight && rect.bottom > 0) {
       const visibleAmount = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
       const progress = 1 - visibleAmount / rect.height;
@@ -483,7 +482,6 @@ function initExitRevealScroll() {
       exitDiv.style.opacity = opacity;
       console.log('🌀 Exit opacity:', opacity.toFixed(2));
 
-      // ✅ Only preload homepage once, when .exit is visible
       if (!hasPreloadedHomepage) {
         hasPreloadedHomepage = true;
         console.log('🟢 Preloading homepage...');
@@ -491,20 +489,23 @@ function initExitRevealScroll() {
       }
     }
 
-    // Trigger homepage transition at bottom
+    // Only navigate if still on /portfolio/
     const scrollY = window.scrollY;
     const docHeight = document.documentElement.scrollHeight;
     const atBottom = scrollY + windowHeight >= docHeight - 10;
 
-    if (atBottom) {
+    if (atBottom && window.location.pathname.startsWith('/portfolio/')) {
       console.log('🏁 Reached bottom — navigating to homepage');
+      window.removeEventListener('scroll', handleScroll); // prevent loop
       swup.navigate('/', { customTransition: 'fade-home' });
     }
-  });
+  };
 
-  // ✅ Load homepage only when needed
+  // ✅ Attach scroll listener
+  window.addEventListener('scroll', handleScroll);
+
+  // ✅ Preload function
   function preloadHomepage() {
-    // Remove old preload container if somehow still there
     document.querySelectorAll('.homepage-preload').forEach(el => el.remove());
 
     const preloadContainer = document.createElement('div');
@@ -530,7 +531,7 @@ function initExitRevealScroll() {
           preloadContainer.innerHTML = homepageContent.innerHTML;
           console.log('✅ Homepage content inserted');
         } else {
-          console.warn('❌ Could not find #swup inside fetched homepage');
+          console.warn('❌ #swup not found in homepage response');
         }
       });
   }
