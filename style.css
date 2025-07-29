@@ -879,7 +879,7 @@ footer {
 
 .exit {
   height: 100vh;
-  background: #141414;
+  background: #9f5c5c;
   transition: opacity 0.3s ease;
   z-index: 1;
   position: relative;
