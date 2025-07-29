@@ -1,4 +1,4 @@
-console.log("V2.29");
+console.log("V2.30");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -476,21 +476,27 @@ function initExitRevealScroll() {
     const exitStart = exitDiv.offsetTop;
     const exitEnd = docHeight - windowHeight;
 
-    // ✅ Compute scroll progress through the exit zone
-    const progress = Math.min(1, Math.max(0, (scrollY - exitStart) / (exitEnd - exitStart)));
-    const opacity = 1 - progress;
+    const totalScrollRange = exitEnd - exitStart;
 
-    // ✅ Apply opacity
+    let progress = 0;
+
+    if (totalScrollRange > 0) {
+      progress = (scrollY - exitStart) / totalScrollRange;
+      progress = Math.min(1, Math.max(0, progress));
+    }
+
+    const opacity = 1 - progress;
     exitDiv.style.opacity = opacity;
+
     console.log(`🌀 Exit opacity: ${opacity.toFixed(2)} (progress: ${progress.toFixed(2)})`);
 
-    // ✅ Preload homepage only once
+    // ✅ Preload homepage when exit is visible
     if (!hasPreloadedHomepage && scrollY + windowHeight >= exitStart) {
       hasPreloadedHomepage = true;
       preloadHomepage();
     }
 
-    // ✅ Trigger transition at bottom of page
+    // ✅ Navigate to homepage at bottom
     if (scrollY + windowHeight >= docHeight - 10) {
       console.log('🏁 Reached bottom — navigating to homepage');
       window.removeEventListener('scroll', handleScroll);
