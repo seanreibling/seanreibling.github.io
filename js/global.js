@@ -1,4 +1,4 @@
-console.log("V2.30");
+console.log("V2.31");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -469,34 +469,29 @@ function initExitRevealScroll() {
   let hasPreloadedHomepage = false;
 
   const handleScroll = () => {
-    const scrollY = window.scrollY;
+    const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const docHeight = document.documentElement.scrollHeight;
 
-    const exitStart = exitDiv.offsetTop;
-    const exitEnd = docHeight - windowHeight;
+    // How much of the .exit section has scrolled into view
+    const distanceFromTop = Math.max(0, windowHeight - rect.top);
+    const totalHeight = rect.height + windowHeight;
 
-    const totalScrollRange = exitEnd - exitStart;
-
-    let progress = 0;
-
-    if (totalScrollRange > 0) {
-      progress = (scrollY - exitStart) / totalScrollRange;
-      progress = Math.min(1, Math.max(0, progress));
-    }
-
+    const progress = Math.min(1, distanceFromTop / totalHeight);
     const opacity = 1 - progress;
+
     exitDiv.style.opacity = opacity;
 
     console.log(`🌀 Exit opacity: ${opacity.toFixed(2)} (progress: ${progress.toFixed(2)})`);
 
-    // ✅ Preload homepage when exit is visible
-    if (!hasPreloadedHomepage && scrollY + windowHeight >= exitStart) {
+    // Preload homepage once .exit is in view
+    if (!hasPreloadedHomepage && rect.top < windowHeight) {
       hasPreloadedHomepage = true;
       preloadHomepage();
     }
 
-    // ✅ Navigate to homepage at bottom
+    // Navigate to homepage at very bottom
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
     if (scrollY + windowHeight >= docHeight - 10) {
       console.log('🏁 Reached bottom — navigating to homepage');
       window.removeEventListener('scroll', handleScroll);
