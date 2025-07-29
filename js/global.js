@@ -1,4 +1,4 @@
-console.log("V2.26");
+console.log("V2.27");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -471,33 +471,32 @@ function initExitRevealScroll() {
 
   // ✅ Define scroll handler
   const handleScroll = () => {
-    const rect = exitDiv.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    // Fade out .exit
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      const visibleAmount = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
-      const progress = 1 - visibleAmount / rect.height;
-      const opacity = Math.max(1 - progress, 0);
-      exitDiv.style.opacity = opacity;
-      console.log('🌀 Exit opacity:', opacity.toFixed(2));
-
-      if (!hasPreloadedHomepage) {
-        hasPreloadedHomepage = true;
-        console.log('🟢 Preloading homepage...');
-        preloadHomepage();
-      }
-    }
-
-    // Only navigate if still on /portfolio/
     const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
-    const atBottom = scrollY + windowHeight >= docHeight - 10;
 
+    const exitStart = exitDiv.offsetTop;
+    const exitEnd = docHeight - windowHeight;
+
+    // ✅ Fade out .exit from 1 → 0 based on scroll progress
+    const progress = Math.min(1, Math.max(0, (scrollY - exitStart) / (exitEnd - exitStart)));
+    const opacity = 1 - progress;
+    exitDiv.style.opacity = opacity;
+    console.log('🌀 Exit scroll progress:', progress.toFixed(2), '→ opacity:', opacity.toFixed(2));
+
+    // ✅ Trigger homepage transition when bottom is reached
+    const atBottom = scrollY + windowHeight >= docHeight - 10;
     if (atBottom && window.location.pathname.startsWith('/portfolio/')) {
       console.log('🏁 Reached bottom — navigating to homepage');
-      window.removeEventListener('scroll', handleScroll); // prevent loop
+      window.removeEventListener('scroll', handleScroll);
       swup.navigate('/', { customTransition: 'fade-home' });
+    }
+
+    // ✅ Trigger preload when exiting starts to appear
+    if (!hasPreloadedHomepage && scrollY + windowHeight >= exitStart) {
+      hasPreloadedHomepage = true;
+      console.log('🟢 Preloading homepage...');
+      preloadHomepage();
     }
   };
 
