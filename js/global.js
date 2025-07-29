@@ -1,4 +1,4 @@
-console.log("V2.24");
+console.log("V2.25");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -455,72 +455,43 @@ resizeImagesInSlideshows();
 function initExitRevealScroll() {
   console.log('✅ initExitRevealScroll is running');
 
-  // ✅ Only run on case study pages under /portfolio/
+  // ✅ Only run on /portfolio/ pages
   if (!window.location.pathname.startsWith('/portfolio/')) {
     console.log('⏭ Not a case study page, skipping...');
     return;
   }
 
-  // ✅ Clean up old preload containers
-  document.querySelectorAll('.homepage-preload').forEach(el => el.remove());
-
   const exitDiv = document.querySelector('.exit');
-  const preloadExists = document.querySelector('.homepage-preload');
-
   if (!exitDiv) {
     console.warn('❌ .exit div not found in DOM');
     return;
   }
 
-  if (preloadExists) {
-    console.warn('⚠️ .homepage-preload already exists, skipping preload');
-    return;
-  }
-
-  // ✅ Create and insert a preload container for homepage
-  const preloadContainer = document.createElement('div');
-  preloadContainer.classList.add('homepage-preload');
-  document.body.appendChild(preloadContainer);
-
-  preloadContainer.style.position = 'fixed';
-  preloadContainer.style.top = 0;
-  preloadContainer.style.left = 0;
-  preloadContainer.style.width = '100%';
-  preloadContainer.style.height = '100%';
-  preloadContainer.style.overflow = 'hidden';
-  preloadContainer.style.zIndex = '-1';
-  preloadContainer.style.pointerEvents = 'none';
-
-  // ✅ Fetch and inject homepage content
-  fetch('/')
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const homepageContent = doc.getElementById('swup');
-      if (homepageContent) {
-        preloadContainer.innerHTML = homepageContent.innerHTML;
-        console.log('🟢 Homepage content inserted');
-      } else {
-        console.warn('❌ #swup not found in fetched homepage');
-      }
-    });
+  // ✅ Setup preload flag
+  let hasPreloadedHomepage = false;
 
   // ✅ Scroll logic
   window.addEventListener('scroll', () => {
     const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Fade out .exit based on scroll
+    // Fade out .exit as it scrolls into view
     if (rect.top < windowHeight && rect.bottom > 0) {
       const visibleAmount = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
       const progress = 1 - visibleAmount / rect.height;
       const opacity = Math.max(1 - progress, 0);
       exitDiv.style.opacity = opacity;
       console.log('🌀 Exit opacity:', opacity.toFixed(2));
+
+      // ✅ Only preload homepage once, when .exit is visible
+      if (!hasPreloadedHomepage) {
+        hasPreloadedHomepage = true;
+        console.log('🟢 Preloading homepage...');
+        preloadHomepage();
+      }
     }
 
-    // Trigger homepage transition at bottom of page
+    // Trigger homepage transition at bottom
     const scrollY = window.scrollY;
     const docHeight = document.documentElement.scrollHeight;
     const atBottom = scrollY + windowHeight >= docHeight - 10;
@@ -530,6 +501,39 @@ function initExitRevealScroll() {
       swup.navigate('/', { customTransition: 'fade-home' });
     }
   });
+
+  // ✅ Load homepage only when needed
+  function preloadHomepage() {
+    // Remove old preload container if somehow still there
+    document.querySelectorAll('.homepage-preload').forEach(el => el.remove());
+
+    const preloadContainer = document.createElement('div');
+    preloadContainer.classList.add('homepage-preload');
+    document.body.appendChild(preloadContainer);
+
+    preloadContainer.style.position = 'fixed';
+    preloadContainer.style.top = 0;
+    preloadContainer.style.left = 0;
+    preloadContainer.style.width = '100%';
+    preloadContainer.style.height = '100%';
+    preloadContainer.style.overflow = 'hidden';
+    preloadContainer.style.zIndex = '-1';
+    preloadContainer.style.pointerEvents = 'none';
+
+    fetch('/')
+      .then(res => res.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const homepageContent = doc.getElementById('swup');
+        if (homepageContent) {
+          preloadContainer.innerHTML = homepageContent.innerHTML;
+          console.log('✅ Homepage content inserted');
+        } else {
+          console.warn('❌ Could not find #swup inside fetched homepage');
+        }
+      });
+  }
 }
 
 // ✅ Run on initial load
