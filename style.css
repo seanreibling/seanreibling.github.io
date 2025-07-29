@@ -82,10 +82,6 @@ p {
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* .heading.is--nav:hover {
-  
-} */
-
 .link {
   text-decoration: underline;
   text-underline-offset: 6px;
@@ -132,6 +128,11 @@ p {
   .display {
     font-size: 32px;
   }
+
+  .heading.is--xlarge {
+  font-size: 36px;
+}
+
 }
 
 /* ---NAVIGATION STYLES--- */
