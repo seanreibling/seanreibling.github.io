@@ -1,4 +1,4 @@
-console.log("V2.48");
+console.log("V2.49");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -453,6 +453,7 @@ resizeImagesInSlideshows();
 //Case Study Footer Homepage Preload
 
 let exitScrollListener = null; // globally scoped so we can remove it
+let shouldSkipTransition = false;
 
 function initExitInteraction() {
   if (!window.location.pathname.startsWith('/portfolio/')) return;
@@ -501,8 +502,9 @@ function initExitInteraction() {
     }
 
     if (distanceFromBottom <= 0) {
-      window.removeEventListener('scroll', exitScrollListener); // ⬅ cleanup
-      swup.navigate('/');
+      window.removeEventListener('scroll', exitScrollListener);
+      shouldSkipTransition = true; // set the flag
+      swup.navigate('/', { animate: false }); // skip animation
     }
   };
 
@@ -517,6 +519,10 @@ swup.hooks.on('content:replace', () => {
   }
 
   initExitInteraction();
+});
+
+swup.hooks.on('visit:end', () => {
+  shouldSkipTransition = false;
 });
 
 // Run on initial load
