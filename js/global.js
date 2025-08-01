@@ -1,4 +1,4 @@
-console.log("V2.32");
+console.log("V2.33");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -452,68 +452,63 @@ resizeImagesInSlideshows();
 
 //Case Study Footer Homepage Preload
 
-function initExitRevealScroll() {
-  const isCaseStudy = window.location.pathname.startsWith('/portfolio/');
-  if (!isCaseStudy) return;
+function initCaseStudyExitScroll() {
+  const exitTrigger = document.querySelector('.exit-trigger');
+  const homePreload = document.getElementById('home-preload');
 
-  const exitDiv = document.querySelector('.exit');
-  if (!exitDiv) {
-    console.warn('⚠️ .exit div not found.');
-    return;
-  }
+  if (!exitTrigger || !homePreload) return;
 
-  const swupContainer = document.querySelector('#swup');
-  let hasPreloaded = false;
-  let hasNavigated = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Load homepage content into #home-preload
+        fetch('/')
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const homepageContent = doc.querySelector('[data-swup]');
+            if (homepageContent) {
+              homePreload.innerHTML = homepageContent.innerHTML;
+              homePreload.style.display = 'block';
+              homePreload.style.position = 'absolute';
+              homePreload.style.top = '0';
+              homePreload.style.left = '0';
+              homePreload.style.width = '100%';
+              homePreload.style.zIndex = '0'; // behind current content
+            }
 
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting && !hasPreloaded) {
-      console.log('👁 .exit entered viewport — preloading homepage...');
-      hasPreloaded = true;
+            // Start fade-out of current page
+            const swupContainer = document.querySelector('[data-swup]');
+            swupContainer.style.transition = 'opacity 1s ease';
+            swupContainer.style.opacity = '0';
 
-      // Preload homepage via swup using visit() (does not trigger navigation)
-      swup.visit('/', {
-        preload: true,
-        customTransition: 'fade-home',
-      });
-    }
+            // Navigate to homepage after fade
+            setTimeout(() => {
+              swup.loadPage({ url: '/', method: 'GET' });
+            }, 1000);
+          });
+      }
+    });
   }, {
-    threshold: 0.1
+    threshold: 1.0
   });
 
-  observer.observe(exitDiv);
-
-  // Scroll-based opacity change
-  function updateOpacity() {
-    const rect = exitDiv.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    const start = windowHeight; // when top of exit hits bottom of screen
-    const end = 0; // when bottom of exit hits bottom of screen
-    const distance = rect.height + windowHeight;
-
-    const progress = Math.min(Math.max((windowHeight - rect.top) / distance, 0), 1);
-    const opacity = 1 - progress;
-
-    exitDiv.style.opacity = opacity.toFixed(3);
-    // console.log(`exit opacity: ${opacity.toFixed(2)} (progress: ${progress.toFixed(2)})`);
-
-    if (!hasNavigated && progress >= 1) {
-      hasNavigated = true;
-      console.log('🏁 Exit bottom reached — navigating to homepage...');
-      swup.navigate('/', { customTransition: 'fade-home' });
-    }
-
-    requestAnimationFrame(updateOpacity);
-  }
-
-  requestAnimationFrame(updateOpacity);
+  observer.observe(exitTrigger);
 }
 
-// Initial run
-initExitRevealScroll();
-
-// Swup integration — re-run on page changes
-swup.hooks.on('content:replace', () => {
-  initExitRevealScroll();
+// Remove #home-preload on navigation to other pages
+swup.hooks.before('visit:start', (visit) => {
+  const homePreload = document.getElementById('home-preload');
+  if (homePreload && !visit.to.pathname.endsWith('/')) {
+    homePreload.remove();
+  }
 });
+
+// Re-initialize after page change
+swup.hooks.on('content:replace', () => {
+  initCaseStudyExitScroll();
+});
+
+// Also run on initial load
+initCaseStudyExitScroll();
