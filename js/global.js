@@ -48,7 +48,7 @@ const reducedPadding = 36;
 window.onscroll = function scrollUpDown() {
   const subnav = document.getElementById("subnav");
   const currentScrollPos = window.pageYOffset;
-  const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 24;
+  const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 50;
   const isDesktop = window.innerWidth >= 992;
   const distanceFromBottom = document.body.offsetHeight - (window.innerHeight + window.pageYOffset);
   const isOnPortfolioPage = window.location.pathname.startsWith('/portfolio/');
