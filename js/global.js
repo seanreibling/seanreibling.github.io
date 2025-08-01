@@ -1,4 +1,4 @@
-console.log("V2.43");
+console.log("V2.44");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -453,8 +453,8 @@ resizeImagesInSlideshows();
 //Case Study Footer Homepage Preload
 
 function initExitInteraction() {
-  // Only run this on case study pages
-  if (!location.pathname.startsWith('/portfolio/')) return;
+  // Only run on case study pages
+  if (!location.pathname.startsWith('/projects/')) return;
 
   const exit = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
@@ -462,6 +462,7 @@ function initExitInteraction() {
 
   let hasLoadedHome = false;
 
+  // Step 1: Load homepage behind the content when `.exit` enters view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting && !hasLoadedHome) {
@@ -483,6 +484,7 @@ function initExitInteraction() {
 
   observer.observe(exit);
 
+  // Step 2: Fade `.exit` as it scrolls into view, and navigate at bottom
   window.addEventListener('scroll', () => {
     const rect = exit.getBoundingClientRect();
     const exitTop = rect.top + window.scrollY;
@@ -490,6 +492,7 @@ function initExitInteraction() {
     const viewportBottom = window.scrollY + window.innerHeight;
     const distanceFromBottom = document.documentElement.scrollHeight - viewportBottom;
 
+    // Fade out .exit based on scroll position
     if (viewportBottom >= exitTop) {
       const progress = Math.min((viewportBottom - exitTop) / (exitHeight + 200), 1);
       exit.style.opacity = (1 - progress).toFixed(2);
@@ -497,13 +500,10 @@ function initExitInteraction() {
       exit.style.opacity = '1';
     }
 
+    // Seamless navigation when bottom is reached
     if (distanceFromBottom <= 0) {
-      window.scrollTo({ top: window.scrollY - 1 });
-      swup.transition.animation = false; // Disable animation
-      swup.navigate('/');
-      setTimeout(() => {
-        swup.transition.animation = true; // Re-enable after transition
-      }, 500);
+      window.scrollTo({ top: window.scrollY - 1 }); // Prevents re-trigger
+      swup.navigate('/', { animate: false }); // Instant transition
     }
   });
 }
