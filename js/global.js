@@ -1,4 +1,4 @@
-console.log("V2.49");
+console.log("V2.50");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -48,12 +48,14 @@ const reducedPadding = 36;
 window.onscroll = function scrollUpDown() {
   const subnav = document.getElementById("subnav");
   const currentScrollPos = window.pageYOffset;
-
   const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 24;
-  const isNearBottom = (window.innerHeight + window.pageYOffset) >= (document.body.offsetHeight - 56);
   const isDesktop = window.innerWidth >= 992;
+  const distanceFromBottom = document.body.offsetHeight - (window.innerHeight + window.pageYOffset);
+  const isOnPortfolioPage = window.location.pathname.startsWith('/portfolio/');
 
-  if (scrollingUp && !isNearBottom) {
+  const forceShowNav = isOnPortfolioPage && distanceFromBottom <= 200;
+
+  if (scrollingUp || forceShowNav) {
     // Show navbar
     navbar.classList.remove("slide--up");
     navbar.classList.add("slide--down");
