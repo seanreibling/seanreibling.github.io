@@ -1,4 +1,4 @@
-console.log("V2.44");
+console.log("V2.45");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -453,16 +453,15 @@ resizeImagesInSlideshows();
 //Case Study Footer Homepage Preload
 
 function initExitInteraction() {
-  // Only run on case study pages
-  if (!location.pathname.startsWith('/projects/')) return;
-
   const exit = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
+
   if (!exit || !preloadContainer) return;
 
   let hasLoadedHome = false;
+  const pageHeight = document.documentElement.scrollHeight;
 
-  // Step 1: Load homepage behind the content when `.exit` enters view
+  // Step 1: Load homepage into background when `.exit` enters view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting && !hasLoadedHome) {
@@ -480,11 +479,13 @@ function initExitInteraction() {
           .catch(err => console.error('Failed to preload homepage:', err));
       }
     });
-  }, { threshold: 0.1 });
+  }, {
+    threshold: 0.1
+  });
 
   observer.observe(exit);
 
-  // Step 2: Fade `.exit` as it scrolls into view, and navigate at bottom
+  // Step 2: Fade `.exit` as user scrolls near the bottom and trigger navigation
   window.addEventListener('scroll', () => {
     const rect = exit.getBoundingClientRect();
     const exitTop = rect.top + window.scrollY;
@@ -492,18 +493,18 @@ function initExitInteraction() {
     const viewportBottom = window.scrollY + window.innerHeight;
     const distanceFromBottom = document.documentElement.scrollHeight - viewportBottom;
 
-    // Fade out .exit based on scroll position
+    // Fade based on how far through the .exit section the user has scrolled
     if (viewportBottom >= exitTop) {
-      const progress = Math.min((viewportBottom - exitTop) / (exitHeight + 200), 1);
+      const progress = Math.min((viewportBottom - exitTop) / (exitHeight + 200), 1); // starts at 0 when enters, fades to 1 when near 200px from bottom
       exit.style.opacity = (1 - progress).toFixed(2);
     } else {
       exit.style.opacity = '1';
     }
 
-    // Seamless navigation when bottom is reached
+    // Trigger navigation when the user reaches the bottom
     if (distanceFromBottom <= 0) {
-      window.scrollTo({ top: window.scrollY - 1 }); // Prevents re-trigger
-      swup.navigate('/', { animate: false }); // Instant transition
+      window.scrollTo({ top: window.scrollY - 1 }); // Prevents infinite loop
+      swup.navigate('/');
     }
   });
 }
