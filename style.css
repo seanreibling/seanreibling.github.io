@@ -620,6 +620,12 @@ main {
 
 /* PROJECT TEMPLATE STYLES */
 
+.container {
+  position: relative;
+  background-color: #141414;
+  z-index: 1;
+}
+
 .image {
   width: 100%;
   height: auto;
@@ -895,11 +901,7 @@ footer {
   height: 100%;
   width: 100%;
   background-color: aqua;
-  margin: 0px 16px 0px 16px;
+  padding: 0px 16px 0px 16px;
+  box-sizing: border-box;
 }
 
-.container {
-  position: relative;
-  background-color: black;
-  z-index: 1;
-}
