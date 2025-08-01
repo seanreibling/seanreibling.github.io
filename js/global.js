@@ -1,4 +1,4 @@
-console.log("V2.34");
+console.log("V2.35");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -452,99 +452,62 @@ resizeImagesInSlideshows();
 
 //Case Study Footer Homepage Preload
 
-let homepageLoaded = false;
-let scrolledToBottom = false;
+function initCaseStudyTransition() {
+  if (!window.location.pathname.startsWith('/portfolio/')) return;
 
-// Observe when `.exit` enters the viewport
-function observeExitVisibility() {
   const exitDiv = document.querySelector('.exit');
-  const homePreload = document.getElementById('home-preload');
-  if (!exitDiv || !homePreload) return;
+  const preloadContainer = document.getElementById('home-preload');
+  let homeLoaded = false;
+  let homeContent = '';
+  let transitionTriggered = false;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !homepageLoaded) {
-        homepageLoaded = true;
+  // 1. Observe .exit to preload homepage
+  const observer = new IntersectionObserver(async (entries) => {
+    if (entries[0].isIntersecting && !homeLoaded) {
+      homeLoaded = true;
 
-        // Preload homepage content via Swup
-        fetch('/')
-          .then((res) => res.text())
-          .then((html) => {
-            const tempDom = document.createElement('html');
-            tempDom.innerHTML = html;
-
-            const newContent = tempDom.querySelector('[data-swup]');
-            if (newContent) {
-              homePreload.innerHTML = newContent.innerHTML;
-              homePreload.style.display = 'block';
-            }
-          });
+      try {
+        const res = await fetch('/');
+        const text = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const homeHTML = doc.querySelector('[data-swup]');
+        if (homeHTML) {
+          homeContent = homeHTML.innerHTML;
+          preloadContainer.innerHTML = homeContent;
+        }
+      } catch (err) {
+        console.error('Failed to preload homepage:', err);
       }
-    });
-  });
+    }
+  }, { threshold: 0.1 });
 
-  observer.observe(exitDiv);
-}
+  if (exitDiv) observer.observe(exitDiv);
 
-// Fade out `.exit` based on scroll
-function fadeExitOnScroll() {
-  const exitDiv = document.querySelector('.exit');
-  if (!exitDiv) return;
+  // 2. Fade .exit div based on scroll
+  window.addEventListener('scroll', () => {
+    if (!exitDiv) return;
 
-  const onScroll = () => {
     const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
+    const progress = Math.min(Math.max(1 - rect.bottom / windowHeight, 0), 1);
+    exitDiv.style.opacity = (1 - progress).toFixed(2);
 
-    // Calculate scroll progress through the exit div
-    const scrollY = window.scrollY || window.pageYOffset;
-    const start = scrollY + rect.top;
-    const end = scrollY + rect.bottom;
-    const progress = Math.min(Math.max((scrollY + windowHeight - start) / (end - start), 0), 1);
-
-    // Update opacity
-    exitDiv.style.opacity = `${1 - progress}`;
-
-    // If user reaches the bottom of the page, trigger homepage switch
-    if (!scrolledToBottom && window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
-      scrolledToBottom = true;
-
-      // Ensure homepage is preloaded
-      if (homepageLoaded) {
-        swup.navigate('/');
-      } else {
-        // Fallback: If not yet preloaded, just navigate normally
-        window.location.href = '/';
-      }
+    // 3. At bottom of page → trigger Swup transition
+    if (
+      !transitionTriggered &&
+      (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5
+    ) {
+      transitionTriggered = true;
+      swup.visit('/');
     }
-  };
-
-  window.addEventListener('scroll', onScroll);
+  });
 }
 
-// Reinitialize everything after swup loads a new page
-function initCaseStudyExitTransition() {
-  homepageLoaded = false;
-  scrolledToBottom = false;
-
-  observeExitVisibility();
-  fadeExitOnScroll();
-}
-
-// On initial page load
-if (window.location.pathname.includes('/case-study')) {
-  initCaseStudyExitTransition();
-}
-
-// On Swup navigation
+// ✅ Re-run after Swup page change
 swup.hooks.on('content:replace', () => {
-  if (window.location.pathname.includes('/case-study')) {
-    initCaseStudyExitTransition();
-  } else {
-    // Clear homepage preload on navigating away
-    const homePreload = document.getElementById('home-preload');
-    if (homePreload) {
-      homePreload.innerHTML = '';
-      homePreload.style.display = 'none';
-    }
-  }
+  initCaseStudyTransition();
 });
+
+// ✅ Run on first load too
+initCaseStudyTransition();
