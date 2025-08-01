@@ -1,4 +1,4 @@
-console.log("V2.36");
+console.log("V2.37");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -452,63 +452,73 @@ resizeImagesInSlideshows();
 
 //Case Study Footer Homepage Preload
 
-function initExitReveal() {
-  const exit = document.querySelector('.exit');
+function initExitScrollTransition() {
+  // Only run this on case study pages
+  if (!window.location.pathname.startsWith('/case-studies/')) return;
+
+  const exitDiv = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
-
-  if (!exit || !preloadContainer) return;
-
   let homepageLoaded = false;
-  let homepageContent = '';
+  let homepageActivated = false;
 
-  // Step 1: Preload homepage HTML when .exit enters viewport
+  if (!exitDiv || !preloadContainer) return;
+
+  // Step 1: Create a fixed container behind the content
+  preloadContainer.style.position = 'fixed';
+  preloadContainer.style.top = '0';
+  preloadContainer.style.left = '0';
+  preloadContainer.style.width = '100vw';
+  preloadContainer.style.height = '100vh';
+  preloadContainer.style.zIndex = '0';
+  preloadContainer.style.pointerEvents = 'none';
+  preloadContainer.style.opacity = '1';
+  preloadContainer.style.overflow = 'hidden';
+  preloadContainer.style.display = 'none';
+
+  // Step 2: Load homepage content when .exit comes into view
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !homepageLoaded) {
-        fetch('/')
-          .then(res => res.text())
-          .then(html => {
-            // Parse homepage and extract #swup contents
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const homepageSwupContent = doc.querySelector('[data-swup]');
-            if (homepageSwupContent) {
-              preloadContainer.innerHTML = homepageSwupContent.innerHTML;
-              homepageLoaded = true;
-              preloadContainer.style.zIndex = '0';
-            }
-          });
-      }
-    });
-  }, { threshold: 0 });
+    const entry = entries[0];
+    if (entry.isIntersecting && !homepageLoaded) {
+      homepageLoaded = true;
+      preloadContainer.style.display = 'block';
 
-  observer.observe(exit);
+      // Fetch homepage and insert into preload container
+      fetch('/')
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const homepageContent = doc.querySelector('[data-swup]');
+          if (homepageContent) {
+            preloadContainer.innerHTML = '';
+            preloadContainer.appendChild(homepageContent);
+          }
+        });
+    }
+  }, { threshold: 0.1 });
 
-  // Step 2: Animate .exit opacity based on scroll position
-  function onScrollFadeExit() {
-    const rect = exit.getBoundingClientRect();
+  observer.observe(exitDiv);
+
+  // Step 3: Animate opacity of the .exit div as you scroll down
+  window.addEventListener('scroll', () => {
+    const rect = exitDiv.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      const visibleHeight = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
-      const totalHeight = rect.height;
-      const progress = 1 - visibleHeight / totalHeight;
-      exit.style.opacity = `${1 - progress}`;
-    }
+    const start = windowHeight;
+    const end = 0;
+    const progress = 1 - Math.min(Math.max((rect.bottom - end) / (start - end), 0), 1);
+    exitDiv.style.opacity = `${1 - progress}`;
 
-    // Step 3: When user reaches the bottom, trigger Swup navigation
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
+    // Step 4: When scroll reaches bottom of the page, activate homepage
+    if (!homepageActivated && window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+      homepageActivated = true;
+      // Instantly navigate to homepage using Swup
       swup.navigate('/');
     }
-  }
-
-  window.addEventListener('scroll', onScrollFadeExit);
+  });
 }
 
-// Swup 3-compatible hook
-swup.hooks.on('content:replace', () => {
-  initExitReveal();
+// Reinitialize on Swup page load
+swup.hooks.on('page:view', () => {
+  initExitScrollTransition();
 });
-
-// Also run on initial load
-initExitReveal();
