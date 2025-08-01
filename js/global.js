@@ -1,4 +1,4 @@
-console.log("V2.39");
+console.log("V2.40");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -485,19 +485,25 @@ function initExitInteraction() {
 
   observer.observe(exit);
 
-  // Step 2: Fade `.exit` as user scrolls near the bottom
+  // Step 2: Fade `.exit` as user scrolls near the bottom and trigger navigation
   window.addEventListener('scroll', () => {
-    const distanceFromBottom = pageHeight - window.scrollY - window.innerHeight;
+    const rect = exit.getBoundingClientRect();
+    const exitTop = rect.top + window.scrollY;
+    const exitHeight = rect.height;
+    const viewportBottom = window.scrollY + window.innerHeight;
+    const distanceFromBottom = document.documentElement.scrollHeight - viewportBottom;
 
-    if (distanceFromBottom <= 200) {
-      exit.style.opacity = (distanceFromBottom / 200).toFixed(2); // From 1 to 0
+    // Fade based on how far through the .exit section the user has scrolled
+    if (viewportBottom >= exitTop) {
+      const progress = Math.min((viewportBottom - exitTop) / (exitHeight + 200), 1); // starts at 0 when enters, fades to 1 when near 200px from bottom
+      exit.style.opacity = (1 - progress).toFixed(2);
     } else {
-      exit.style.opacity = 1;
+      exit.style.opacity = '1';
     }
 
-    // Step 3: When user hits bottom, navigate home
+    // Trigger navigation when the user reaches the bottom
     if (distanceFromBottom <= 0) {
-      window.scrollTo({ top: window.scrollY - 1 }); // Prevents re-trigger
+      window.scrollTo({ top: window.scrollY - 1 }); // Prevents infinite loop
       swup.navigate('/');
     }
   });
