@@ -1,4 +1,4 @@
-console.log("V2.46");
+console.log("V2.47");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -452,9 +452,17 @@ resizeImagesInSlideshows();
 
 //Case Study Footer Homepage Preload
 
-function initExitInteraction() {
-  if (!window.location.pathname.startsWith('/portfolio/')) return;
+// Only initialize if URL starts with /portfolio/
+if (window.location.pathname.startsWith('/portfolio/')) {
+  swup.hooks.on('content:replace', () => {
+    initExitInteraction();
+  });
 
+  // Initial load
+  initExitInteraction();
+}
+
+function initExitInteraction() {
   const exit = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
 
@@ -487,7 +495,6 @@ function initExitInteraction() {
 
   observer.observe(exit);
 
-  // Fade and navigate
   window.addEventListener('scroll', () => {
     const rect = exit.getBoundingClientRect();
     const exitTop = rect.top + window.scrollY;
