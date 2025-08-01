@@ -1,4 +1,4 @@
-console.log("V2.45");
+console.log("V2.46");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -453,6 +453,8 @@ resizeImagesInSlideshows();
 //Case Study Footer Homepage Preload
 
 function initExitInteraction() {
+  if (!window.location.pathname.startsWith('/portfolio/')) return;
+
   const exit = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
 
@@ -461,7 +463,7 @@ function initExitInteraction() {
   let hasLoadedHome = false;
   const pageHeight = document.documentElement.scrollHeight;
 
-  // Step 1: Load homepage into background when `.exit` enters view
+  // Load homepage into background
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting && !hasLoadedHome) {
@@ -485,7 +487,7 @@ function initExitInteraction() {
 
   observer.observe(exit);
 
-  // Step 2: Fade `.exit` as user scrolls near the bottom and trigger navigation
+  // Fade and navigate
   window.addEventListener('scroll', () => {
     const rect = exit.getBoundingClientRect();
     const exitTop = rect.top + window.scrollY;
@@ -493,17 +495,15 @@ function initExitInteraction() {
     const viewportBottom = window.scrollY + window.innerHeight;
     const distanceFromBottom = document.documentElement.scrollHeight - viewportBottom;
 
-    // Fade based on how far through the .exit section the user has scrolled
     if (viewportBottom >= exitTop) {
-      const progress = Math.min((viewportBottom - exitTop) / (exitHeight + 200), 1); // starts at 0 when enters, fades to 1 when near 200px from bottom
+      const progress = Math.min((viewportBottom - exitTop) / (exitHeight + 200), 1);
       exit.style.opacity = (1 - progress).toFixed(2);
     } else {
       exit.style.opacity = '1';
     }
 
-    // Trigger navigation when the user reaches the bottom
     if (distanceFromBottom <= 0) {
-      window.scrollTo({ top: window.scrollY - 1 }); // Prevents infinite loop
+      window.scrollTo({ top: window.scrollY - 1 });
       swup.navigate('/');
     }
   });
