@@ -1,4 +1,4 @@
-console.log("V2.37");
+console.log("V2.38");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -477,48 +477,53 @@ function initExitScrollTransition() {
 
   // Step 2: Load homepage content when .exit comes into view
   const observer = new IntersectionObserver((entries) => {
-    const entry = entries[0];
-    if (entry.isIntersecting && !homepageLoaded) {
-      homepageLoaded = true;
-      preloadContainer.style.display = 'block';
-
-      // Fetch homepage and insert into preload container
-      fetch('/')
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
-          const homepageContent = doc.querySelector('[data-swup]');
-          if (homepageContent) {
-            preloadContainer.innerHTML = '';
-            preloadContainer.appendChild(homepageContent);
-          }
-        });
+    if (entries[0].isIntersecting && !homeLoaded) {
+      loadHomepageBehind().then(() => {
+        homePreload.style.opacity = '1';
+        homeLoaded = true;
+      });
     }
-  }, { threshold: 0.1 });
+  }, {
+    root: null,
+    threshold: 0.1
+  });
 
-  observer.observe(exitDiv);
+  if (exit) {
+    observer.observe(exit);
+    window.addEventListener('scroll', handleExitFadeOut);
+  }
 
-  // Step 3: Animate opacity of the .exit div as you scroll down
-  window.addEventListener('scroll', () => {
-    const rect = exitDiv.getBoundingClientRect();
+  function handleExitFadeOut() {
+    const rect = exit.getBoundingClientRect();
     const windowHeight = window.innerHeight;
+    const progress = 1 - Math.max(0, Math.min(1, rect.bottom / windowHeight));
+    exit.style.opacity = `${1 - progress}`;
 
-    const start = windowHeight;
-    const end = 0;
-    const progress = 1 - Math.min(Math.max((rect.bottom - end) / (start - end), 0), 1);
-    exitDiv.style.opacity = `${1 - progress}`;
-
-    // Step 4: When scroll reaches bottom of the page, activate homepage
-    if (!homepageActivated && window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
-      homepageActivated = true;
-      // Instantly navigate to homepage using Swup
+    // If scrolled to bottom and not yet visited homepage
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2 && !hasVisited) {
+      hasVisited = true;
       swup.navigate('/');
     }
-  });
+  }
+
+  // Step 2: Load homepage into preload container
+  async function loadHomepageBehind() {
+    const response = await fetch('/');
+    const text = await response.text();
+    const parser = new DOMParser();
+    const html = parser.parseFromString(text, 'text/html');
+    const newContent = html.querySelector('#swup');
+    if (newContent) {
+      homePreload.innerHTML = newContent.innerHTML;
+    }
+  }
 }
 
-// Reinitialize on Swup page load
-swup.hooks.on('page:view', () => {
-  initExitScrollTransition();
+// ------------------------------------------
+// INIT ON PAGE LOAD + SWUP REPLACEMENT
+// ------------------------------------------
+swup.hooks.on('content:replace', () => {
+  initCaseStudyExitTransition();
 });
+
+initCaseStudyExitTransition();
