@@ -452,30 +452,16 @@ resizeImagesInSlideshows();
 
 //Case Study Footer Homepage Preload
 
-function initExitScrollTransition() {
-  // Only run this on case study pages
-  if (!window.location.pathname.startsWith('/case-studies/')) return;
+function initCaseStudyExitTransition() {
+  // Only run on case study pages
+  if (!window.location.pathname.startsWith('/case-study/')) return;
 
-  const exitDiv = document.querySelector('.exit');
-  const preloadContainer = document.getElementById('home-preload');
-  let homepageLoaded = false;
-  let homepageActivated = false;
+  const exit = document.querySelector('.exit');
+  const homePreload = document.querySelector('#home-preload');
+  let homeLoaded = false;
+  let hasVisited = false;
 
-  if (!exitDiv || !preloadContainer) return;
-
-  // Step 1: Create a fixed container behind the content
-  preloadContainer.style.position = 'fixed';
-  preloadContainer.style.top = '0';
-  preloadContainer.style.left = '0';
-  preloadContainer.style.width = '100vw';
-  preloadContainer.style.height = '100vh';
-  preloadContainer.style.zIndex = '0';
-  preloadContainer.style.pointerEvents = 'none';
-  preloadContainer.style.opacity = '1';
-  preloadContainer.style.overflow = 'hidden';
-  preloadContainer.style.display = 'none';
-
-  // Step 2: Load homepage content when .exit comes into view
+  // Step 1: Inject homepage behind
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting && !homeLoaded) {
       loadHomepageBehind().then(() => {
