@@ -678,7 +678,7 @@ main {
   display: flex;
   flex-direction: column;
   row-gap: 24px;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
 }
 
 .block.is--grid {
@@ -881,12 +881,24 @@ footer {
   height: 150vh;
   background-color: #9f5c5c;
   transition: opacity 0.3s ease;
+  opacity: 0.5;
   z-index: 1;
   position: relative;
 }
 
 #home-preload {
   pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: aqua;
+}
+
+.container {
+  position: relative;
+  background-color: black;
+  z-index: 1;
 }

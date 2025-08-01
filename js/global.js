@@ -1,4 +1,4 @@
-console.log("V2.38");
+console.log("V2.39");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -452,64 +452,60 @@ resizeImagesInSlideshows();
 
 //Case Study Footer Homepage Preload
 
-function initCaseStudyExitTransition() {
-  // Only run on case study pages
-  if (!window.location.pathname.startsWith('/case-study/')) return;
-
+function initExitInteraction() {
   const exit = document.querySelector('.exit');
-  const homePreload = document.querySelector('#home-preload');
-  let homeLoaded = false;
-  let hasVisited = false;
+  const preloadContainer = document.getElementById('home-preload');
 
-  // Step 1: Inject homepage behind
+  if (!exit || !preloadContainer) return;
+
+  let hasLoadedHome = false;
+  const pageHeight = document.documentElement.scrollHeight;
+
+  // Step 1: Load homepage into background when `.exit` enters view
   const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && !homeLoaded) {
-      loadHomepageBehind().then(() => {
-        homePreload.style.opacity = '1';
-        homeLoaded = true;
-      });
-    }
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !hasLoadedHome) {
+        fetch('/')
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const mainContent = doc.getElementById('swup');
+            if (mainContent) {
+              preloadContainer.innerHTML = mainContent.innerHTML;
+              hasLoadedHome = true;
+            }
+          })
+          .catch(err => console.error('Failed to preload homepage:', err));
+      }
+    });
   }, {
-    root: null,
     threshold: 0.1
   });
 
-  if (exit) {
-    observer.observe(exit);
-    window.addEventListener('scroll', handleExitFadeOut);
-  }
+  observer.observe(exit);
 
-  function handleExitFadeOut() {
-    const rect = exit.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const progress = 1 - Math.max(0, Math.min(1, rect.bottom / windowHeight));
-    exit.style.opacity = `${1 - progress}`;
+  // Step 2: Fade `.exit` as user scrolls near the bottom
+  window.addEventListener('scroll', () => {
+    const distanceFromBottom = pageHeight - window.scrollY - window.innerHeight;
 
-    // If scrolled to bottom and not yet visited homepage
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2 && !hasVisited) {
-      hasVisited = true;
+    if (distanceFromBottom <= 200) {
+      exit.style.opacity = (distanceFromBottom / 200).toFixed(2); // From 1 to 0
+    } else {
+      exit.style.opacity = 1;
+    }
+
+    // Step 3: When user hits bottom, navigate home
+    if (distanceFromBottom <= 0) {
+      window.scrollTo({ top: window.scrollY - 1 }); // Prevents re-trigger
       swup.navigate('/');
     }
-  }
-
-  // Step 2: Load homepage into preload container
-  async function loadHomepageBehind() {
-    const response = await fetch('/');
-    const text = await response.text();
-    const parser = new DOMParser();
-    const html = parser.parseFromString(text, 'text/html');
-    const newContent = html.querySelector('#swup');
-    if (newContent) {
-      homePreload.innerHTML = newContent.innerHTML;
-    }
-  }
+  });
 }
 
-// ------------------------------------------
-// INIT ON PAGE LOAD + SWUP REPLACEMENT
-// ------------------------------------------
 swup.hooks.on('content:replace', () => {
-  initCaseStudyExitTransition();
+  initExitInteraction();
 });
 
-initCaseStudyExitTransition();
+// Run on initial load
+initExitInteraction();
