@@ -1,4 +1,4 @@
-console.log("V2.47");
+console.log("V2.48");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -452,24 +452,16 @@ resizeImagesInSlideshows();
 
 //Case Study Footer Homepage Preload
 
-// Only initialize if URL starts with /portfolio/
-if (window.location.pathname.startsWith('/portfolio/')) {
-  swup.hooks.on('content:replace', () => {
-    initExitInteraction();
-  });
-
-  // Initial load
-  initExitInteraction();
-}
+let exitScrollListener = null; // globally scoped so we can remove it
 
 function initExitInteraction() {
+  if (!window.location.pathname.startsWith('/portfolio/')) return;
+
   const exit = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
-
   if (!exit || !preloadContainer) return;
 
   let hasLoadedHome = false;
-  const pageHeight = document.documentElement.scrollHeight;
 
   // Load homepage into background
   const observer = new IntersectionObserver((entries) => {
@@ -489,13 +481,12 @@ function initExitInteraction() {
           .catch(err => console.error('Failed to preload homepage:', err));
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
 
   observer.observe(exit);
 
-  window.addEventListener('scroll', () => {
+  // Named scroll function for later removal
+  exitScrollListener = () => {
     const rect = exit.getBoundingClientRect();
     const exitTop = rect.top + window.scrollY;
     const exitHeight = rect.height;
@@ -510,13 +501,21 @@ function initExitInteraction() {
     }
 
     if (distanceFromBottom <= 0) {
-      window.scrollTo({ top: window.scrollY - 1 });
+      window.removeEventListener('scroll', exitScrollListener); // ⬅ cleanup
       swup.navigate('/');
     }
-  });
+  };
+
+  window.addEventListener('scroll', exitScrollListener);
 }
 
+// Re-run on Swup replace, but cleanup previous listener first
 swup.hooks.on('content:replace', () => {
+  if (exitScrollListener) {
+    window.removeEventListener('scroll', exitScrollListener);
+    exitScrollListener = null;
+  }
+
   initExitInteraction();
 });
 
