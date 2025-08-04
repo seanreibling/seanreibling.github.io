@@ -130,9 +130,15 @@ p {
     font-size: 32px;
   }
 
-  .heading.is--xlarge {
+  .heading.is--large {
     font-size: 32px;
   }
+
+  .heading.is-x-large {
+    font-size: 36px;
+  }
+
+
 
 }
 
