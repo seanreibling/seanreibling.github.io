@@ -20,7 +20,8 @@ h6 {
   padding: 0;
 }
 
-body, main {
+body,
+main {
   background-color: #141414;
 }
 
@@ -130,8 +131,8 @@ p {
   }
 
   .heading.is--xlarge {
-  font-size: 36px;
-}
+    font-size: 36px;
+  }
 
 }
 
@@ -142,7 +143,8 @@ nav {
   background-color: #141414;
   color: white !important;
   position: fixed;
-  z-index: 9999;top: 0;
+  z-index: 9999;
+  top: 0;
   border-bottom: 1px solid rgb(255, 255, 225, 0.1);
 }
 
@@ -535,6 +537,7 @@ main {
   .hero__item {
     max-width: 100%;
   }
+
   #hero__connect {
     display: none;
   }
@@ -832,6 +835,8 @@ expanding past 1760px (1600 plus 24px margin) */
     gap: 24px;
     padding: 48px 0;
     min-width: none;
+    margin-top: 24px;
+    margin-bottom: 48px;
   }
 
   .block.is--quote {
@@ -904,4 +909,3 @@ footer {
   padding: 0px 16px 0px 16px;
   box-sizing: border-box;
 }
-
