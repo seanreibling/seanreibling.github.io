@@ -910,3 +910,10 @@ footer {
   padding: 0px 16px 0px 16px;
   box-sizing: border-box;
 }
+
+/* Mobile Portrait */
+@media only screen and (max-width: 991px) {
+  .exit {
+    height: 100vh;
+  }
+}
