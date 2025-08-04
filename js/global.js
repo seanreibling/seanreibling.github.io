@@ -1,4 +1,4 @@
-console.log("V2.51");
+console.log("V2.52");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -91,6 +91,36 @@ window.onscroll = function scrollUpDown() {
 
   prevScrollPos = currentScrollPos;
 };
+
+
+
+
+
+//Switch between X and nav links on the right of the nav depending on the page
+
+function updateNavbarForPortfolio() {
+  const isPortfolioPage = window.location.pathname.includes('/portfolio/');
+  const navClose = document.querySelector('.nav__close');
+  const navLinks = document.querySelector('.nav__links');
+
+  if (navClose && navLinks) {
+    if (isPortfolioPage) {
+      navClose.style.display = 'block';
+      navLinks.style.display = 'none';
+    } else {
+      navClose.style.display = 'none';
+      navLinks.style.display = 'block';
+    }
+  }
+}
+
+// Run on initial page load
+updateNavbarForPortfolio();
+
+// Re-run on each Swup page change
+swup.hooks.on('content:replace', () => {
+  updateNavbarForPortfolio();
+});
 
 
 
