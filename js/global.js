@@ -105,11 +105,11 @@ function updateNavbarForPortfolio() {
 
   if (navClose && navLinks) {
     if (isPortfolioPage) {
-      navClose.style.display = 'block';
+      navClose.style.display = 'flex';
       navLinks.style.display = 'none';
     } else {
       navClose.style.display = 'none';
-      navLinks.style.display = 'block';
+      navLinks.style.display = 'flex';
     }
   }
 }
