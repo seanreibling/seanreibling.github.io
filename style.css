@@ -505,6 +505,12 @@ main {
   column-gap: 16px;
 }
 
+@media (max-width: 991px) {
+  .nav__links {
+  column-gap: 12px;
+}
+}
+
 
 
 
