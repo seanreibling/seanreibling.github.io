@@ -755,6 +755,15 @@ expanding past 1760px (1600 plus 24px margin) */
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+  background-color: #202020;
+  border-radius: 8px;
+  padding: 36px;
+}
+
+.metadata__left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
 }
 
 .metadata__list {
