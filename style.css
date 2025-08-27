@@ -36,7 +36,7 @@ a {
 }
 
 .wordmark:hover {
-  color: rgba(126, 71, 254, 1);
+  color: rgb(141, 120, 255);
 }
 
 p {
@@ -91,8 +91,8 @@ p {
 }
 
 .link:hover {
-  text-decoration-color: rgba(126, 71, 254, 1);
-  color: rgba(126, 71, 254, 1);
+  text-decoration-color: rgb(141, 120, 255);
+  color: rgb(141, 120, 255);
 }
 
 .noudl {
@@ -905,7 +905,7 @@ footer {
 }
 
 .footer__col {
-  width: 35.5%;
+  width: 35%;
 }
 
 
