@@ -527,7 +527,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 48px;
+  gap: 36px;
 }
 
 .item__group {
