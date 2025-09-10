@@ -131,7 +131,7 @@ p {
   }
 
   .heading.is--large {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .heading.is--xlarge {
@@ -864,7 +864,7 @@ expanding past 1760px (1600 plus 24px margin) */
     display: grid;
     grid-template: 1fr auto / 1fr;
     gap: 24px;
-    padding: 48px 0;
+    padding: 24px 0;
     min-width: 0;
     width: 100%;
     margin-top: 24px;
