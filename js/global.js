@@ -38,59 +38,74 @@ function scrollTop() {
 
 // Show and hide nav menu when scrolling up and down
 
-let prevScrollPos = window.pageYOffset;
-const navbar = document.getElementById("nav");
-const stickyCol = document.querySelector(".masonry-col.is--sticky");
+function initNavScroll() {
+  let prevScrollPos = window.pageYOffset;
+  const navbar = document.getElementById("nav");
+  const stickyCol = document.querySelector(".masonry-col.is--sticky");
 
-const defaultPadding = 92;
-const reducedPadding = 36;
+  const defaultPadding = 92;
+  const reducedPadding = 36;
 
-window.onscroll = function scrollUpDown() {
-  const subnav = document.getElementById("subnav");
-  const currentScrollPos = window.pageYOffset;
-  const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 50;
-  const isDesktop = window.innerWidth >= 992;
-  const distanceFromBottom = document.body.offsetHeight - (window.innerHeight + window.pageYOffset);
-  const isOnPortfolioPage = window.location.pathname.startsWith('/portfolio/');
+  // Clean up any old listener first (important for swup re-init)
+  window.removeEventListener("scroll", handleScroll);
 
-  const forceShowNav = isOnPortfolioPage && distanceFromBottom <= 200;
+  function handleScroll() {
+    const subnav = document.getElementById("subnav");
+    const currentScrollPos = window.pageYOffset;
+    const scrollingUp = prevScrollPos > currentScrollPos || currentScrollPos <= 50;
+    const isDesktop = window.innerWidth >= 992;
+    const distanceFromBottom = document.body.offsetHeight - (window.innerHeight + window.pageYOffset);
+    const isOnPortfolioPage = window.location.pathname.startsWith("/portfolio/");
 
-  if (scrollingUp || forceShowNav) {
-    // Show navbar
-    navbar.classList.remove("slide--up");
-    navbar.classList.add("slide--down");
+    const forceShowNav = isOnPortfolioPage && distanceFromBottom <= 200;
 
-    // Adjust sticky padding only on desktop
-    if (stickyCol) {
-      stickyCol.style.paddingTop = isDesktop ? `${defaultPadding}px` : "";
+    if (scrollingUp || forceShowNav) {
+      // Show navbar
+      navbar.classList.remove("slide--up");
+      navbar.classList.add("slide--down");
+
+      // Adjust sticky padding only on desktop
+      if (stickyCol) {
+        stickyCol.style.paddingTop = isDesktop ? `${defaultPadding}px` : "";
+      }
+
+      // Show subnav (if exists)
+      if (subnav) {
+        subnav.classList.add("slide--up");
+        subnav.classList.remove("slide--down");
+      }
+    } else {
+      // Hide navbar
+      navbar.classList.add("slide--up");
+      navbar.classList.remove("slide--down");
+
+      // Adjust sticky padding only on desktop
+      if (stickyCol) {
+        stickyCol.style.paddingTop = isDesktop ? `${reducedPadding}px` : "";
+      }
+
+      // Hide subnav (if exists)
+      if (subnav) {
+        setTimeout(() => {
+          subnav.classList.remove("slide--up");
+          subnav.classList.add("slide--down");
+        }, 100);
+      }
     }
 
-    // Show subnav (if exists)
-    if (subnav) {
-      subnav.classList.add("slide--up");
-      subnav.classList.remove("slide--down");
-    }
-  } else {
-    // Hide navbar
-    navbar.classList.add("slide--up");
-    navbar.classList.remove("slide--down");
-
-    // Adjust sticky padding only on desktop
-    if (stickyCol) {
-      stickyCol.style.paddingTop = isDesktop ? `${reducedPadding}px` : "";
-    }
-
-    // Hide subnav (if exists)
-    if (subnav) {
-      setTimeout(() => {
-        subnav.classList.remove("slide--up");
-        subnav.classList.add("slide--down");
-      }, 100);
-    }
+    prevScrollPos = currentScrollPos;
   }
 
-  prevScrollPos = currentScrollPos;
-};
+  window.addEventListener("scroll", handleScroll);
+}
+
+// ✅ Run on first page load
+initNavScroll();
+
+// ✅ Re-run after each swup navigation
+swup.hooks.on("content:replace", () => {
+  initNavScroll();
+});
 
 
 
