@@ -813,7 +813,7 @@ expanding past 1760px (1600 plus 24px margin) */
 } */
 
 .elem.is--mobile {
-  padding: 10% 24px;
+  padding: 25%;
 }
 
 .elem.is--mobileframe {
