@@ -817,7 +817,7 @@ expanding past 1760px (1600 plus 24px margin) */
 }
 
 .elem.is--mobileframe {
-  padding: 24px;
+  padding: 25%;
 }
 
 .elem.is--video {
