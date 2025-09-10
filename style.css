@@ -743,6 +743,10 @@ main {
   max-width: none !important;
 }
 
+.blank {
+  height: 48px;
+}
+
 /* This media query is to fix the centering bug when 
 expanding past 1760px (1600 plus 24px margin) */
 @media only screen and (min-width: 1760px) {
