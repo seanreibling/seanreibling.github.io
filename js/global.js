@@ -208,58 +208,6 @@ if (window.swup) {
 
 
 
-
-
-
-
-//Project card hover interaction
-
-function projectCard() {
-  let projects = document.querySelectorAll('.project');
-
-  projects.forEach(project => {
-    const text = project.querySelector('.heading.is--dim');
-
-    project.addEventListener('mouseover', function () {
-      text.style.color = 'white';
-    });
-
-    project.addEventListener('mouseout', function () {
-      text.style.color = 'rgba(255, 255, 0, 0.4)';
-    });
-  });
-}
-projectCard();
-
-
-
-
-//Project card locked hover interaction
-function projectCardLocked() {
-  const projects = document.querySelectorAll('.project');
-
-  projects.forEach(project => {
-    project.addEventListener('mouseenter', () => {
-      const lockedElement = project.querySelector('.project__locked');
-      if (lockedElement) {
-        lockedElement.classList.add('active');
-      }
-    });
-
-    project.addEventListener('mouseleave', () => {
-      const lockedElement = project.querySelector('.project__locked');
-      if (lockedElement) {
-        lockedElement.classList.remove('active');
-      }
-    });
-  });
-}
-projectCardLocked();
-
-
-
-
-
 // Vimeo Background Video Play/Pause
 
 // Function to create play/pause buttons for Vimeo videos

@@ -601,10 +601,23 @@ main {
   flex-direction: column;
   row-gap: 16px;
   padding-bottom: 24px;
+  position: relative;
 }
 
 .grid-item img {
   width: 100%;
+}
+
+.locked {
+  position: absolute;
+  display: flex;
+  top: 16px;
+  left: 16px;
+  padding: 8px;
+  gap: 4px;
+  border-radius: 4px;
+  background-color: #101010;
+  z-index: 1;
 }
 
 @media (max-width: 991px) {
