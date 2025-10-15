@@ -967,3 +967,10 @@ footer {
     height: 100vh;
   }
 }
+
+
+/*Site title letter scramble effect*/
+
+.scramble-char {
+  opacity: 0.7;
+}

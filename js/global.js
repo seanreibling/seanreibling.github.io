@@ -522,3 +522,80 @@ swup.hooks.on('visit:end', () => {
 
 // Run on initial load
 initExitInteraction();
+
+
+
+
+
+
+
+
+
+//Site title scrambling letter animation
+
+function initTitleScramble() {
+  const el = document.querySelector('.site-title');
+  if (!el) return;
+
+  const finalText = el.textContent.trim();
+  const chars = '!<>-_\\/[]{}—=+*^?#________ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const duration = 1000; // total duration in ms
+  const steps = 10; // how many random frames per character
+  const scrambleDelay = 30; // delay between animation frames
+
+  let frame = 0;
+  let queue = [];
+
+  // build animation queue
+  for (let i = 0; i < finalText.length; i++) {
+    const from = '';
+    const to = finalText[i];
+    const start = Math.floor(Math.random() * steps);
+    const end = start + Math.floor(Math.random() * steps);
+    queue.push({ from, to, start, end });
+  }
+
+  cancelAnimationFrame(el._scrambleRAF);
+
+  function update() {
+    let output = '';
+    let complete = 0;
+
+    for (let i = 0; i < queue.length; i++) {
+      let { from, to, start, end, char } = queue[i];
+      if (frame >= end) {
+        complete++;
+        output += to;
+      } else if (frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = chars[Math.floor(Math.random() * chars.length)];
+          queue[i].char = char;
+        }
+        output += `<span class="scramble-char">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+
+    el.innerHTML = output;
+
+    if (complete === queue.length) {
+      // animation finished — ensure final text is clean
+      el.textContent = finalText;
+    } else {
+      frame++;
+      el._scrambleRAF = requestAnimationFrame(update);
+    }
+  }
+
+  update();
+}
+
+// 🔁 Initialize on page load and with Swup.js
+document.addEventListener('DOMContentLoaded', initTitleScramble);
+if (window.swup) {
+  swup.hooks.on('content:replace', () => {
+    initTitleScramble();
+  });
+}
+
