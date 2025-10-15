@@ -1,4 +1,4 @@
-console.log("V2.52");
+console.log("V2.53");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -539,19 +539,19 @@ function initTitleScramble() {
 
   const finalText = el.textContent.trim();
   const chars = '!<>-_\\/[]{}—=+*^?#________ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const duration = 1000; // total duration in ms
-  const steps = 10; // how many random frames per character
-  const scrambleDelay = 30; // delay between animation frames
+  const totalDuration = 2000; // total animation duration (ms)
+  const scrambleDelay = 40; // delay per animation frame (ms)
+  const steps = Math.floor(totalDuration / scrambleDelay / 2); // number of random frames per character
 
   let frame = 0;
   let queue = [];
 
-  // build animation queue
+  // Build animation queue
   for (let i = 0; i < finalText.length; i++) {
     const from = '';
     const to = finalText[i];
     const start = Math.floor(Math.random() * steps);
-    const end = start + Math.floor(Math.random() * steps);
+    const end = start + Math.floor(Math.random() * (steps / 1.5));
     queue.push({ from, to, start, end });
   }
 
@@ -580,7 +580,6 @@ function initTitleScramble() {
     el.innerHTML = output;
 
     if (complete === queue.length) {
-      // animation finished — ensure final text is clean
       el.textContent = finalText;
     } else {
       frame++;
@@ -591,8 +590,10 @@ function initTitleScramble() {
   update();
 }
 
-// 🔁 Initialize on page load and with Swup.js
+// 🔁 Run on initial load
 document.addEventListener('DOMContentLoaded', initTitleScramble);
+
+// 🔁 Run again on Swup navigation
 if (window.swup) {
   swup.hooks.on('content:replace', () => {
     initTitleScramble();
