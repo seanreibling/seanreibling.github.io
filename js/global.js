@@ -1,4 +1,4 @@
-console.log("V2.53");
+console.log("V2.54");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -540,18 +540,18 @@ function initTitleScramble() {
   const finalText = el.textContent.trim();
   const chars = '!<>-_\\/[]{}—=+*^?#________ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const totalDuration = 2000; // total animation duration (ms)
-  const scrambleDelay = 40; // delay per animation frame (ms)
-  const steps = Math.floor(totalDuration / scrambleDelay / 2); // number of random frames per character
+  const scrambleDelay = 40; // frame delay (ms)
+  const steps = Math.floor(totalDuration / scrambleDelay / 1.5); // random frames per char
 
   let frame = 0;
   let queue = [];
 
-  // Build animation queue
+  // Build queue: all chars start scrambling immediately
   for (let i = 0; i < finalText.length; i++) {
-    const from = '';
+    const from = finalText[i];
     const to = finalText[i];
-    const start = Math.floor(Math.random() * steps);
-    const end = start + Math.floor(Math.random() * (steps / 1.5));
+    const start = 0; // all start scrambling right away
+    const end = Math.floor(Math.random() * steps) + steps / 2; // staggered lock-in timing
     queue.push({ from, to, start, end });
   }
 
@@ -562,18 +562,16 @@ function initTitleScramble() {
     let complete = 0;
 
     for (let i = 0; i < queue.length; i++) {
-      let { from, to, start, end, char } = queue[i];
+      let { to, start, end, char } = queue[i];
       if (frame >= end) {
         complete++;
         output += to;
-      } else if (frame >= start) {
-        if (!char || Math.random() < 0.28) {
+      } else {
+        if (!char || Math.random() < 0.3) {
           char = chars[Math.floor(Math.random() * chars.length)];
           queue[i].char = char;
         }
         output += `<span class="scramble-char">${char}</span>`;
-      } else {
-        output += from;
       }
     }
 
@@ -599,4 +597,3 @@ if (window.swup) {
     initTitleScramble();
   });
 }
-
