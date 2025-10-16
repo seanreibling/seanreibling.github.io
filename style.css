@@ -972,18 +972,18 @@ footer {
 /*Site title letter scramble effect*/
 
 .site-title {
-  display: inline-block;
-  white-space: pre; /* Preserve spaces */
+  display: block;
+  white-space: normal; /* allow wrapping */
   font-variant-ligatures: none;
 }
 
 .scramble-char {
   display: inline-block;
-  width: 1ch; /* Ensures each character takes up the same width */
+  min-width: 0.6ch; /* prevents big shifts while allowing wrap */
   text-align: center;
   font-family: inherit;
 }
 
 .scramble-char.locked {
-  color: inherit; /* Optional: ensures final characters use the main color */
+  color: inherit;
 }

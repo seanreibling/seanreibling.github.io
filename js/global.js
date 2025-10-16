@@ -1,4 +1,4 @@
-console.log("V2.55");
+console.log("V2.56");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -588,10 +588,13 @@ function initTitleScramble() {
   update();
 }
 
-// Run on first load
+// ✅ Run immediately on first load
+initTitleScramble();
+
+// ✅ Run again after DOM ready (in case of late load)
 document.addEventListener('DOMContentLoaded', initTitleScramble);
 
-// Run again on Swup navigation
+// ✅ Run again on Swup navigation
 if (window.swup) {
   swup.hooks.on('content:replace', () => {
     initTitleScramble();
