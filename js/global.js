@@ -1,4 +1,4 @@
-console.log("V2.56");
+console.log("V2.57");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -540,13 +540,12 @@ function initTitleScramble() {
   const finalText = el.textContent.trim();
   const chars = '!<>-_\\/[]{}—=+*^?#________ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const totalDuration = 2000; // total animation duration (ms)
-  const scrambleDelay = 40; // frame delay (ms)
-  const steps = Math.floor(totalDuration / scrambleDelay / 1.5); // random frames per char
+  const scrambleDelay = 40;
+  const steps = Math.floor(totalDuration / scrambleDelay / 1.5);
 
   let frame = 0;
   let queue = [];
 
-  // Build queue: all chars start scrambling immediately
   for (let i = 0; i < finalText.length; i++) {
     const from = finalText[i];
     const to = finalText[i];
@@ -588,13 +587,9 @@ function initTitleScramble() {
   update();
 }
 
-// ✅ Run immediately on first load
+// Run on first load and after Swup transitions
 initTitleScramble();
-
-// ✅ Run again after DOM ready (in case of late load)
 document.addEventListener('DOMContentLoaded', initTitleScramble);
-
-// ✅ Run again on Swup navigation
 if (window.swup) {
   swup.hooks.on('content:replace', () => {
     initTitleScramble();
