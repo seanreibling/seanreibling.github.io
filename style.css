@@ -737,10 +737,12 @@ main {
 }
 
 .block.is--hero {
-  width: 100%;
   min-height: 40vw;
   margin-top: 56px;
-  max-width: none !important;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  max-width: none;
 }
 
 .blank {
@@ -973,17 +975,19 @@ footer {
 
 .site-title {
   display: block;
-  white-space: normal; /* allow wrapping */
+  white-space: normal; /* allows wrapping */
   font-variant-ligatures: none;
 }
 
 .scramble-char {
   display: inline-block;
-  min-width: 0.6ch; /* prevents big shifts while allowing wrap */
+  width: 1ch;                /* fixed width per character */
   text-align: center;
-  font-family: inherit;
+  font-family: monospace;    /* ensures even character width */
+  overflow: hidden;
 }
 
 .scramble-char.locked {
-  color: inherit;
+  font-family: inherit;      /* switch back to your actual font once resolved */
+  width: auto;               /* allow natural spacing again */
 }
