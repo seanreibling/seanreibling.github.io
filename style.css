@@ -971,6 +971,19 @@ footer {
 
 /*Site title letter scramble effect*/
 
+.site-title {
+  display: inline-block;
+  white-space: pre; /* Preserve spaces */
+  font-variant-ligatures: none;
+}
+
 .scramble-char {
-  opacity: 0.7;
+  display: inline-block;
+  width: 1ch; /* Ensures each character takes up the same width */
+  text-align: center;
+  font-family: inherit;
+}
+
+.scramble-char.locked {
+  color: inherit; /* Optional: ensures final characters use the main color */
 }

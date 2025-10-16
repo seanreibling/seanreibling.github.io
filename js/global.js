@@ -1,4 +1,4 @@
-console.log("V2.54");
+console.log("V2.55");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -550,8 +550,8 @@ function initTitleScramble() {
   for (let i = 0; i < finalText.length; i++) {
     const from = finalText[i];
     const to = finalText[i];
-    const start = 0; // all start scrambling right away
-    const end = Math.floor(Math.random() * steps) + steps / 2; // staggered lock-in timing
+    const start = 0;
+    const end = Math.floor(Math.random() * steps) + steps / 2;
     queue.push({ from, to, start, end });
   }
 
@@ -565,7 +565,7 @@ function initTitleScramble() {
       let { to, start, end, char } = queue[i];
       if (frame >= end) {
         complete++;
-        output += to;
+        output += `<span class="scramble-char locked">${to}</span>`;
       } else {
         if (!char || Math.random() < 0.3) {
           char = chars[Math.floor(Math.random() * chars.length)];
@@ -588,10 +588,10 @@ function initTitleScramble() {
   update();
 }
 
-// 🔁 Run on initial load
+// Run on first load
 document.addEventListener('DOMContentLoaded', initTitleScramble);
 
-// 🔁 Run again on Swup navigation
+// Run again on Swup navigation
 if (window.swup) {
   swup.hooks.on('content:replace', () => {
     initTitleScramble();
