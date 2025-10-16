@@ -739,10 +739,11 @@ main {
 .block.is--hero {
   min-height: 40vw;
   margin-top: 56px;
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  width: calc(100% + 32px);
+  margin-left: -16px;
   max-width: none;
+  margin-top: 56px;
+  min-height: 40vw;
 }
 
 .blank {
