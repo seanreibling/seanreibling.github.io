@@ -969,6 +969,8 @@ footer {
   width: 100%;
   padding: 0px 16px 0px 16px;
   box-sizing: border-box;
+  max-width: 1600px;
+  padding: 0 16px;
 }
 
 /* Mobile Portrait */
