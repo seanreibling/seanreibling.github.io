@@ -1,4 +1,4 @@
-console.log("V2.73");
+console.log("V2.74");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -522,3 +522,41 @@ swup.hooks.on('visit:end', () => {
 
 // Run on initial load
 initExitInteraction();
+
+
+
+
+
+
+
+//Title Reveal Cursor Animation//
+
+function initTitleReveal() {
+  const el = document.querySelector('.site-title');
+  if (!el) return;
+
+  // Reset in case of Swup navigation
+  el.classList.remove('revealed');
+  
+  // Wrap the text content in a span to clip and animate
+  const text = el.textContent.trim();
+  el.innerHTML = `<span class="title__inner">${text}</span><span class="title__cursor"></span>`;
+
+  const inner = el.querySelector('.title__inner');
+  const cursor = el.querySelector('.title__cursor');
+
+  // Trigger reflow so CSS animations can restart cleanly
+  void el.offsetWidth;
+
+  el.classList.add('revealed');
+}
+
+// Run on first load
+initTitleReveal();
+
+// Run again on Swup navigation
+if (window.swup) {
+  swup.hooks.on('content:replace', () => {
+    initTitleReveal();
+  });
+}
