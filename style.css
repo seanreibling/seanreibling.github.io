@@ -749,9 +749,9 @@ main {
   margin-top: 56px;
 }
 
-html, body {
+/* html, body {
   overflow-x: hidden;
-}
+} */
 
 .blank {
   height: 48px;
