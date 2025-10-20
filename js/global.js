@@ -1,4 +1,4 @@
-console.log("V2.78");
+console.log("V2.79");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -573,10 +573,9 @@ function initTitleTyping() {
     }
   });
 
-  // Cursor element
+  // Cursor element (only one!)
   const cursor = document.createElement('span');
   cursor.className = 'title__cursor';
-  cursor.textContent = '|';
   el.appendChild(cursor);
 
   // Animate typing and move cursor
@@ -595,10 +594,10 @@ function initTitleTyping() {
     delay += typingSpeed;
   });
 
-  // Optional: hide cursor after animation completes
+  // After typing completes: blink cursor twice, then disappear
   setTimeout(() => {
-    cursor.style.opacity = 0;
-  }, delay + 500);
+    cursor.classList.add('blink-twice');
+  }, delay);
 }
 
 // Run on first load

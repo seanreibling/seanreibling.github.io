@@ -1069,7 +1069,7 @@ footer {
 
 .title__wrapper {
   display: inline-block;
-  white-space: normal; /* allows wrapping naturally */
+  white-space: normal; /* allows natural wrapping */
 }
 
 .title__word {
@@ -1088,7 +1088,7 @@ footer {
 }
 
 .title__space {
-  display: inline-block; /* preserves word spacing */
+  display: inline-block;
 }
 
 .title__cursor {
@@ -1099,4 +1099,16 @@ footer {
   height: 1em;
   background: currentColor;
   transition: transform 0.03s linear;
+  opacity: 1;
+}
+
+/* Cursor blinks twice, then disappears */
+@keyframes blinkTwice {
+  0%, 20%, 40%, 60% { opacity: 1; }
+  10%, 30%, 50%, 70% { opacity: 0; }
+  80%, 100% { opacity: 0; }
+}
+
+.title__cursor.blink-twice {
+  animation: blinkTwice 2s step-end forwards;
 }
