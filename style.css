@@ -1102,13 +1102,13 @@ footer {
   opacity: 1;
 }
 
-/* Cursor blinks twice, then disappears */
+/* Cursor blinks twice slowly, then disappears */
 @keyframes blinkTwice {
-  0%, 20%, 40%, 60% { opacity: 1; }
-  10%, 30%, 50%, 70% { opacity: 0; }
-  80%, 100% { opacity: 0; }
+  0%, 25%, 50%, 75% { opacity: 1; }
+  12.5%, 37.5%, 62.5%, 87.5% { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 .title__cursor.blink-twice {
-  animation: blinkTwice 2s step-end forwards;
+  animation: blinkTwice 4s step-end forwards;
 }
