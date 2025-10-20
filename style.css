@@ -1061,51 +1061,35 @@ footer {
 /* Title Reveal Cursor Animation */
 
 .site-title {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  white-space: normal; /* allows wrapping */
-}
-
-.title__inner {
   display: inline-block;
   position: relative;
   overflow: hidden;
-  white-space: pre-wrap; /* keeps multi-line formatting */
-  animation: revealText 0.8s steps(40, end) forwards;
+  line-height: 1.2; /* adjust if needed */
 }
 
-.title__cursor {
+.title__wrapper {
   display: inline-block;
+}
+
+.title__char {
+  opacity: 0;
+  display: inline-block;
+  position: relative;
+}
+
+.title__char.visible {
+  opacity: 1;
+  transition: opacity 0.05s linear;
+}
+
+.site-title::after {
+  content: '';
   position: absolute;
-  right: 100%;
-  top: 0;
   width: 2px;
   height: 1em;
   background: currentColor;
-  animation: moveCursor 0.8s steps(40, end) forwards;
-}
-
-@keyframes revealText {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes moveCursor {
-  from {
-    right: 100%;
-  }
-  to {
-    right: 0;
-  }
-}
-
-.revealed .title__cursor {
-  animation: moveCursor 0.8s steps(40, end) forwards, blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
+  pointer-events: none;
 }
 
 @keyframes blink {

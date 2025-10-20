@@ -1,4 +1,4 @@
-console.log("V2.74");
+console.log("V2.75");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -531,32 +531,73 @@ initExitInteraction();
 
 //Title Reveal Cursor Animation//
 
-function initTitleReveal() {
+function initTitleTyping() {
   const el = document.querySelector('.site-title');
   if (!el) return;
 
-  // Reset in case of Swup navigation
-  el.classList.remove('revealed');
-  
-  // Wrap the text content in a span to clip and animate
   const text = el.textContent.trim();
-  el.innerHTML = `<span class="title__inner">${text}</span><span class="title__cursor"></span>`;
+  el.innerHTML = ''; // Clear existing content
 
-  const inner = el.querySelector('.title__inner');
-  const cursor = el.querySelector('.title__cursor');
+  // Create a wrapper span for all characters
+  const wrapper = document.createElement('span');
+  wrapper.className = 'title__wrapper';
+  el.appendChild(wrapper);
 
-  // Trigger reflow so CSS animations can restart cleanly
-  void el.offsetWidth;
+  // Create spans for each character
+  const chars = [];
+  for (let char of text) {
+    const span = document.createElement('span');
+    span.className = 'title__char';
+    span.textContent = char === '\n' ? '\u00A0' : char; // Preserve spaces
+    wrapper.appendChild(span);
+    chars.push(span);
+  }
 
-  el.classList.add('revealed');
+  // Function to get lines based on bounding rects
+  function getLines(spans) {
+    const lines = [];
+    let currentLineTop = null;
+    let currentLine = [];
+    spans.forEach(span => {
+      const rect = span.getBoundingClientRect();
+      if (currentLineTop === null) currentLineTop = rect.top;
+      if (Math.abs(rect.top - currentLineTop) > 1) {
+        // New line
+        lines.push(currentLine);
+        currentLine = [];
+        currentLineTop = rect.top;
+      }
+      currentLine.push(span);
+    });
+    if (currentLine.length) lines.push(currentLine);
+    return lines;
+  }
+
+  // Wait for the browser to render so we can measure lines
+  requestAnimationFrame(() => {
+    const lines = getLines(chars);
+
+    // Reveal each line in sequence
+    let delay = 0;
+    const typingSpeed = 15; // ms per character
+
+    lines.forEach(line => {
+      line.forEach((charSpan, index) => {
+        setTimeout(() => {
+          charSpan.classList.add('visible');
+        }, delay + index * typingSpeed);
+      });
+      delay += line.length * typingSpeed + 50; // small pause between lines
+    });
+  });
 }
 
 // Run on first load
-initTitleReveal();
+initTitleTyping();
 
 // Run again on Swup navigation
 if (window.swup) {
   swup.hooks.on('content:replace', () => {
-    initTitleReveal();
+    initTitleTyping();
   });
 }
