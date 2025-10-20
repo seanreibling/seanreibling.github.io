@@ -1,4 +1,4 @@
-console.log("V2.75");
+console.log("V2.76");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -536,7 +536,7 @@ function initTitleTyping() {
   if (!el) return;
 
   const text = el.textContent.trim();
-  el.innerHTML = ''; // Clear existing content
+  el.innerHTML = ''; // Clear previous content
 
   // Create a wrapper span for all characters
   const wrapper = document.createElement('span');
@@ -548,21 +548,27 @@ function initTitleTyping() {
   for (let char of text) {
     const span = document.createElement('span');
     span.className = 'title__char';
-    span.textContent = char === '\n' ? '\u00A0' : char; // Preserve spaces
+    // Use non-breaking space so spaces are visible
+    span.textContent = char === ' ' ? '\u00A0' : char;
     wrapper.appendChild(span);
     chars.push(span);
   }
 
-  // Function to get lines based on bounding rects
-  function getLines(spans) {
+  // Create cursor element
+  const cursor = document.createElement('span');
+  cursor.className = 'title__cursor';
+  el.appendChild(cursor);
+
+  // Measure lines
+  requestAnimationFrame(() => {
     const lines = [];
     let currentLineTop = null;
     let currentLine = [];
-    spans.forEach(span => {
+
+    chars.forEach(span => {
       const rect = span.getBoundingClientRect();
       if (currentLineTop === null) currentLineTop = rect.top;
       if (Math.abs(rect.top - currentLineTop) > 1) {
-        // New line
         lines.push(currentLine);
         currentLine = [];
         currentLineTop = rect.top;
@@ -570,12 +576,6 @@ function initTitleTyping() {
       currentLine.push(span);
     });
     if (currentLine.length) lines.push(currentLine);
-    return lines;
-  }
-
-  // Wait for the browser to render so we can measure lines
-  requestAnimationFrame(() => {
-    const lines = getLines(chars);
 
     // Reveal each line in sequence
     let delay = 0;
@@ -585,10 +585,19 @@ function initTitleTyping() {
       line.forEach((charSpan, index) => {
         setTimeout(() => {
           charSpan.classList.add('visible');
+          // Move cursor to the end of this character
+          const rect = charSpan.getBoundingClientRect();
+          const parentRect = el.getBoundingClientRect();
+          cursor.style.transform = `translate(${rect.right - parentRect.left}px, ${rect.top - parentRect.top}px)`;
         }, delay + index * typingSpeed);
       });
       delay += line.length * typingSpeed + 50; // small pause between lines
     });
+
+    // Hide cursor after animation
+    setTimeout(() => {
+      cursor.style.opacity = 0;
+    }, delay + 500);
   });
 }
 

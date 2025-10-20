@@ -1063,12 +1063,13 @@ footer {
 .site-title {
   display: inline-block;
   position: relative;
-  overflow: hidden;
-  line-height: 1.2; /* adjust if needed */
+  line-height: 1.2; /* adjust as needed */
+  overflow: visible;
 }
 
 .title__wrapper {
   display: inline-block;
+  white-space: normal; /* allows wrapping */
 }
 
 .title__char {
@@ -1082,18 +1083,13 @@ footer {
   transition: opacity 0.05s linear;
 }
 
-.site-title::after {
-  content: '';
+/* Cursor */
+.title__cursor {
   position: absolute;
   width: 2px;
   height: 1em;
   background: currentColor;
-  animation: blink 1s step-end infinite;
-  pointer-events: none;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
+  top: 0;
+  left: 0;
+  transition: transform 0.03s linear;
 }
