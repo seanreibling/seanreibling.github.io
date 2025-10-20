@@ -1,4 +1,4 @@
-console.log("V2.63");
+console.log("V2.64");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -522,76 +522,3 @@ swup.hooks.on('visit:end', () => {
 
 // Run on initial load
 initExitInteraction();
-
-
-
-
-
-
-
-
-
-//Site title scrambling letter animation
-
-function initTitleScramble() {
-  const el = document.querySelector('.site-title');
-  if (!el) return;
-
-  const finalText = el.textContent.trim();
-  const chars = '!<>-_\\/[]{}—=+*^?#________ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const totalDuration = 2000; // total animation duration (ms)
-  const scrambleDelay = 40;
-  const steps = Math.floor(totalDuration / scrambleDelay / 1.5);
-
-  let frame = 0;
-  let queue = [];
-
-  for (let i = 0; i < finalText.length; i++) {
-    const from = finalText[i];
-    const to = finalText[i];
-    const start = 0;
-    const end = Math.floor(Math.random() * steps) + steps / 2;
-    queue.push({ from, to, start, end });
-  }
-
-  cancelAnimationFrame(el._scrambleRAF);
-
-  function update() {
-    let output = '';
-    let complete = 0;
-
-    for (let i = 0; i < queue.length; i++) {
-      let { to, start, end, char } = queue[i];
-      if (frame >= end) {
-        complete++;
-        output += `<span class="scramble-char locked">${to}</span>`;
-      } else {
-        if (!char || Math.random() < 0.3) {
-          char = chars[Math.floor(Math.random() * chars.length)];
-          queue[i].char = char;
-        }
-        output += `<span class="scramble-char">${char}</span>`;
-      }
-    }
-
-    el.innerHTML = output;
-
-    if (complete === queue.length) {
-      el.textContent = finalText;
-    } else {
-      frame++;
-      el._scrambleRAF = requestAnimationFrame(update);
-    }
-  }
-
-  update();
-}
-
-// Run on first load and after Swup transitions
-initTitleScramble();
-document.addEventListener('DOMContentLoaded', initTitleScramble);
-if (window.swup) {
-  swup.hooks.on('content:replace', () => {
-    initTitleScramble();
-  });
-}
