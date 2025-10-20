@@ -1,4 +1,4 @@
-console.log("V2.82");
+console.log("V2.83");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -531,96 +531,81 @@ initExitInteraction();
 
 //Title Reveal Cursor Animation//
 
-function initTitleTypeAnimation() {
-  const title = document.querySelector('.title__text');
-  if (!title) return;
+function initTitleTyping() {
+  const el = document.querySelector('.site-title');
+  if (!el) return;
 
-  // If an animation is already running on this element, clear it
-  if (title._typeAnim) {
-    // clear timeouts/intervals
-    if (title._typeAnim.curTimer) clearTimeout(title._typeAnim.curTimer);
-    if (title._typeAnim.blinkTimer) clearInterval(title._typeAnim.blinkTimer);
-    // remove cursor if present
-    if (title._typeAnim.cursor && title._typeAnim.cursor.parentNode) title._typeAnim.cursor.remove();
-    // restore text if stored (defensive)
-    if (title._typeAnim.originalText && title.textContent.trim() === '') {
-      title.textContent = title._typeAnim.originalText;
+  const text = el.textContent.trim();
+  el.innerHTML = ''; // Clear previous content
+
+  // Wrapper for all words
+  const wrapper = document.createElement('span');
+  wrapper.className = 'title__wrapper';
+  el.appendChild(wrapper);
+
+  const chars = [];
+
+  // Split text into words
+  const words = text.split(' ');
+  words.forEach((word, wIndex) => {
+    if (!word) return; // skip empty words
+
+    const wordSpan = document.createElement('span');
+    wordSpan.className = 'title__word';
+    wrapper.appendChild(wordSpan);
+
+    // Add each character to the word span
+    word.split('').forEach(char => {
+      const charSpan = document.createElement('span');
+      charSpan.className = 'title__char';
+      charSpan.textContent = char;
+      wordSpan.appendChild(charSpan);
+      chars.push(charSpan);
+    });
+
+    // Add space after word if it's not the last word
+    if (wIndex < words.length - 1) {
+      const spaceSpan = document.createElement('span');
+      spaceSpan.className = 'title__space';
+      spaceSpan.textContent = '\u00A0';
+      wrapper.appendChild(spaceSpan);
+      chars.push(spaceSpan);
     }
-    title._typeAnim = null;
-  }
+  });
 
-  // Save original text (for safety / re-runs)
-  const originalText = title.textContent;
-  title._typeAnim = { originalText };
-
-  // Clear the title DOM so we can insert spans
-  title.textContent = '';
-
-  // Create spans for each character (preserve spaces as real spaces)
-  const spans = [];
-  for (const ch of originalText) {
-    const s = document.createElement('span');
-    s.textContent = ch;
-    s.style.visibility = 'hidden';
-    title.appendChild(s);
-    spans.push(s);
-  }
-
-  // Create single cursor element
+  // Cursor element (only one!)
   const cursor = document.createElement('span');
   cursor.className = 'title__cursor';
-  cursor.textContent = '|';
-  cursor.style.opacity = '1';
-  // append cursor at end for now
-  title.appendChild(cursor);
+  el.appendChild(cursor);
 
-  // Store cursor so we can clean up if re-run
-  title._typeAnim.cursor = cursor;
+  // Animate typing and move cursor
+  let delay = 0;
+  const typingSpeed = 15; // ms per character
 
-  // Typing settings
-  const typingSpeed = 30; // ms per character
-  const startDelay = 80; // small delay before starting (helps with Swup timing)
+  chars.forEach(charSpan => {
+    setTimeout(() => {
+      charSpan.classList.add('visible');
 
-  // Typing loop using recursive setTimeout (easy to clear)
-  let i = 0;
-  function typeStep() {
-    if (i < spans.length) {
-      spans[i].style.visibility = 'visible';
-      // move cursor so it sits after the revealed char
-      cursor.before(spans[i]);
-      i++;
-      title._typeAnim.curTimer = setTimeout(typeStep, typingSpeed);
-    } else {
-      // done typing -> blink twice slowly, then remove cursor
-      startCursorBlink();
-    }
-  }
+      // Move cursor to the right edge of this character
+      const rect = charSpan.getBoundingClientRect();
+      const parentRect = el.getBoundingClientRect();
+      cursor.style.transform = `translate(${rect.right - parentRect.left}px, ${rect.top - parentRect.top}px)`;
+    }, delay);
+    delay += typingSpeed;
+  });
 
-  function startCursorBlink() {
-    let blinks = 0;
-    const blinkSpeed = 500; // ms for each on/off (0.5s)
-    title._typeAnim.blinkTimer = setInterval(() => {
-      cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-      blinks++;
-      if (blinks >= 4) { // 4 toggles -> 2 full blinks
-        clearInterval(title._typeAnim.blinkTimer);
-        // ensure cursor removed cleanly
-        if (cursor && cursor.parentNode) cursor.remove();
-        title._typeAnim = null;
-      }
-    }, blinkSpeed);
-  }
-
-  // Kick off animation after small delay (helps if DOM isn't totally stable yet)
-  title._typeAnim.curTimer = setTimeout(typeStep, startDelay);
+  // After typing completes: blink cursor twice, then disappear
+  setTimeout(() => {
+    cursor.classList.add('blink-twice');
+  }, delay);
 }
 
-// Run on initial load and on Swup content replace
-document.addEventListener('DOMContentLoaded', initTitleTypeAnimation);
+// Run on first load
+initTitleTyping();
+
+// Run again on Swup navigation
 if (window.swup) {
-  swup.hooks.on('content:replace', initTitleTypeAnimation);
+  swup.hooks.on('content:replace', () => {
+    initTitleTyping();
+  });
 }
-
-// Also defensively run once right away in case DOMContentLoaded has already fired
-// (won't double-run thanks to the _typeAnim cleanup above)
-initTitleTypeAnimation();

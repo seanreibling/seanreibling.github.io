@@ -1060,25 +1060,55 @@ footer {
 
 /* Title Reveal Cursor Animation */
 
-/* container - allow wrapping and preserve spaces */
-.title__text {
-  white-space: pre-wrap; /* preserves spaces and allows responsive wrapping */
+.site-title {
   display: inline-block;
-  line-height: 1.2; /* adjust to match your design */
+  position: relative;
+  line-height: 1.2;
+  overflow: visible;
 }
 
-/* each created span (characters) start hidden */
-.title__text span {
-  visibility: hidden;
-  /* keep them inline so wrapping is handled normally by the browser */
-  display: inline;
+.title__wrapper {
+  display: inline-block;
+  white-space: normal; /* allows natural wrapping */
 }
 
-/* cursor styling */
-.title__cursor {
+.title__word {
   display: inline-block;
-  margin-left: 2px;
-  font-weight: 400;
-  color: inherit; /* match text color */
+  white-space: nowrap; /* prevents mid-word breaks */
+}
+
+.title__char {
+  opacity: 0;
+  display: inline-block;
   transition: opacity 0.05s linear;
+}
+
+.title__char.visible {
+  opacity: 1;
+}
+
+.title__space {
+  display: inline-block;
+}
+
+.title__cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 1em;
+  background: currentColor;
+  transition: transform 0.03s linear;
+  opacity: 1;
+}
+
+/* Cursor blinks twice slowly, then disappears */
+@keyframes blinkTwice {
+  0%, 25%, 50%, 75% { opacity: 1; }
+  12.5%, 37.5%, 62.5%, 87.5% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.title__cursor.blink-twice {
+  animation: blinkTwice 4s step-end forwards;
 }
