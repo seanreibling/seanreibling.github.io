@@ -75,7 +75,7 @@
 
 * {
   font-family: 'PP Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   color: white;
   -webkit-tap-highlight-color: transparent;
   /* for removing the highlight */
@@ -116,6 +116,7 @@ p {
   font-size: 18px;
   line-height: 140%;
   margin: 0;
+  font-weight: 400;
 }
 
 .title {
