@@ -1062,18 +1062,19 @@ footer {
 
 .site-title {
   display: inline-block;
+  position: relative;
   line-height: 1.2;
   overflow: visible;
 }
 
 .title__wrapper {
   display: inline-block;
-  white-space: normal; /* allows wrapping */
+  white-space: normal; /* allows wrapping naturally */
 }
 
 .title__word {
-  display: inline-block; /* prevent mid-word breaks */
-  white-space: nowrap;
+  display: inline-block;
+  white-space: nowrap; /* prevents mid-word breaks */
 }
 
 .title__char {
@@ -1087,21 +1088,15 @@ footer {
 }
 
 .title__space {
-  display: inline-block;
-  width: 0.25em; /* spacing between words */
+  display: inline-block; /* preserves word spacing */
 }
 
 .title__cursor {
-  display: inline-block;
-  margin-left: 2px;
-  opacity: 1;
-  animation: blink 1s step-end infinite;
-}
-
-.title__cursor.blink {
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 1em;
+  background: currentColor;
+  transition: transform 0.03s linear;
 }

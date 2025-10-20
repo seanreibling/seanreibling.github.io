@@ -1,4 +1,4 @@
-console.log("V2.77");
+console.log("V2.78");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -538,16 +538,18 @@ function initTitleTyping() {
   const text = el.textContent.trim();
   el.innerHTML = ''; // Clear previous content
 
-  // Create wrapper
+  // Wrapper for all words
   const wrapper = document.createElement('span');
   wrapper.className = 'title__wrapper';
   el.appendChild(wrapper);
 
+  const chars = [];
+
   // Split text into words
   const words = text.split(' ');
-  const allChars = [];
-
   words.forEach((word, wIndex) => {
+    if (!word) return; // skip empty words
+
     const wordSpan = document.createElement('span');
     wordSpan.className = 'title__word';
     wrapper.appendChild(wordSpan);
@@ -558,39 +560,45 @@ function initTitleTyping() {
       charSpan.className = 'title__char';
       charSpan.textContent = char;
       wordSpan.appendChild(charSpan);
-      allChars.push(charSpan);
+      chars.push(charSpan);
     });
 
-    // Add a space after the word (non-breaking)
+    // Add space after word if it's not the last word
     if (wIndex < words.length - 1) {
-      const space = document.createElement('span');
-      space.className = 'title__space';
-      space.textContent = '\u00A0';
-      wrapper.appendChild(space);
+      const spaceSpan = document.createElement('span');
+      spaceSpan.className = 'title__space';
+      spaceSpan.textContent = '\u00A0';
+      wrapper.appendChild(spaceSpan);
+      chars.push(spaceSpan);
     }
   });
 
-  // Add a blinking cursor at the end
+  // Cursor element
   const cursor = document.createElement('span');
   cursor.className = 'title__cursor';
   cursor.textContent = '|';
-  wrapper.appendChild(cursor);
+  el.appendChild(cursor);
 
-  // Animate typing
+  // Animate typing and move cursor
   let delay = 0;
   const typingSpeed = 15; // ms per character
 
-  allChars.forEach(charSpan => {
+  chars.forEach(charSpan => {
     setTimeout(() => {
       charSpan.classList.add('visible');
+
+      // Move cursor to the right edge of this character
+      const rect = charSpan.getBoundingClientRect();
+      const parentRect = el.getBoundingClientRect();
+      cursor.style.transform = `translate(${rect.right - parentRect.left}px, ${rect.top - parentRect.top}px)`;
     }, delay);
     delay += typingSpeed;
   });
 
-  // Hide cursor after animation
+  // Optional: hide cursor after animation completes
   setTimeout(() => {
-    cursor.classList.add('blink');
-  }, delay);
+    cursor.style.opacity = 0;
+  }, delay + 500);
 }
 
 // Run on first load
