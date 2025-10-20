@@ -1060,13 +1060,18 @@ footer {
 
 /* Title Reveal Cursor Animation */
 
+.title__text {
+  white-space: pre-wrap; /* keeps wrapping natural and preserves spaces */
+  display: inline-block;
+}
+
 .title__text span {
   visibility: hidden;
-  white-space: pre; /* preserves spaces and natural line breaks */
 }
 
 .title__cursor {
   display: inline-block;
   margin-left: 2px;
   font-weight: 400;
+  color: inherit; /* matches your text color automatically */
 }

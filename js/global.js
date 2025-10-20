@@ -1,4 +1,4 @@
-console.log("V2.80");
+console.log("V2.81");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -535,55 +535,56 @@ function initTitleTypeAnimation() {
   const title = document.querySelector('.title__text');
   if (!title) return;
 
-  const text = title.textContent.trim();
-  title.textContent = ''; // Clear text for animation
+  const text = title.textContent; // keep natural spaces
+  title.textContent = ''; // clear it for animation
 
-  // Create spans for each character (including spaces)
-  const chars = Array.from(text).map(char => {
+  // Create spans for each character
+  const spans = [...text].map(char => {
     const span = document.createElement('span');
     span.textContent = char;
+    span.style.visibility = 'hidden';
     title.appendChild(span);
     return span;
   });
 
-  // Create and append cursor
+  // Create cursor
   const cursor = document.createElement('span');
   cursor.classList.add('title__cursor');
   cursor.textContent = '|';
   title.appendChild(cursor);
 
-  // Animate typing effect
-  let index = 0;
+  // Animate typing
+  let i = 0;
   const typingSpeed = 30; // ms per character
-  const interval = setInterval(() => {
-    if (index < chars.length) {
-      chars[index].style.visibility = 'visible';
-      cursor.before(chars[index]);
-      index++;
+  const typing = setInterval(() => {
+    if (i < spans.length) {
+      spans[i].style.visibility = 'visible';
+      cursor.before(spans[i]);
+      i++;
     } else {
-      clearInterval(interval);
+      clearInterval(typing);
       blinkCursor();
     }
   }, typingSpeed);
 
-  // Cursor blink (twice, slower)
+  // Blink cursor twice, then remove
   function blinkCursor() {
     let blinks = 0;
     const blinkInterval = setInterval(() => {
       cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
       blinks++;
-      if (blinks >= 4) { // two full on/off cycles
+      if (blinks >= 4) {
         clearInterval(blinkInterval);
         cursor.remove();
       }
-    }, 500); // slower blink (0.5s)
+    }, 500); // 0.5s blink speed
   }
 }
 
-// Run on first load and Swup navigation
-initTitleTypeAnimation();
+// Run once on page load
+document.addEventListener('DOMContentLoaded', initTitleTypeAnimation);
+
+// Re-run after Swup page change
 if (window.swup) {
-  swup.hooks.on('content:replace', () => {
-    initTitleTypeAnimation();
-  });
+  swup.hooks.on('content:replace', initTitleTypeAnimation);
 }
