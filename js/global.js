@@ -1,4 +1,4 @@
-console.log("V2.79");
+console.log("V2.80");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -531,81 +531,59 @@ initExitInteraction();
 
 //Title Reveal Cursor Animation//
 
-function initTitleTyping() {
-  const el = document.querySelector('.site-title');
-  if (!el) return;
+function initTitleTypeAnimation() {
+  const title = document.querySelector('.title__text');
+  if (!title) return;
 
-  const text = el.textContent.trim();
-  el.innerHTML = ''; // Clear previous content
+  const text = title.textContent.trim();
+  title.textContent = ''; // Clear text for animation
 
-  // Wrapper for all words
-  const wrapper = document.createElement('span');
-  wrapper.className = 'title__wrapper';
-  el.appendChild(wrapper);
-
-  const chars = [];
-
-  // Split text into words
-  const words = text.split(' ');
-  words.forEach((word, wIndex) => {
-    if (!word) return; // skip empty words
-
-    const wordSpan = document.createElement('span');
-    wordSpan.className = 'title__word';
-    wrapper.appendChild(wordSpan);
-
-    // Add each character to the word span
-    word.split('').forEach(char => {
-      const charSpan = document.createElement('span');
-      charSpan.className = 'title__char';
-      charSpan.textContent = char;
-      wordSpan.appendChild(charSpan);
-      chars.push(charSpan);
-    });
-
-    // Add space after word if it's not the last word
-    if (wIndex < words.length - 1) {
-      const spaceSpan = document.createElement('span');
-      spaceSpan.className = 'title__space';
-      spaceSpan.textContent = '\u00A0';
-      wrapper.appendChild(spaceSpan);
-      chars.push(spaceSpan);
-    }
+  // Create spans for each character (including spaces)
+  const chars = Array.from(text).map(char => {
+    const span = document.createElement('span');
+    span.textContent = char;
+    title.appendChild(span);
+    return span;
   });
 
-  // Cursor element (only one!)
+  // Create and append cursor
   const cursor = document.createElement('span');
-  cursor.className = 'title__cursor';
-  el.appendChild(cursor);
+  cursor.classList.add('title__cursor');
+  cursor.textContent = '|';
+  title.appendChild(cursor);
 
-  // Animate typing and move cursor
-  let delay = 0;
-  const typingSpeed = 15; // ms per character
+  // Animate typing effect
+  let index = 0;
+  const typingSpeed = 30; // ms per character
+  const interval = setInterval(() => {
+    if (index < chars.length) {
+      chars[index].style.visibility = 'visible';
+      cursor.before(chars[index]);
+      index++;
+    } else {
+      clearInterval(interval);
+      blinkCursor();
+    }
+  }, typingSpeed);
 
-  chars.forEach(charSpan => {
-    setTimeout(() => {
-      charSpan.classList.add('visible');
-
-      // Move cursor to the right edge of this character
-      const rect = charSpan.getBoundingClientRect();
-      const parentRect = el.getBoundingClientRect();
-      cursor.style.transform = `translate(${rect.right - parentRect.left}px, ${rect.top - parentRect.top}px)`;
-    }, delay);
-    delay += typingSpeed;
-  });
-
-  // After typing completes: blink cursor twice, then disappear
-  setTimeout(() => {
-    cursor.classList.add('blink-twice');
-  }, delay);
+  // Cursor blink (twice, slower)
+  function blinkCursor() {
+    let blinks = 0;
+    const blinkInterval = setInterval(() => {
+      cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+      blinks++;
+      if (blinks >= 4) { // two full on/off cycles
+        clearInterval(blinkInterval);
+        cursor.remove();
+      }
+    }, 500); // slower blink (0.5s)
+  }
 }
 
-// Run on first load
-initTitleTyping();
-
-// Run again on Swup navigation
+// Run on first load and Swup navigation
+initTitleTypeAnimation();
 if (window.swup) {
   swup.hooks.on('content:replace', () => {
-    initTitleTyping();
+    initTitleTypeAnimation();
   });
 }

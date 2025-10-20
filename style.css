@@ -1060,55 +1060,13 @@ footer {
 
 /* Title Reveal Cursor Animation */
 
-.site-title {
-  display: inline-block;
-  position: relative;
-  line-height: 1.2;
-  overflow: visible;
-}
-
-.title__wrapper {
-  display: inline-block;
-  white-space: normal; /* allows natural wrapping */
-}
-
-.title__word {
-  display: inline-block;
-  white-space: nowrap; /* prevents mid-word breaks */
-}
-
-.title__char {
-  opacity: 0;
-  display: inline-block;
-  transition: opacity 0.05s linear;
-}
-
-.title__char.visible {
-  opacity: 1;
-}
-
-.title__space {
-  display: inline-block;
+.title__text span {
+  visibility: hidden;
+  white-space: pre; /* preserves spaces and natural line breaks */
 }
 
 .title__cursor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 1em;
-  background: currentColor;
-  transition: transform 0.03s linear;
-  opacity: 1;
-}
-
-/* Cursor blinks twice slowly, then disappears */
-@keyframes blinkTwice {
-  0%, 25%, 50%, 75% { opacity: 1; }
-  12.5%, 37.5%, 62.5%, 87.5% { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-.title__cursor.blink-twice {
-  animation: blinkTwice 4s step-end forwards;
+  display: inline-block;
+  margin-left: 2px;
+  font-weight: 400;
 }
