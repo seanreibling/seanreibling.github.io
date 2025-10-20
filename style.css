@@ -1060,18 +1060,25 @@ footer {
 
 /* Title Reveal Cursor Animation */
 
+/* container - allow wrapping and preserve spaces */
 .title__text {
-  white-space: pre-wrap; /* keeps wrapping natural and preserves spaces */
+  white-space: pre-wrap; /* preserves spaces and allows responsive wrapping */
   display: inline-block;
+  line-height: 1.2; /* adjust to match your design */
 }
 
+/* each created span (characters) start hidden */
 .title__text span {
   visibility: hidden;
+  /* keep them inline so wrapping is handled normally by the browser */
+  display: inline;
 }
 
+/* cursor styling */
 .title__cursor {
   display: inline-block;
   margin-left: 2px;
   font-weight: 400;
-  color: inherit; /* matches your text color automatically */
+  color: inherit; /* match text color */
+  transition: opacity 0.05s linear;
 }

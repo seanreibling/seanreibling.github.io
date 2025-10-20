@@ -1,4 +1,4 @@
-console.log("V2.81");
+console.log("V2.82");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -535,56 +535,92 @@ function initTitleTypeAnimation() {
   const title = document.querySelector('.title__text');
   if (!title) return;
 
-  const text = title.textContent; // keep natural spaces
-  title.textContent = ''; // clear it for animation
+  // If an animation is already running on this element, clear it
+  if (title._typeAnim) {
+    // clear timeouts/intervals
+    if (title._typeAnim.curTimer) clearTimeout(title._typeAnim.curTimer);
+    if (title._typeAnim.blinkTimer) clearInterval(title._typeAnim.blinkTimer);
+    // remove cursor if present
+    if (title._typeAnim.cursor && title._typeAnim.cursor.parentNode) title._typeAnim.cursor.remove();
+    // restore text if stored (defensive)
+    if (title._typeAnim.originalText && title.textContent.trim() === '') {
+      title.textContent = title._typeAnim.originalText;
+    }
+    title._typeAnim = null;
+  }
 
-  // Create spans for each character
-  const spans = [...text].map(char => {
-    const span = document.createElement('span');
-    span.textContent = char;
-    span.style.visibility = 'hidden';
-    title.appendChild(span);
-    return span;
-  });
+  // Save original text (for safety / re-runs)
+  const originalText = title.textContent;
+  title._typeAnim = { originalText };
 
-  // Create cursor
+  // Clear the title DOM so we can insert spans
+  title.textContent = '';
+
+  // Create spans for each character (preserve spaces as real spaces)
+  const spans = [];
+  for (const ch of originalText) {
+    const s = document.createElement('span');
+    s.textContent = ch;
+    s.style.visibility = 'hidden';
+    title.appendChild(s);
+    spans.push(s);
+  }
+
+  // Create single cursor element
   const cursor = document.createElement('span');
-  cursor.classList.add('title__cursor');
+  cursor.className = 'title__cursor';
   cursor.textContent = '|';
+  cursor.style.opacity = '1';
+  // append cursor at end for now
   title.appendChild(cursor);
 
-  // Animate typing
-  let i = 0;
+  // Store cursor so we can clean up if re-run
+  title._typeAnim.cursor = cursor;
+
+  // Typing settings
   const typingSpeed = 30; // ms per character
-  const typing = setInterval(() => {
+  const startDelay = 80; // small delay before starting (helps with Swup timing)
+
+  // Typing loop using recursive setTimeout (easy to clear)
+  let i = 0;
+  function typeStep() {
     if (i < spans.length) {
       spans[i].style.visibility = 'visible';
+      // move cursor so it sits after the revealed char
       cursor.before(spans[i]);
       i++;
+      title._typeAnim.curTimer = setTimeout(typeStep, typingSpeed);
     } else {
-      clearInterval(typing);
-      blinkCursor();
+      // done typing -> blink twice slowly, then remove cursor
+      startCursorBlink();
     }
-  }, typingSpeed);
+  }
 
-  // Blink cursor twice, then remove
-  function blinkCursor() {
+  function startCursorBlink() {
     let blinks = 0;
-    const blinkInterval = setInterval(() => {
+    const blinkSpeed = 500; // ms for each on/off (0.5s)
+    title._typeAnim.blinkTimer = setInterval(() => {
       cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
       blinks++;
-      if (blinks >= 4) {
-        clearInterval(blinkInterval);
-        cursor.remove();
+      if (blinks >= 4) { // 4 toggles -> 2 full blinks
+        clearInterval(title._typeAnim.blinkTimer);
+        // ensure cursor removed cleanly
+        if (cursor && cursor.parentNode) cursor.remove();
+        title._typeAnim = null;
       }
-    }, 500); // 0.5s blink speed
+    }, blinkSpeed);
   }
+
+  // Kick off animation after small delay (helps if DOM isn't totally stable yet)
+  title._typeAnim.curTimer = setTimeout(typeStep, startDelay);
 }
 
-// Run once on page load
+// Run on initial load and on Swup content replace
 document.addEventListener('DOMContentLoaded', initTitleTypeAnimation);
-
-// Re-run after Swup page change
 if (window.swup) {
   swup.hooks.on('content:replace', initTitleTypeAnimation);
 }
+
+// Also defensively run once right away in case DOMContentLoaded has already fired
+// (won't double-run thanks to the _typeAnim cleanup above)
+initTitleTypeAnimation();
