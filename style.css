@@ -1062,8 +1062,7 @@ footer {
 
 .site-title {
   display: inline-block;
-  position: relative;
-  line-height: 1.2; /* adjust as needed */
+  line-height: 1.2;
   overflow: visible;
 }
 
@@ -1072,24 +1071,37 @@ footer {
   white-space: normal; /* allows wrapping */
 }
 
+.title__word {
+  display: inline-block; /* prevent mid-word breaks */
+  white-space: nowrap;
+}
+
 .title__char {
   opacity: 0;
   display: inline-block;
-  position: relative;
+  transition: opacity 0.05s linear;
 }
 
 .title__char.visible {
   opacity: 1;
-  transition: opacity 0.05s linear;
 }
 
-/* Cursor */
+.title__space {
+  display: inline-block;
+  width: 0.25em; /* spacing between words */
+}
+
 .title__cursor {
-  position: absolute;
-  width: 2px;
-  height: 1em;
-  background: currentColor;
-  top: 0;
-  left: 0;
-  transition: transform 0.03s linear;
+  display: inline-block;
+  margin-left: 2px;
+  opacity: 1;
+  animation: blink 1s step-end infinite;
+}
+
+.title__cursor.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }

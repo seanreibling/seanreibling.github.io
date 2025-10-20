@@ -1,4 +1,4 @@
-console.log("V2.76");
+console.log("V2.77");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
@@ -538,67 +538,59 @@ function initTitleTyping() {
   const text = el.textContent.trim();
   el.innerHTML = ''; // Clear previous content
 
-  // Create a wrapper span for all characters
+  // Create wrapper
   const wrapper = document.createElement('span');
   wrapper.className = 'title__wrapper';
   el.appendChild(wrapper);
 
-  // Create spans for each character
-  const chars = [];
-  for (let char of text) {
-    const span = document.createElement('span');
-    span.className = 'title__char';
-    // Use non-breaking space so spaces are visible
-    span.textContent = char === ' ' ? '\u00A0' : char;
-    wrapper.appendChild(span);
-    chars.push(span);
-  }
+  // Split text into words
+  const words = text.split(' ');
+  const allChars = [];
 
-  // Create cursor element
+  words.forEach((word, wIndex) => {
+    const wordSpan = document.createElement('span');
+    wordSpan.className = 'title__word';
+    wrapper.appendChild(wordSpan);
+
+    // Add each character to the word span
+    word.split('').forEach(char => {
+      const charSpan = document.createElement('span');
+      charSpan.className = 'title__char';
+      charSpan.textContent = char;
+      wordSpan.appendChild(charSpan);
+      allChars.push(charSpan);
+    });
+
+    // Add a space after the word (non-breaking)
+    if (wIndex < words.length - 1) {
+      const space = document.createElement('span');
+      space.className = 'title__space';
+      space.textContent = '\u00A0';
+      wrapper.appendChild(space);
+    }
+  });
+
+  // Add a blinking cursor at the end
   const cursor = document.createElement('span');
   cursor.className = 'title__cursor';
-  el.appendChild(cursor);
+  cursor.textContent = '|';
+  wrapper.appendChild(cursor);
 
-  // Measure lines
-  requestAnimationFrame(() => {
-    const lines = [];
-    let currentLineTop = null;
-    let currentLine = [];
+  // Animate typing
+  let delay = 0;
+  const typingSpeed = 15; // ms per character
 
-    chars.forEach(span => {
-      const rect = span.getBoundingClientRect();
-      if (currentLineTop === null) currentLineTop = rect.top;
-      if (Math.abs(rect.top - currentLineTop) > 1) {
-        lines.push(currentLine);
-        currentLine = [];
-        currentLineTop = rect.top;
-      }
-      currentLine.push(span);
-    });
-    if (currentLine.length) lines.push(currentLine);
-
-    // Reveal each line in sequence
-    let delay = 0;
-    const typingSpeed = 15; // ms per character
-
-    lines.forEach(line => {
-      line.forEach((charSpan, index) => {
-        setTimeout(() => {
-          charSpan.classList.add('visible');
-          // Move cursor to the end of this character
-          const rect = charSpan.getBoundingClientRect();
-          const parentRect = el.getBoundingClientRect();
-          cursor.style.transform = `translate(${rect.right - parentRect.left}px, ${rect.top - parentRect.top}px)`;
-        }, delay + index * typingSpeed);
-      });
-      delay += line.length * typingSpeed + 50; // small pause between lines
-    });
-
-    // Hide cursor after animation
+  allChars.forEach(charSpan => {
     setTimeout(() => {
-      cursor.style.opacity = 0;
-    }, delay + 500);
+      charSpan.classList.add('visible');
+    }, delay);
+    delay += typingSpeed;
   });
+
+  // Hide cursor after animation
+  setTimeout(() => {
+    cursor.classList.add('blink');
+  }, delay);
 }
 
 // Run on first load
