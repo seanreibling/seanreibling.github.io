@@ -1045,6 +1045,7 @@ footer {
   box-sizing: border-box;
   max-width: 1600px;
   padding: 0 16px;
+  margin: auto;
 }
 
 /* Mobile Portrait */
