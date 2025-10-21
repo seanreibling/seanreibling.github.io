@@ -581,8 +581,8 @@ main {
 
 @media (max-width: 991px) {
   .nav__links {
-  column-gap: 12px;
-}
+    column-gap: 12px;
+  }
 }
 
 
@@ -1038,14 +1038,13 @@ footer {
   position: fixed;
   z-index: 0;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   height: 100%;
   width: 100%;
-  padding: 0px 16px 0px 16px;
-  box-sizing: border-box;
   max-width: 1600px;
   padding: 0 16px;
-  margin: auto;
+  box-sizing: border-box;
 }
 
 /* Mobile Portrait */
@@ -1070,12 +1069,14 @@ footer {
 
 .title__wrapper {
   display: inline-block;
-  white-space: normal; /* allows natural wrapping */
+  white-space: normal;
+  /* allows natural wrapping */
 }
 
 .title__word {
   display: inline-block;
-  white-space: nowrap; /* prevents mid-word breaks */
+  white-space: nowrap;
+  /* prevents mid-word breaks */
 }
 
 .title__char {
@@ -1105,9 +1106,24 @@ footer {
 
 /* Cursor blinks twice slowly, then disappears */
 @keyframes blinkTwice {
-  0%, 25%, 50%, 75% { opacity: 1; }
-  12.5%, 37.5%, 62.5%, 87.5% { opacity: 0; }
-  100% { opacity: 0; }
+
+  0%,
+  25%,
+  50%,
+  75% {
+    opacity: 1;
+  }
+
+  12.5%,
+  37.5%,
+  62.5%,
+  87.5% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .title__cursor.blink-twice {
