@@ -1073,6 +1073,12 @@ footer {
   /* allows natural wrapping */
 }
 
+@media only screen and (max-width: 991px) {
+  .title__wrapper {
+    padding-right: 16px;
+  }
+}
+
 .title__word {
   display: inline-block;
   white-space: nowrap;

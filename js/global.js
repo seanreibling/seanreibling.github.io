@@ -1,4 +1,4 @@
-console.log("V2.84");
+console.log("V2.85");
 
 const swup = new Swup({
   plugins: [new SwupProgressPlugin()]
