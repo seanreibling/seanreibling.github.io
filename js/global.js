@@ -365,6 +365,7 @@ function initializeSlideshowsInContent() {
     }
 
     setInitialSlideshowHeight(slideshow);
+    showSlide(currentSlide);
 
     // Attach 'load' event listener to each image
     slides.forEach((image) => {
@@ -453,6 +454,12 @@ let shouldSkipTransition = false;
 function initExitInteraction() {
   if (!window.location.pathname.startsWith('/portfolio/')) return;
 
+  // Avoid auto-exit navigation loops in local preview environments.
+  const isLocalPreview =
+    window.location.protocol === 'file:' ||
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1';
+
   const exit = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
   if (!exit || !preloadContainer) return;
@@ -496,7 +503,7 @@ function initExitInteraction() {
       exit.style.opacity = '1';
     }
 
-    if (distanceFromBottom <= 0) {
+    if (!isLocalPreview && distanceFromBottom <= 0) {
       window.removeEventListener('scroll', exitScrollListener);
       shouldSkipTransition = true; // set the flag
       swup.navigate('/', { animate: false }); // skip animation

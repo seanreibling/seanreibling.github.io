@@ -884,6 +884,44 @@ expanding past 1760px (1600 plus 24px margin) */
   margin-bottom: 24px;
 }
 
+.is--gracetoronto .block.is--quote {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  margin: 56px 0 0 0;
+  padding-bottom: 8px;
+  text-align: left;
+}
+
+@media only screen and (min-width: 1200px) {
+  .is--gracetoronto .block.is--quote {
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .is--gracetoronto .block.is--quote {
+    /* 50% at 1200px, easing to 100% by 768px */
+    width: clamp(50%, calc(188.9% - 11.58vw), 100%);
+  }
+}
+
+.is--gracetoronto .block.is--quote .heading {
+  font-size: 42px;
+  line-height: 112%;
+  max-width: 1100px;
+}
+
+.is--gracetoronto .block.is--text.is--afterquote {
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 992px) {
+  .is--gracetoronto .block.is--grid {
+    gap: 16px;
+  }
+}
+
 .metadata {
   display: flex;
   flex-direction: column;
@@ -1023,11 +1061,30 @@ expanding past 1760px (1600 plus 24px margin) */
     margin-bottom: 20px;
   }
 
+  .is--gracetoronto .block.is--quote {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin-top: 24px;
+    margin-bottom: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .is--gracetoronto .block.is--quote .heading {
+    font-size: 29px;
+    line-height: 118%;
+  }
+
   .is--gracetoronto .block.is--text.is--caption {
     gap: 4px;
     padding: 0;
     margin-top: 4px;
     margin-bottom: 20px;
+  }
+
+  .is--gracetoronto .block.is--text.is--afterquote {
+    margin-top: 10px;
   }
 
   .is--gracetoronto .metadata {
@@ -1072,6 +1129,20 @@ expanding past 1760px (1600 plus 24px margin) */
   .is--gracetoronto .block.is--text.is--caption {
     margin-top: 4px;
     margin-bottom: 24px;
+  }
+
+  .is--gracetoronto .block.is--quote {
+    margin-top: 40px;
+    padding-bottom: 4px;
+  }
+
+  .is--gracetoronto .block.is--quote .heading {
+    font-size: 34px;
+    line-height: 116%;
+  }
+
+  .is--gracetoronto .block.is--text.is--afterquote {
+    margin-top: 14px;
   }
 }
 
