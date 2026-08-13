@@ -454,11 +454,13 @@ let shouldSkipTransition = false;
 function initExitInteraction() {
   if (!window.location.pathname.startsWith('/portfolio/')) return;
 
-  // Avoid auto-exit navigation loops in local preview environments.
-  const isLocalPreview =
-    window.location.protocol === 'file:' ||
-    window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1';
+  const enableAutoExitNavigation = false;
+
+  // Only enable auto-exit navigation on production hosts.
+  const isProductionHost = [
+    'seanreibling.github.io',
+    'www.seanreibling.github.io'
+  ].includes(window.location.hostname);
 
   const exit = document.querySelector('.exit');
   const preloadContainer = document.getElementById('home-preload');
@@ -503,7 +505,7 @@ function initExitInteraction() {
       exit.style.opacity = '1';
     }
 
-    if (!isLocalPreview && distanceFromBottom <= 0) {
+    if (enableAutoExitNavigation && isProductionHost && distanceFromBottom <= 0) {
       window.removeEventListener('scroll', exitScrollListener);
       shouldSkipTransition = true; // set the flag
       swup.navigate('/', { animate: false }); // skip animation
